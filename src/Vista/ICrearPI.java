@@ -86,11 +86,23 @@ private Obra aux;
 
         jLabel6.setText("Disponibilidad:");
 
+        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         disponibilidadpi.add(jRadioButton1);
         jRadioButton1.setText("Disponible");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
+        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         disponibilidadpi.add(jRadioButton2);
         jRadioButton2.setText("No Disponible");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Agregar Obras: ");
 
@@ -295,6 +307,14 @@ private Obra aux;
         PuntoDeInteres pi = new PuntoDeInteres(idpi.getText(),nombrepi.getText(),disponibilidadpi.getSelection().toString());
         controlador.getInstancia().getPuntoDeInteresArray().add(pi);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

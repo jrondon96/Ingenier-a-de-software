@@ -41,7 +41,7 @@ public class IAdministracionTV extends javax.swing.JFrame {
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit.gif"))); // NOI18N
-        jButton2.setText("Modificar Tour Vistual");
+        jButton2.setText("Modificar Tour Virtual");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
