@@ -18,6 +18,7 @@ public class PuntoDeInteres {
     }
 
     
+    
     public ArrayList<Obra> getObrasPuntoDeInteresArray() {
         return obrasPuntoDeInteresArray;
     }
