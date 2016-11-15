@@ -15,7 +15,8 @@ public class PuntoDeInteres {
         this.identificador = identificador;
         this.nombre = nombre;
         this.disponibilidad = disponibilidad;
-    }
+    } 
+    
 
     
     
