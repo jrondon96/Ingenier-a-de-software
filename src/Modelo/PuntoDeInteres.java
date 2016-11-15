@@ -9,7 +9,7 @@ public class PuntoDeInteres {
     private String nombre; 
     private String disponibilidad; 
     private ArrayList <Obra> obrasPuntoDeInteresArray= new ArrayList <Obra> (); 
-    private String prueba;
+    
 
     public PuntoDeInteres(String identificador, String nombre, String disponibilidad) {
         this.identificador = identificador;
