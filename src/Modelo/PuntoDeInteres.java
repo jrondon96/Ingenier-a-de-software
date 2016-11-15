@@ -17,6 +17,7 @@ public class PuntoDeInteres {
         this.disponibilidad = disponibilidad;
     }
 
+    
     public ArrayList<Obra> getObrasPuntoDeInteresArray() {
         return obrasPuntoDeInteresArray;
     }
