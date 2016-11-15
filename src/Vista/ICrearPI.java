@@ -25,7 +25,7 @@ private Obra aux;
         while(it.hasNext()){
             aux=it.next();
             ComboBoxObra.addItem(aux.getIdObra());
-        }  
+        }   
         
     }
   
