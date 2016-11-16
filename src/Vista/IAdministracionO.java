@@ -33,7 +33,7 @@ public class IAdministracionO extends javax.swing.JFrame {
         jLabel1.setText("Administración de Obras de arte");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add.png"))); // NOI18N
-        jButton1.setText("Crear Obra de arte");
+        jButton1.setText("Agregar Obra de Arte");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
