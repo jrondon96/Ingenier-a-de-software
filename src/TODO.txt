@@ -1,0 +1,7 @@
+OBRAS.
+
+-> Agregar obras.
+-> Verificar la data que entra en los campos.
+-> Verificar si la obra ya existe, en caso de existir se envia mensaje de error.
+-> Interfaz de eliminar obra.
+-> Hacer que funcionen casos de prueba, normales y borde.
