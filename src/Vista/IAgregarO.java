@@ -15,11 +15,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jesus Antonio
  */
-public class ICrearO extends javax.swing.JFrame {
+public class IAgregarO extends javax.swing.JFrame {
 CtrlControlador controlador;  
 
     
-    public ICrearO() {
+    public IAgregarO() {
         initComponents(); 
         setLocationRelativeTo(null);
         setResizable(false);
