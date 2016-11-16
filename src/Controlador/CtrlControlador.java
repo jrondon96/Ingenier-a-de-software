@@ -24,30 +24,16 @@ public class CtrlControlador {
     private IModificarPI modificarpi; 
        
     
-    
-    
-    
     private CtrlControlador() {
     } 
     
     private static final CtrlControlador unicaInstancia = new CtrlControlador();
 
-    private ArrayList <Obra> obrasArray= new ArrayList <Obra> ();  
-    private ArrayList <PuntoDeInteres> puntoDeInteresArray= new ArrayList <PuntoDeInteres> (); 
-
-    public ArrayList<PuntoDeInteres> getPuntoDeInteresArray() {
-        return puntoDeInteresArray;
-    }
-
+     
     public static CtrlControlador getInstancia() {
         return unicaInstancia;
     }
-
-    public ArrayList<Obra> getObrasArray() {
-        return obrasArray;
-    } 
-
-      
+    
     public void comenzar(){
        bienvenida = new IBienvenida();
        bienvenida.setVisible(true);

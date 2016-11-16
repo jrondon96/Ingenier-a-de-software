@@ -1,6 +1,8 @@
 package Vista;
 
 import Controlador.CtrlControlador;
+import Controlador.CtrlObras;
+import Controlador.CtrlPuntoDeInteres;
 import Modelo.Obra;
 import Modelo.PuntoDeInteres;
 import java.util.ArrayList;
@@ -9,9 +11,10 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class ICrearPI extends javax.swing.JFrame {
-private CtrlControlador controlador; 
+private CtrlObras controladorObras;  
+private CtrlPuntoDeInteres controladorPi; 
 private ArrayList <Obra> obrasPuntoDeInteresArray;
-private Iterator<Obra> it = controlador.getInstancia().getObrasArray().iterator();   
+private Iterator<Obra> it = controladorObras.getInstancia().getObrasArray().iterator();   
 private Obra aux;
     public ICrearPI() {
         initComponents(); 
@@ -301,19 +304,12 @@ private Obra aux;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        obrasPuntoDeInteresArray = new ArrayList <Obra> ();
-        
-        
-        
-         
-       
-       
-        
+        obrasPuntoDeInteresArray = new ArrayList <Obra> ();  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         PuntoDeInteres pi = new PuntoDeInteres(idpi.getText(),nombrepi.getText(),disponibilidadpi.getSelection().toString());
-        controlador.getInstancia().getPuntoDeInteresArray().add(pi);
+        controladorPi.getInstancia().getPuntoDeInteresArray().add(pi);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed

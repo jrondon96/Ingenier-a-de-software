@@ -5,9 +5,8 @@
  */
 package Vista;
 
-import Controlador.CtrlControlador;
+import Controlador.CtrlObras;
 import Modelo.Obra;
-import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -16,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Jesus Antonio
  */
 public class IAgregarO extends javax.swing.JFrame {
-CtrlControlador controlador;  
+CtrlObras controladorObra;  
 
     
     public IAgregarO() {
@@ -26,10 +25,10 @@ CtrlControlador controlador;
         setTitle("Crear Obra de arte");  
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel(); 
        
-        for (int i=0;i<controlador.getInstancia().getObrasArray().size();i++){
-            modelo.addRow(new Object[]{controlador.getInstancia().getObrasArray().get(i).getIdObra(),
-                                       controlador.getInstancia().getObrasArray().get(i).getTituloObra(), 
-                                       controlador.getInstancia().getObrasArray().get(i).getAutorObra()});
+        for (int i=0;i<controladorObra.getInstancia().getObrasArray().size();i++){
+            modelo.addRow(new Object[]{controladorObra.getInstancia().getObrasArray().get(i).getIdObra(),
+                                       controladorObra.getInstancia().getObrasArray().get(i).getTituloObra(), 
+                                       controladorObra.getInstancia().getObrasArray().get(i).getAutorObra()});
         }
     }
 
@@ -251,7 +250,7 @@ CtrlControlador controlador;
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Obra obra = new Obra(numeroO.getText(),idO.getText(),autorO.getText(),tituloO.getText(),añoO.getText(),ubicacionO.getText(),descripcionO.getText());  
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        controlador.getInstancia().getObrasArray().add(obra);
+        controladorObra.getInstancia().getObrasArray().add(obra);
         System.out.println("Se creo correctamente la obra"); 
         modelo.addRow(new Object[]{obra.getIdObra(),obra.getTituloObra(),obra.getAutorObra()});
         numeroO.setText(null); 
