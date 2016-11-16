@@ -24,8 +24,15 @@ private Obra aux;
             
         while(it.hasNext()){
             aux=it.next();
-            ComboBoxObra.addItem(aux.getIdObra());
-        }   
+            ComboBoxObra.addItem(aux.getIdObra()+" "+aux.getTituloObra()); 
+            
+        }    
+        
+        /*
+        if (controlador.getInstancia().getObrasArray().size()>1) {
+            ComboBoxObra.removeItemAt(0);
+        }
+        */ 
         
     }
   
