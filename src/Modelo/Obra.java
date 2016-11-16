@@ -11,7 +11,6 @@ package Modelo;
  */
 public class Obra { 
     
-    private String numeroObra;  
     private String idObra; 
     private String tituloObra;  
     private String autorObra; 
@@ -20,8 +19,7 @@ public class Obra {
     private String descripcionObra;
     private String imagenObra;  
 
-    public Obra(String numeroObra, String idObra, String autorObra, String tituloObra, String añoCreacionObra, String ubicacionObra, String descripcionObra) {
-        this.numeroObra = numeroObra;
+    public Obra(String idObra, String autorObra, String tituloObra, String añoCreacionObra, String ubicacionObra, String descripcionObra) {
         this.idObra = idObra;
         this.autorObra = autorObra;
         this.tituloObra = tituloObra;
@@ -39,9 +37,6 @@ public class Obra {
         this.imagenObra = "/imagenes/"+idObra+".jpg";;
     }
    
-    public String getNumeroObra() {
-        return numeroObra;
-    }
 
     public String getIdObra() {
         return idObra;
