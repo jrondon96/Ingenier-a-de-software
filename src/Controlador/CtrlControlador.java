@@ -25,6 +25,7 @@ public class CtrlControlador {
        
     
     
+    
     private CtrlControlador() {
     } 
     
