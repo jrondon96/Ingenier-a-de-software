@@ -16,7 +16,7 @@ public class CtrlControlador {
     private IAdministracionO administracionO;
     private IAdministracionTV administraciontv; 
     private IAdministracionPI administracionpi;  
-    private IAgregarO crearO; 
+    private IAgregarO agregarO; 
     private IModificarO modificarO;
     private ICrearTV creartv; 
     private IModificarTV modificartv; 
@@ -131,10 +131,10 @@ public class CtrlControlador {
                 
                 break;
             
-            case "CrearO": 
+            case "agregarO": 
                interfazActual.setVisible(false);
-               crearO = new IAgregarO();
-               crearO.setVisible(true);
+               agregarO = new IAgregarO();
+               agregarO.setVisible(true);
                 
                 break; 
             
