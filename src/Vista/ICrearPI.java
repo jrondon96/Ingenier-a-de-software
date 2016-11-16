@@ -32,7 +32,8 @@ private Obra aux;
         if (controlador.getInstancia().getObrasArray().size()>1) {
             ComboBoxObra.removeItemAt(0);
         }
-        */ 
+        */  
+        
         
     }
   
