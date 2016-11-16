@@ -87,12 +87,12 @@ CtrlControlador controlador;
         jLabel2.setText("Obras De Arte Existentes:");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Crear Obra De Arte");
+        jLabel1.setText("Agregar Obra de Arte");
 
         jLabel5.setText("Identificador:");
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add.png"))); // NOI18N
-        jButton4.setText("Crear");
+        jButton4.setText("Agregar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
