@@ -18,6 +18,7 @@ public class CtrlControlador {
     private IAdministracionPI administracionpi;  
     private IAgregarO agregarO; 
     private IModificarO modificarO;
+    private IEliminarO eliminarO;
     private ICrearTV creartv; 
     private IModificarTV modificartv; 
     private ICrearPI crearpi; 
@@ -55,45 +56,38 @@ public class CtrlControlador {
                interfazActual.setVisible(false);
                administracion = new IAdministracion();
                administracion.setVisible(true); 
-              
-                
-                break; 
+               break; 
                 
             case "AdministracionO": 
                interfazActual.setVisible(false);
                administracionO = new IAdministracionO();
                administracionO.setVisible(true); 
-             
-                break;
+               break;
                 
             case "AdministracionTV": 
                interfazActual.setVisible(false);
                administraciontv = new IAdministracionTV();
                administraciontv.setVisible(true); 
-             
-                break; 
+               break; 
                
                 
             case "AdministracionPI":  
                interfazActual.setVisible(false);
                administracionpi = new IAdministracionPI();
                administracionpi.setVisible(true); 
-
-                break;
+               break;
                 
             case "CrearTV": 
                interfazActual.setVisible(false);
                creartv = new ICrearTV();
                creartv.setVisible(true);
-                
-                break; 
+               break; 
                 
             case "ModificarTV": 
                interfazActual.setVisible(false);
                modificartv = new IModificarTV();
                modificartv.setVisible(true);
-                
-                break; 
+               break; 
                 
             case "EliminarTV":
                 
@@ -132,6 +126,9 @@ public class CtrlControlador {
                break; 
                  
             case "EliminarO":
+                interfazActual.setVisible(false);
+                eliminarO= new IEliminarO();
+                eliminarO.setVisible(true);
                 
                 break; 
                        
