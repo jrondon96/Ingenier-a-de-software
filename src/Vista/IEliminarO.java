@@ -11,8 +11,8 @@ import javax.swing.ImageIcon;
  * @author roybert
  */
 public class IEliminarO extends javax.swing.JFrame {
-CtrlObras controladorObra;
-private Iterator<Obra> it = controladorObra.getInstancia().getObrasArray().iterator();   
+private final Iterator<Obra> it = CtrlObras.getInstancia().getObrasArray().iterator();
+
 private Obra aux;
   
     public IEliminarO() {
@@ -143,15 +143,18 @@ private Obra aux;
       String OElim =(String) ComboBoxObra.getSelectedItem();
       ComboBoxObra.removeItem(ComboBoxObra.getSelectedItem());
       StringTokenizer id = new StringTokenizer(OElim," ");
+      String token =  id.nextToken();
       
-      
-        while(it.hasNext()){
-            aux=it.next();
-     
-            if((id.nextToken()) == (aux.getIdObra())){
-                controladorObra.getInstancia().getObrasArray().remove(aux);
-            }       
-        }   
+        for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){
+            
+          aux =  CtrlObras.getInstancia().getObrasArray().get(i);
+          String IdObra = aux.getIdObra();
+           
+            if( token == null ? IdObra == null : token.equals(IdObra) ){
+                CtrlObras.getInstancia().getObrasArray().remove(aux);
+              
+            }     
+        }      
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
