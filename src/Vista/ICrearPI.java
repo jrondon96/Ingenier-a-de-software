@@ -7,6 +7,8 @@ import Modelo.Obra;
 import Modelo.PuntoDeInteres;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -21,14 +23,18 @@ private Obra aux;
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Crear Punto de Interes");  
-        ComboBoxObra.removeAllItems(); 
+        //ComboBoxObra.removeAllItems(); 
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel(); 
         
-      
+        for (int i=0; i < controladorPi.getInstancia().getPuntoDeInteresArray().size(); i++){
+            modelo.insertRow(0, new Object[]{controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador(),
+                                       controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getNombre(), 
+                                       controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getDisponibilidad()});
+        }
             
         while(it.hasNext()){
             aux=it.next();
-            ComboBoxObra.addItem(aux.getIdObra()+" "+aux.getTituloObra()); 
-            
+            ComboBoxObra.addItem(aux.getIdObra()+" "+aux.getTituloObra());   
         }    
         
         /*
@@ -37,7 +43,6 @@ private Obra aux;
         }
         */  
         
-       
         
         
     }
@@ -89,6 +94,7 @@ private Obra aux;
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        jTable1.getAccessibleContext().setAccessibleDescription("");
 
         jLabel2.setText("Puntos de interes Existentes:");
 
@@ -118,6 +124,12 @@ private Obra aux;
         });
 
         jLabel7.setText("Agregar Obras: ");
+
+        ComboBoxObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxObraActionPerformed(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add.png"))); // NOI18N
         jButton1.setText("Agregar Obra");
@@ -305,8 +317,38 @@ private Obra aux;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        PuntoDeInteres pi = new PuntoDeInteres(idpi.getText(),nombrepi.getText(),disponibilidadpi.getSelection().toString());
-        controladorPi.getInstancia().getPuntoDeInteresArray().add(pi);
+        
+        String disp = "No Disponible";
+        
+        if ((idpi.getText().length()!=0) && (nombrepi.getText().length()!=0)) {
+            
+            if(disponibilidadpi.getSelection().equals(jRadioButton1.getModel())) {
+                disp = "Disponible";
+            }    
+            
+            PuntoDeInteres pi = new PuntoDeInteres(idpi.getText(),nombrepi.getText(),disp);
+            CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().add(pi);
+
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            modelo.insertRow(0, new Object[]{pi.getIdentificador(),pi.getNombre(),pi.getDisponibilidad()});
+            
+            idpi.setText(null);
+            nombrepi.setText(null);
+            jRadioButton1.setSelected(false);
+            jRadioButton2.setSelected(false);
+            
+            try{
+                String Obra =(String) ComboBoxObra.getSelectedItem();
+                System.out.println(Obra);
+                
+            }catch(NullPointerException e){
+                JOptionPane.showMessageDialog(null, "Debe seleccionar una obra.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }else{
+            JOptionPane.showMessageDialog(null,"Error, faltan campos por rellenar", "Error", JOptionPane.ERROR_MESSAGE); 
+        }
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -316,6 +358,10 @@ private Obra aux;
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void ComboBoxObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxObraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxObraActionPerformed
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

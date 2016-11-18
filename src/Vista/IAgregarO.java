@@ -80,6 +80,7 @@ CtrlObras controladorObra;
                 "ID_OBRA", "Nombre", "Autor"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setText("Obras De Arte Existentes:");
@@ -250,9 +251,9 @@ CtrlObras controladorObra;
         ubicacionO.setText(null); 
         descripcionO.setText(null);   
         JOptionPane.showMessageDialog(null, "Obra agregada correctamente");
-        } 
-        else { 
-            JOptionPane.showMessageDialog(null, "Error, Campos sin rellenar", "Error", JOptionPane.ERROR_MESSAGE);   
+        }else{
+ 
+           JOptionPane.showMessageDialog(null, "Error, Campos sin rellenar", "Error", JOptionPane.ERROR_MESSAGE);   
         }
         
     }//GEN-LAST:event_jButton4ActionPerformed

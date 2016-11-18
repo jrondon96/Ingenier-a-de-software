@@ -37,27 +37,45 @@ public class Obra {
         this.imagenObra = "/imagenes/"+idObra+".jpg";;
     }
    
-
+    public void setIdObra(String IdObra){
+        this.idObra = IdObra; 
+    }
     public String getIdObra() {
         return idObra;
     }
-
+    
+    public void setTituloObra(String TituloObra){
+       this.tituloObra = TituloObra; 
+    }
+   
     public String getTituloObra() {
         return tituloObra;
+    }
+    
+    public void setAutorObra(String AutorObra){
+        this.autorObra = AutorObra;
     }
 
     public String getAutorObra() {
         return autorObra;
     }
-
+    
+    public void setAñoCreacionObra(String AñoCreacionObra){
+        this.añoCreacionObra =  AñoCreacionObra;
+    }
     public String getAñoCreacionObra() {
         return añoCreacionObra;
     }
-
+    public void setUbicacionObra(String UbicacionObra){
+        this.ubicacionObra = UbicacionObra;
+    }
     public String getUbicacionObra() {
         return ubicacionObra;
     }
-
+    public void setDescripcionObra(String DescripcionObra){
+        this.descripcionObra = DescripcionObra;
+    }
+    
     public String getDescripcionObra() {
         return descripcionObra;
     }

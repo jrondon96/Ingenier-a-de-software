@@ -11,7 +11,9 @@ import javax.swing.table.DefaultTableModel;
 public class IModificarO extends javax.swing.JFrame {
 CtrlControlador controlador;  
 CtrlObras controladorObra;
-private Iterator<Obra> it = controladorObra.getInstancia().getObrasArray().iterator(); 
+private Iterator<Obra> it = controladorObra.getInstancia().getObrasArray().iterator();
+private Iterator<Obra> ite = controladorObra.getInstancia().getObrasArray().iterator();
+
 private Obra aux;
     public IModificarO() {
         initComponents(); 
@@ -91,6 +93,11 @@ private Obra aux;
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit.gif"))); // NOI18N
         jButton4.setText("Modificar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Finalizar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -229,12 +236,54 @@ private Obra aux;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-         
-        System.out.println(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
+  
+        String Id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){
+
+              aux =  CtrlObras.getInstancia().getObrasArray().get(i);
+              String IdObra = aux.getIdObra();
+
+                if( Id == null ? IdObra == null : Id.equals(IdObra) ){
+                    idO.setText(aux.getIdObra());
+                    tituloO.setText(aux.getTituloObra());
+                    autorO.setText(aux.getAutorObra()); 
+                    añoO.setText(aux.getAñoCreacionObra());
+                    ubicacionO.setText(aux.getUbicacionObra());
+                    descripcionO.setText(aux.getDescripcionObra());
+                }     
+            }
         
         
         
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String Id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){      
+                
+              aux =  CtrlObras.getInstancia().getObrasArray().get(i);
+              String IdObra = aux.getIdObra();
+
+                if( Id == null ? IdObra == null : Id.equals(IdObra) ){
+                    CtrlObras.getInstancia().getObrasArray().get(i).setIdObra(idO.getText());
+                    CtrlObras.getInstancia().getObrasArray().get(i).setTituloObra(tituloO.getText());
+                    CtrlObras.getInstancia().getObrasArray().get(i).setAutorObra(autorO.getText());
+                    CtrlObras.getInstancia().getObrasArray().get(i).setAñoCreacionObra(añoO.getText());
+                    CtrlObras.getInstancia().getObrasArray().get(i).setUbicacionObra(ubicacionO.getText());
+                    CtrlObras.getInstancia().getObrasArray().get(i).setDescripcionObra(descripcionO.getText());
+                    int row = jTable1.getSelectedRow();
+                    ((DefaultTableModel)jTable1.getModel()).removeRow(row);
+                    ((DefaultTableModel)jTable1.getModel()).insertRow(row, new Object[]{aux.getIdObra(),aux.getTituloObra(),aux.getAutorObra()});
+                    idO.setText(null);
+                    tituloO.setText(null);
+                    autorO.setText(null);
+                    añoO.setText(null);
+                    ubicacionO.setText(null);
+                    descripcionO.setText(null);
+                } 
+        
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     
     
