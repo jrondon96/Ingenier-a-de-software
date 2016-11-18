@@ -8,6 +8,7 @@ package Vista;
 import Controlador.CtrlObras;
 import Modelo.Obra;
 import java.awt.event.KeyListener;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -233,6 +234,9 @@ CtrlObras controladorObra;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        if ((idO.getText().length()!=0) && (autorO.getText().length()!=0) && (tituloO.getText().length()!=0) &&(añoO.getText().length()!=0) && (ubicacionO.getText().length()!=0)&&(descripcionO.getText().length()!=0)){
+           
         Obra obra = new Obra(idO.getText(),autorO.getText(),tituloO.getText(),añoO.getText(),ubicacionO.getText(),descripcionO.getText());  
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         controladorObra.getInstancia().getObrasArray().add(obra);
@@ -245,13 +249,15 @@ CtrlObras controladorObra;
         añoO.setText(null); 
         
         ubicacionO.setText(null); 
-        descripcionO.setText(null);  
+        descripcionO.setText(null);   
+        JOptionPane.showMessageDialog(null, "Obra acgregada correctamente");
+        } 
+        else { 
+            JOptionPane.showMessageDialog(null, "Error, Campos sin rellenar", "Error", JOptionPane.ERROR_MESSAGE);   
+        }
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
