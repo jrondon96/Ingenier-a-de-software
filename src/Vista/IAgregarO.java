@@ -241,7 +241,6 @@ CtrlObras controladorObra;
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         controladorObra.getInstancia().getObrasArray().add(obra);
        
-        System.out.println("Se creo correctamente la obra"); 
         modelo.addRow(new Object[]{obra.getIdObra(),obra.getTituloObra(),obra.getAutorObra()});
         idO.setText(null); 
         autorO.setText(null); 
@@ -250,7 +249,7 @@ CtrlObras controladorObra;
         
         ubicacionO.setText(null); 
         descripcionO.setText(null);   
-        JOptionPane.showMessageDialog(null, "Obra acgregada correctamente");
+        JOptionPane.showMessageDialog(null, "Obra agregada correctamente");
         } 
         else { 
             JOptionPane.showMessageDialog(null, "Error, Campos sin rellenar", "Error", JOptionPane.ERROR_MESSAGE);   
