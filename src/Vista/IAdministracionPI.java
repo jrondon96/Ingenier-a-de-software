@@ -32,6 +32,7 @@ public class IAdministracionPI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Administración de Puntos de interés");
 
+        jButton1.setBackground(new java.awt.Color(246, 246, 246));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton1.setText("Crear punto de interes");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -40,7 +41,8 @@ public class IAdministracionPI extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit.gif"))); // NOI18N
+        jButton2.setBackground(new java.awt.Color(246, 246, 246));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
         jButton2.setText("Modificar Punto de interes");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +50,7 @@ public class IAdministracionPI extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_md.png"))); // NOI18N
         jButton3.setText("Finalizar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -56,6 +59,7 @@ public class IAdministracionPI extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         jButton4.setText("Eliminar punto de interes");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +99,7 @@ public class IAdministracionPI extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(30, 30, 30)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addContainerGap())
         );

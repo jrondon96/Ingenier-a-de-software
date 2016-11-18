@@ -103,7 +103,8 @@ CtrlControlador controlador;
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add.png"))); // NOI18N
+        jButton1.setBackground(new java.awt.Color(246, 246, 246));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton1.setText("Agregar Punto de interes");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -119,12 +120,15 @@ CtrlControlador controlador;
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        jButton2.setBackground(new java.awt.Color(246, 246, 246));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         jButton2.setText("Eliminar Punto de interes");
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit.gif"))); // NOI18N
+        jButton4.setBackground(new java.awt.Color(246, 246, 246));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
         jButton4.setText("Modificar");
 
+        jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setText("Finalizar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +240,7 @@ CtrlControlador controlador;
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jButton4)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 

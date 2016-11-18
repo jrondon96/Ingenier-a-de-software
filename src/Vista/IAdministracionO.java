@@ -32,6 +32,7 @@ public class IAdministracionO extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Administración de Obras de arte");
 
+        jButton1.setBackground(new java.awt.Color(246, 246, 246));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton1.setText("Agregar Obra de Arte");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -40,7 +41,8 @@ public class IAdministracionO extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit.gif"))); // NOI18N
+        jButton2.setBackground(new java.awt.Color(246, 246, 246));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
         jButton2.setText("Modificar Obra de arte ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +50,7 @@ public class IAdministracionO extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_md.png"))); // NOI18N
         jButton3.setText("Finalizar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -56,6 +59,7 @@ public class IAdministracionO extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         jButton4.setText("Eliminar Obra de arte");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -91,11 +95,11 @@ public class IAdministracionO extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(47, 47, 47)
                 .addComponent(jButton1)
-                .addGap(29, 29, 29)
+                .addGap(20, 20, 20)
                 .addComponent(jButton2)
-                .addGap(30, 30, 30)
+                .addGap(26, 26, 26)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addContainerGap())
         );

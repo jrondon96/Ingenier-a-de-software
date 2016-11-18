@@ -91,6 +91,7 @@ CtrlObras controladorObra;
 
         jLabel5.setText("Identificador:");
 
+        jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton4.setText("Agregar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +100,7 @@ CtrlObras controladorObra;
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_md.png"))); // NOI18N
         jButton3.setText("Finalizar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {

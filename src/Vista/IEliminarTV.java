@@ -45,6 +45,7 @@ public class IEliminarTV extends javax.swing.JFrame {
 
         jLabel2.setText("Seleccionar Tour virtual a eliminar:");
 
+        jButton1.setBackground(new java.awt.Color(246, 246, 246));
         jButton1.setText("Abandonar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,7 +53,8 @@ public class IEliminarTV extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        jButton2.setBackground(new java.awt.Color(246, 246, 246));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         jButton2.setText("Eliminar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
