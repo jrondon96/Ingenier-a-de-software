@@ -58,6 +58,12 @@ private Obra aux;
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Eliminar Obra de Arte");
 
+        ComboBoxObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxObraActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Seleccionar Obra a Eliminar:");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
@@ -156,6 +162,10 @@ private Obra aux;
             }     
         }      
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void ComboBoxObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxObraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxObraActionPerformed
 
 
     

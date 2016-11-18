@@ -23,6 +23,7 @@ public class CtrlControlador {
     private IModificarTV modificartv; 
     private ICrearPI crearpi; 
     private IModificarPI modificarpi; 
+    private IEliminarPI eliminarpi;
        
     
     private CtrlControlador() {
@@ -108,6 +109,9 @@ public class CtrlControlador {
                 break;  
                 
             case "EliminarPI":
+                interfazActual.setVisible(false);
+                eliminarpi = new IEliminarPI();
+                eliminarpi.setVisible(true);
                 
                 break;
             
