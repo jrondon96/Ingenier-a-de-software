@@ -77,7 +77,7 @@
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
                   <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -96,7 +96,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/add.png"/>
+              <Image iconType="3" name="/Imagenes/add_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crear Tour Virtual"/>
           </Properties>
@@ -117,6 +117,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/exit_md.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Finalizar"/>
           </Properties>
           <Events>
@@ -126,7 +129,7 @@
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/eliminar.png"/>
+              <Image iconType="3" name="/Imagenes/eliminar_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar Tour Virtual"/>
           </Properties>

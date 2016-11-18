@@ -245,6 +245,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/exit_md.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Finalizar"/>
           </Properties>
           <Events>
