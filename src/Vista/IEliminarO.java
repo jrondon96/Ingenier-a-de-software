@@ -5,6 +5,7 @@ import Modelo.Obra;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -146,21 +147,29 @@ private Obra aux;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      String OElim =(String) ComboBoxObra.getSelectedItem();
-      ComboBoxObra.removeItem(ComboBoxObra.getSelectedItem());
-      StringTokenizer id = new StringTokenizer(OElim," ");
-      String token =  id.nextToken();
       
-        for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){
-            
-          aux =  CtrlObras.getInstancia().getObrasArray().get(i);
-          String IdObra = aux.getIdObra();
-           
-            if( token == null ? IdObra == null : token.equals(IdObra) ){
-                CtrlObras.getInstancia().getObrasArray().remove(aux);
-              
-            }     
-        }      
+      
+      try{
+            String OElim =(String) ComboBoxObra.getSelectedItem();
+            ComboBoxObra.removeItem(ComboBoxObra.getSelectedItem());
+            StringTokenizer id = new StringTokenizer(OElim," ");
+            String token =  id.nextToken();
+          
+            for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){
+
+              aux =  CtrlObras.getInstancia().getObrasArray().get(i);
+              String IdObra = aux.getIdObra();
+
+                if( token == null ? IdObra == null : token.equals(IdObra) ){
+                    CtrlObras.getInstancia().getObrasArray().remove(aux);
+
+                }     
+            }
+                
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una obra.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
+        }
+             
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void ComboBoxObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxObraActionPerformed
