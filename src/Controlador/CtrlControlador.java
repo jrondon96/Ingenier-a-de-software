@@ -52,7 +52,7 @@ public class CtrlControlador {
                 bienvenida.setVisible(true);
                 break;
             
-         
+                
             case "Administracion":  
                 
                interfazActual.setVisible(false);
