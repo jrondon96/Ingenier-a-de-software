@@ -149,7 +149,7 @@ private Obra aux;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       
       
-      try{
+        try{
             String OElim =(String) ComboBoxObra.getSelectedItem();
             ComboBoxObra.removeItem(ComboBoxObra.getSelectedItem());
             StringTokenizer id = new StringTokenizer(OElim," ");

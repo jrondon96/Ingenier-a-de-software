@@ -10,6 +10,7 @@ import Controlador.CtrlPuntoDeInteres;
 import java.util.StringTokenizer;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -143,19 +144,26 @@ public class IEliminarPI extends javax.swing.JFrame {
     }//GEN-LAST:event_ComboBoxPIActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String OElim =(String) ComboBoxPI.getSelectedItem();
-        ComboBoxPI.removeItem(ComboBoxPI.getSelectedItem());
-        StringTokenizer id = new StringTokenizer(OElim," ");
-        String token =  id.nextToken();
+        
+        try{
+            String OElim =(String) ComboBoxPI.getSelectedItem();
+            ComboBoxPI.removeItem(ComboBoxPI.getSelectedItem());
+            StringTokenizer id = new StringTokenizer(OElim," ");
+            String token =  id.nextToken();
 
-        for (int i=0;i<CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
+            for (int i=0;i<CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
 
-            aux =  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
-            String IdPI= aux.getIdentificador();
-            if( token == null ? IdPI == null : token.equals(IdPI) ){
-                CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().remove(aux);
+                aux =  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
+                String IdPI= aux.getIdentificador();
+                if( token == null ? IdPI == null : token.equals(IdPI) ){
+                    CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().remove(aux);
+                }
             }
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una tour.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
         }
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
