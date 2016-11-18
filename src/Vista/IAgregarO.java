@@ -239,8 +239,7 @@ CtrlObras controladorObra;
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         if ((idO.getText().length()!=0) && (autorO.getText().length()!=0) && (tituloO.getText().length()!=0) &&(añoO.getText().length()!=0) && (ubicacionO.getText().length()!=0)&&(descripcionO.getText().length()!=0)){
-<<<<<<< HEAD
-           
+
         Obra obra = new Obra(idO.getText(),autorO.getText(),tituloO.getText(),añoO.getText(),ubicacionO.getText(),descripcionO.getText());  
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         controladorObra.getInstancia().getObrasArray().add(obra);
@@ -254,29 +253,10 @@ CtrlObras controladorObra;
         ubicacionO.setText(null); 
         descripcionO.setText(null);   
         JOptionPane.showMessageDialog(null, "Obra agregada correctamente");
-        }else{
- 
-           JOptionPane.showMessageDialog(null, "Error, Campos sin rellenar", "Error", JOptionPane.ERROR_MESSAGE);   
-=======
-
-            Obra obra = new Obra(idO.getText(),autorO.getText(),tituloO.getText(),añoO.getText(),ubicacionO.getText(),descripcionO.getText());
-            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-            controladorObra.getInstancia().getObrasArray().add(obra);
-
-            System.out.println("Se creo correctamente la obra");
-            modelo.addRow(new Object[]{obra.getIdObra(),obra.getTituloObra(),obra.getAutorObra()});
-            idO.setText(null);
-            autorO.setText(null);
-            tituloO.setText(null);
-            añoO.setText(null);
-
-            ubicacionO.setText(null);
-            descripcionO.setText(null);
-            JOptionPane.showMessageDialog(null, "Obra agregada correctamente");
-
+        
         }else {
             JOptionPane.showMessageDialog(null, "Error, Campos sin rellenar", "Error", JOptionPane.ERROR_MESSAGE);
->>>>>>> origin/master
+
         }
 
     }//GEN-LAST:event_jButton4ActionPerformed
