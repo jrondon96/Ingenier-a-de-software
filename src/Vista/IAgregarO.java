@@ -8,6 +8,7 @@ package Vista;
 import Controlador.CtrlObras;
 import Modelo.Obra;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -90,7 +91,7 @@ CtrlObras controladorObra;
 
         jLabel5.setText("Identificador:");
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton4.setText("Agregar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,10 +158,7 @@ CtrlObras controladorObra;
                                     .addComponent(autorO)
                                     .addComponent(añoO)
                                     .addComponent(ubicacionO, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(154, 154, 154)
-                                .addComponent(jButton4)))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(34, Short.MAX_VALUE)
@@ -170,6 +168,10 @@ CtrlObras controladorObra;
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(17, 17, 17)))))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(171, 171, 171)
+                .addComponent(jButton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,9 +208,9 @@ CtrlObras controladorObra;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addContainerGap())
         );
@@ -235,8 +237,9 @@ CtrlObras controladorObra;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+
         if ((idO.getText().length()!=0) && (autorO.getText().length()!=0) && (tituloO.getText().length()!=0) &&(añoO.getText().length()!=0) && (ubicacionO.getText().length()!=0)&&(descripcionO.getText().length()!=0)){
+<<<<<<< HEAD
            
         Obra obra = new Obra(idO.getText(),autorO.getText(),tituloO.getText(),añoO.getText(),ubicacionO.getText(),descripcionO.getText());  
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
@@ -254,8 +257,28 @@ CtrlObras controladorObra;
         }else{
  
            JOptionPane.showMessageDialog(null, "Error, Campos sin rellenar", "Error", JOptionPane.ERROR_MESSAGE);   
+=======
+
+            Obra obra = new Obra(idO.getText(),autorO.getText(),tituloO.getText(),añoO.getText(),ubicacionO.getText(),descripcionO.getText());
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            controladorObra.getInstancia().getObrasArray().add(obra);
+
+            System.out.println("Se creo correctamente la obra");
+            modelo.addRow(new Object[]{obra.getIdObra(),obra.getTituloObra(),obra.getAutorObra()});
+            idO.setText(null);
+            autorO.setText(null);
+            tituloO.setText(null);
+            añoO.setText(null);
+
+            ubicacionO.setText(null);
+            descripcionO.setText(null);
+            JOptionPane.showMessageDialog(null, "Obra agregada correctamente");
+
+        }else {
+            JOptionPane.showMessageDialog(null, "Error, Campos sin rellenar", "Error", JOptionPane.ERROR_MESSAGE);
+>>>>>>> origin/master
         }
-        
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     
