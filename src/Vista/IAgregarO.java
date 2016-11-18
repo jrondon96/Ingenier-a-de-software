@@ -80,6 +80,7 @@ CtrlObras controladorObra;
                 "ID_OBRA", "Nombre", "Autor"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setText("Obras De Arte Existentes:");
@@ -237,22 +238,22 @@ CtrlObras controladorObra;
         
         if ((idO.getText().length()!=0) && (autorO.getText().length()!=0) && (tituloO.getText().length()!=0) &&(añoO.getText().length()!=0) && (ubicacionO.getText().length()!=0)&&(descripcionO.getText().length()!=0)){
            
-        Obra obra = new Obra(idO.getText(),autorO.getText(),tituloO.getText(),añoO.getText(),ubicacionO.getText(),descripcionO.getText());  
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        controladorObra.getInstancia().getObrasArray().add(obra);
-       
-        System.out.println("Se creo correctamente la obra"); 
-        modelo.addRow(new Object[]{obra.getIdObra(),obra.getTituloObra(),obra.getAutorObra()});
-        idO.setText(null); 
-        autorO.setText(null); 
-        tituloO.setText(null); 
-        añoO.setText(null); 
-        
-        ubicacionO.setText(null); 
-        descripcionO.setText(null);   
-        JOptionPane.showMessageDialog(null, "Obra acgregada correctamente");
-        } 
-        else { 
+            Obra obra = new Obra(idO.getText(),autorO.getText(),tituloO.getText(),añoO.getText(),ubicacionO.getText(),descripcionO.getText());  
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            controladorObra.getInstancia().getObrasArray().add(obra);
+
+            System.out.println("Se creo correctamente la obra"); 
+            modelo.addRow(new Object[]{obra.getIdObra(),obra.getTituloObra(),obra.getAutorObra()});
+            idO.setText(null); 
+            autorO.setText(null); 
+            tituloO.setText(null); 
+            añoO.setText(null); 
+
+            ubicacionO.setText(null); 
+            descripcionO.setText(null);   
+            JOptionPane.showMessageDialog(null, "Obra agregada correctamente");
+            
+        }else { 
             JOptionPane.showMessageDialog(null, "Error, Campos sin rellenar", "Error", JOptionPane.ERROR_MESSAGE);   
         }
         
