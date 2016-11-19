@@ -108,7 +108,7 @@
                   <Component id="jToggleButton3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
                   <Component id="jButton2" min="-2" pref="29" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -130,6 +130,7 @@
               <Color blue="f6" green="f6" red="f6" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Finalizar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -144,6 +145,7 @@
               <Image iconType="3" name="/Imagenes/admin_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Administrar Puntos de Inter&#xe9;s"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>

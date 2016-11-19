@@ -142,7 +142,7 @@
                   <Component id="jButton4" min="-2" pref="23" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -227,6 +227,7 @@
               <Image iconType="3" name="/Imagenes/modificar_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Modificar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
@@ -238,6 +239,7 @@
               <Color blue="f6" green="f6" red="f6" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Finalizar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>

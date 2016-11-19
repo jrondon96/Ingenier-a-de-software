@@ -35,6 +35,7 @@ public class IAdministracionTV extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(246, 246, 246));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton1.setText("Crear Tour Virtual");
+        jButton1.setFocusPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -44,6 +45,7 @@ public class IAdministracionTV extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(246, 246, 246));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
         jButton2.setText("Modificar Tour Virtual");
+        jButton2.setFocusPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -53,6 +55,7 @@ public class IAdministracionTV extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_md.png"))); // NOI18N
         jButton3.setText("Finalizar");
+        jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -62,6 +65,7 @@ public class IAdministracionTV extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         jButton4.setText("Eliminar Tour Virtual");
+        jButton4.setFocusPainted(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -99,7 +103,7 @@ public class IAdministracionTV extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(30, 30, 30)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addContainerGap())
         );

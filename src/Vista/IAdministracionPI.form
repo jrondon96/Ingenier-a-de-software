@@ -77,7 +77,7 @@
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
                   <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -102,6 +102,7 @@
               <Image iconType="3" name="/Imagenes/add_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crear punto de inter&#xe9;s"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -116,6 +117,7 @@
               <Image iconType="3" name="/Imagenes/modificar_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Modificar punto de inter&#xe9;s"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -127,6 +129,7 @@
               <Color blue="f6" green="f6" red="f6" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Finalizar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -141,6 +144,7 @@
               <Image iconType="3" name="/Imagenes/eliminar_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar punto de inter&#xe9;s"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>

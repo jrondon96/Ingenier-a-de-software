@@ -76,6 +76,7 @@ CtrlControlador controlador;
 
         jLabel3.setText("Ingrese propiedades del tour virtual a crear: ");
 
+        jTable1.setAutoCreateColumnsFromModel(false);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -101,11 +102,14 @@ CtrlControlador controlador;
         jLabel7.setText("Agregar Puntos de interes: ");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setFocusable(false);
 
         jButton1.setBackground(new java.awt.Color(246, 246, 246));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton1.setText("Agregar Punto de interes");
+        jButton1.setFocusPainted(false);
 
+        jTable2.setAutoCreateColumnsFromModel(false);
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -122,12 +126,15 @@ CtrlControlador controlador;
         jButton2.setBackground(new java.awt.Color(246, 246, 246));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         jButton2.setText("Eliminar Punto de interes");
+        jButton2.setFocusPainted(false);
 
         jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setText("Crear");
+        jButton4.setFocusPainted(false);
 
         jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setText("Finalizar");
+        jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -137,6 +144,7 @@ CtrlControlador controlador;
         jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("Disponible");
+        jRadioButton3.setFocusPainted(false);
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton3ActionPerformed(evt);
@@ -146,6 +154,7 @@ CtrlControlador controlador;
         jRadioButton4.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton4);
         jRadioButton4.setText("No Disponible");
+        jRadioButton4.setFocusPainted(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -172,15 +181,6 @@ CtrlControlador controlador;
                                 .addComponent(jRadioButton4)))))
                 .addContainerGap(87, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(98, 113, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(162, 162, 162))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -204,6 +204,15 @@ CtrlControlador controlador;
                 .addGap(127, 127, 127)
                 .addComponent(jButton1)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(108, 108, 108))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addGap(178, 178, 178))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,9 +249,9 @@ CtrlControlador controlador;
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jButton2)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addComponent(jButton3)
                 .addContainerGap())
         );

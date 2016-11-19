@@ -168,7 +168,7 @@
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                          <EmptySpace pref="50" max="32767" attributes="0"/>
                           <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -206,6 +206,7 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
+                <Property name="autoCreateColumnsFromModel" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
                     <Column editable="true" title="Title 1" type="java.lang.Object"/>
@@ -250,6 +251,7 @@
               <ComponentRef name="buttonGroup1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Disponible"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>
@@ -264,6 +266,7 @@
               <ComponentRef name="buttonGroup1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="No Disponible"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -281,6 +284,7 @@
                 <StringItem index="3" value="Item 4"/>
               </StringArray>
             </Property>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
@@ -292,6 +296,7 @@
               <Image iconType="3" name="/Imagenes/add_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar Punto de interes"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -303,6 +308,7 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="jTable2">
               <Properties>
+                <Property name="autoCreateColumnsFromModel" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
                     <Column editable="true" title="Title 1" type="java.lang.Object"/>
@@ -324,6 +330,7 @@
               <Image iconType="3" name="/Imagenes/eliminar_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar Punto de interes"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
@@ -335,6 +342,7 @@
               <Image iconType="3" name="/Imagenes/modificar_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Modificar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
@@ -343,6 +351,7 @@
               <Color blue="f6" green="f6" red="f6" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Finalizar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>

@@ -238,6 +238,7 @@
               <Image iconType="3" name="/Imagenes/add_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
@@ -249,6 +250,7 @@
               <Color blue="f6" green="f6" red="f6" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Finalizar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>

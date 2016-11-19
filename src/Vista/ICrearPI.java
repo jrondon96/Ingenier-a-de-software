@@ -126,6 +126,7 @@ private Obra aux;
 
         jLabel7.setText("Agregar Obras: ");
 
+        ComboBoxObra.setFocusable(false);
         ComboBoxObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxObraActionPerformed(evt);
@@ -135,6 +136,7 @@ private Obra aux;
         jButton1.setBackground(new java.awt.Color(246, 246, 246));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton1.setText("Agregar Obra");
+        jButton1.setFocusPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -173,9 +175,11 @@ private Obra aux;
         jButton2.setBackground(new java.awt.Color(246, 246, 246));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         jButton2.setText("Eliminar Obra");
+        jButton2.setFocusPainted(false);
 
         jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setText("Crear");
+        jButton4.setFocusPainted(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -184,6 +188,7 @@ private Obra aux;
 
         jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setText("Finalizar");
+        jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -289,7 +294,7 @@ private Obra aux;
                         .addComponent(jButton2)
                         .addGap(45, 45, 45)
                         .addComponent(jButton4)
-                        .addContainerGap(37, Short.MAX_VALUE))
+                        .addContainerGap(40, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3)

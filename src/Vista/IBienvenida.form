@@ -143,6 +143,7 @@
               <Image iconType="3" name="/Imagenes/exit_md.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>

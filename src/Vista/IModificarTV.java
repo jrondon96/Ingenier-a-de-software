@@ -64,6 +64,7 @@ CtrlControlador controlador;
 
         jLabel3.setText("Ingrese propiedades del tour virtual a modificar: ");
 
+        jTable1.setAutoCreateColumnsFromModel(false);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -89,6 +90,7 @@ CtrlControlador controlador;
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Disponible");
+        jRadioButton1.setFocusPainted(false);
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -98,15 +100,19 @@ CtrlControlador controlador;
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("No Disponible");
+        jRadioButton2.setFocusPainted(false);
 
         jLabel7.setText("Agregar Puntos de interes: ");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setFocusable(false);
 
         jButton1.setBackground(new java.awt.Color(246, 246, 246));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton1.setText("Agregar Punto de interes");
+        jButton1.setFocusPainted(false);
 
+        jTable2.setAutoCreateColumnsFromModel(false);
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -123,13 +129,16 @@ CtrlControlador controlador;
         jButton2.setBackground(new java.awt.Color(246, 246, 246));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         jButton2.setText("Eliminar Punto de interes");
+        jButton2.setFocusPainted(false);
 
         jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
         jButton4.setText("Modificar");
+        jButton4.setFocusPainted(false);
 
         jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setText("Finalizar");
+        jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -235,7 +244,7 @@ CtrlControlador controlador;
                 .addComponent(jButton2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()

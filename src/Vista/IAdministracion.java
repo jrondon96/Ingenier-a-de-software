@@ -62,6 +62,7 @@ public class IAdministracion extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(246, 246, 246));
         jButton2.setText("Finalizar");
+        jButton2.setFocusPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -71,6 +72,7 @@ public class IAdministracion extends javax.swing.JFrame {
         jToggleButton1.setBackground(new java.awt.Color(246, 246, 246));
         jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/admin_md.png"))); // NOI18N
         jToggleButton1.setText("Administrar Puntos de Interés");
+        jToggleButton1.setFocusPainted(false);
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
@@ -129,7 +131,7 @@ public class IAdministracion extends javax.swing.JFrame {
                 .addComponent(jToggleButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jToggleButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

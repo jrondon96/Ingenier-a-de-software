@@ -60,6 +60,7 @@ public class IBienvenida extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_md.png"))); // NOI18N
         jButton3.setText("Salir");
+        jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
