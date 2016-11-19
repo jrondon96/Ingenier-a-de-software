@@ -8,7 +8,7 @@ public class PuntoDeInteres {
     private String identificador;
     private String nombre; 
     private String disponibilidad; 
-    private ArrayList <Obra> obrasPuntoDeInteresArray= new ArrayList <Obra> (); 
+    private ArrayList <Obra> obrasPuntoDeInteresArray = new ArrayList <Obra> (); 
     
 
     public PuntoDeInteres(String identificador, String nombre, String disponibilidad) {

@@ -15,9 +15,9 @@ import javax.swing.table.DefaultTableModel;
 public class ICrearPI extends javax.swing.JFrame {
 private CtrlObras controladorObras;  
 private CtrlPuntoDeInteres controladorPi; 
-private ArrayList <Obra> obrasPuntoDeInteresArray;
 private Iterator<Obra> it = controladorObras.getInstancia().getObrasArray().iterator();   
 private Obra aux;
+private PuntoDeInteres PI;
     public ICrearPI() {
         initComponents(); 
         setLocationRelativeTo(null);
@@ -82,7 +82,6 @@ private Obra aux;
 
         jLabel3.setText("Ingrese propiedades del tour virtual a crear: ");
 
-        jTable1.setAutoCreateColumnsFromModel(false);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -136,7 +135,6 @@ private Obra aux;
         jButton1.setBackground(new java.awt.Color(246, 246, 246));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton1.setText("Agregar Obra");
-        jButton1.setFocusPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -294,7 +292,7 @@ private Obra aux;
                         .addComponent(jButton2)
                         .addGap(45, 45, 45)
                         .addComponent(jButton4)
-                        .addContainerGap(40, Short.MAX_VALUE))
+                        .addContainerGap(39, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3)
@@ -322,7 +320,33 @@ private Obra aux;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        obrasPuntoDeInteresArray = new ArrayList <Obra> ();  
+            String O =(String) ComboBoxObra.getSelectedItem(); 
+            StringTokenizer id = new StringTokenizer(O," ");
+            String token =  id.nextToken();
+            
+            for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){
+
+     
+              String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
+
+                if( token == null ? IdObra == null : token.equals(IdObra) ){
+                    System.out.println("Marico el que lo lea");
+                   PI.getObrasPuntoDeInteresArray().add(CtrlObras.getInstancia().getObrasArray().get(i));
+                   
+                   System.out.println(PI.getObrasPuntoDeInteresArray().get(0).getIdObra());
+                   
+                   DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel(); 
+        
+                    for (int j=0; i < PI.getObrasPuntoDeInteresArray().size(); j++){
+                        modelo2.insertRow(0, new Object[]{PI.getObrasPuntoDeInteresArray().get(i).getIdObra(),
+                                                          PI.getObrasPuntoDeInteresArray().get(i).getTituloObra()});
+                    }
+                   
+                }     
+            }
+       
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
