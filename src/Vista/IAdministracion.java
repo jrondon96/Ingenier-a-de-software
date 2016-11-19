@@ -83,6 +83,7 @@ public class IAdministracion extends javax.swing.JFrame {
         jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/admin_md.png"))); // NOI18N
         jToggleButton3.setText("Administrar Tours Virtuales");
         jToggleButton3.setFocusPainted(false);
+        jToggleButton3.setOpaque(true);
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton3ActionPerformed(evt);

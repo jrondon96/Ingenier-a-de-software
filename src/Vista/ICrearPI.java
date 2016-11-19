@@ -17,6 +17,7 @@ private CtrlObras controladorObras;
 private CtrlPuntoDeInteres controladorPi; 
 private Iterator<Obra> it = controladorObras.getInstancia().getObrasArray().iterator();   
 private Obra aux;
+private ArrayList <Obra> ObrasAux= new ArrayList <Obra> (); 
 private PuntoDeInteres PI;
     public ICrearPI() {
         initComponents(); 
@@ -28,22 +29,20 @@ private PuntoDeInteres PI;
         
         for (int i=0; i < controladorPi.getInstancia().getPuntoDeInteresArray().size(); i++){
             modelo.insertRow(0, new Object[]{controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador(),
-                                       controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getNombre(), 
-                                       controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getDisponibilidad()});
+            controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getNombre(), 
+            controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getDisponibilidad()});
         }
             
         while(it.hasNext()){
             aux=it.next();
             ComboBoxObra.addItem(aux.getIdObra()+" "+aux.getTituloObra());   
-        }    
-        
+        }       
         /*
         if (controlador.getInstancia().getObrasArray().size()>1) {
             ComboBoxObra.removeItemAt(0);
         }
         */  
-        
-        
+
         
     }
   
@@ -84,10 +83,7 @@ private PuntoDeInteres PI;
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "ID_PuntoInteres", "Nombre", "Disponibilidad"
@@ -320,33 +316,29 @@ private PuntoDeInteres PI;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            
             String O =(String) ComboBoxObra.getSelectedItem(); 
             StringTokenizer id = new StringTokenizer(O," ");
             String token =  id.nextToken();
             
             for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){
 
-     
-              String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
+                String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
 
                 if( token == null ? IdObra == null : token.equals(IdObra) ){
                     System.out.println("Marico el que lo lea");
-                   PI.getObrasPuntoDeInteresArray().add(CtrlObras.getInstancia().getObrasArray().get(i));
-                   
-                   System.out.println(PI.getObrasPuntoDeInteresArray().get(0).getIdObra());
-                   
-                   DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel(); 
-        
-                    for (int j=0; i < PI.getObrasPuntoDeInteresArray().size(); j++){
-                        modelo2.insertRow(0, new Object[]{PI.getObrasPuntoDeInteresArray().get(i).getIdObra(),
-                                                          PI.getObrasPuntoDeInteresArray().get(i).getTituloObra()});
-                    }
-                   
+                    ObrasAux.add(CtrlObras.getInstancia().getObrasArray().get(i));
+                   // System.out.println(PI.getObrasPuntoDeInteresArray().get(0).getIdObra());
                 }     
             }
        
-        
-        
+            DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+            
+            for (int j=0; j < ObrasAux.size(); j++){
+                modelo2.insertRow(0, new Object[]{ObrasAux.get(j).getIdObra(),
+                ObrasAux.get(j).getTituloObra()});
+            }
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -359,11 +351,21 @@ private PuntoDeInteres PI;
                 disp = "Disponible";
             }    
             
-            PuntoDeInteres pi = new PuntoDeInteres(idpi.getText(),nombrepi.getText(),disp);
+            PuntoDeInteres pi = new PuntoDeInteres(idpi.getText(),nombrepi.getText(),disp, ObrasAux);
             CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().add(pi);
 
             DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
             modelo.insertRow(0, new Object[]{pi.getIdentificador(),pi.getNombre(),pi.getDisponibilidad()});
+            
+            for(int i = 0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size(); i++){ 
+                System.out.println(CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getNombre());    
+            }
+            
+            for(int j = 0; j < pi.getObrasPuntoDeInteresArray().size(); j++){
+                Integer aux = j+1;
+                System.out.println("#" + aux + " IdObra asociada al Punto de Interes " + pi.getObrasPuntoDeInteresArray().get(j).getIdObra());
+                
+            }
             
             idpi.setText(null);
             nombrepi.setText(null);
@@ -372,7 +374,7 @@ private PuntoDeInteres PI;
             
             try{
                 String Obra =(String) ComboBoxObra.getSelectedItem();
-                System.out.println(Obra);
+                //System.out.println(Obra);
                 
             }catch(NullPointerException e){
                 JOptionPane.showMessageDialog(null, "Debe seleccionar una obra.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
