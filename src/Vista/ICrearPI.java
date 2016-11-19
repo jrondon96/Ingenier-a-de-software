@@ -82,6 +82,7 @@ private Obra aux;
 
         jLabel3.setText("Ingrese propiedades del tour virtual a crear: ");
 
+        jTable1.setAutoCreateColumnsFromModel(false);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
