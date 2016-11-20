@@ -12,7 +12,6 @@ public class IModificarO extends javax.swing.JFrame {
 CtrlControlador controlador;  
 CtrlObras controladorObra;
 private Iterator<Obra> it = controladorObra.getInstancia().getObrasArray().iterator();
-private Iterator<Obra> ite = controladorObra.getInstancia().getObrasArray().iterator();
 
 private Obra aux;
     public IModificarO() {
@@ -247,10 +246,7 @@ private Obra aux;
                     ubicacionO.setText(aux.getUbicacionObra());
                     descripcionO.setText(aux.getDescripcionObra());
                 }     
-            }
-        
-        
-        
+            }    
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

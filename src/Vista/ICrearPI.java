@@ -36,14 +36,7 @@ private PuntoDeInteres PI;
         while(it.hasNext()){
             aux=it.next();
             ComboBoxObra.addItem(aux.getIdObra()+" "+aux.getTituloObra());   
-        }       
-        /*
-        if (controlador.getInstancia().getObrasArray().size()>1) {
-            ComboBoxObra.removeItemAt(0);
-        }
-        */  
-
-        
+        }               
     }
   
     @SuppressWarnings("unchecked")
@@ -359,8 +352,14 @@ private PuntoDeInteres PI;
             
             idpi.setText(null);
             nombrepi.setText(null);
-            jRadioButton1.setSelected(false);
-            jRadioButton2.setSelected(false);
+            disponibilidadpi.clearSelection(); 
+            ObrasAux = new ArrayList <Obra> (); 
+            
+            DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+            int filas= jTable2.getRowCount();
+            for (int i = 0; filas>i; i++) {
+                modelo2.removeRow(0);
+            }
             
             try{
                 String Obra =(String) ComboBoxObra.getSelectedItem();

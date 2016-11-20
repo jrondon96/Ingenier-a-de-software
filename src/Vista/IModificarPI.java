@@ -6,6 +6,13 @@
 package Vista;
 
 import Controlador.CtrlControlador;
+import Controlador.CtrlPuntoDeInteres;
+import Controlador.CtrlObras;
+import Modelo.Obra;
+import Modelo.PuntoDeInteres;
+import java.util.Iterator;
+import java.util.StringTokenizer;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -14,6 +21,12 @@ import Controlador.CtrlControlador;
  */
 public class IModificarPI extends javax.swing.JFrame {
 CtrlControlador controlador; 
+CtrlPuntoDeInteres controladorPI;
+CtrlObras controladorObra;
+private Iterator<PuntoDeInteres> it = controladorPI.getInstancia().getPuntoDeInteresArray().iterator();
+private Iterator<Obra> ite = controladorObra.getInstancia().getObrasArray().iterator();
+private PuntoDeInteres aux;
+private Obra auxO;
     /**
      * Creates new form CrearTV
      */
@@ -22,7 +35,20 @@ CtrlControlador controlador;
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Modificar Punto De Interes"); 
-    }
+        
+        DefaultTableModel modelo  = (DefaultTableModel) jTable1.getModel(); 
+        
+        while(it.hasNext()){
+            aux=it.next();
+            
+            modelo.addRow(new Object[]{aux.getIdentificador(),aux.getNombre(),aux.getDisponibilidad()});
+                         
+        }
+        while(ite.hasNext()){
+            auxO = ite.next();
+            ComboBoxObra.addItem(auxO.getIdObra()+" "+auxO.getTituloObra());   
+        }      
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,10 +59,10 @@ CtrlControlador controlador;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        disponibilidadpi = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        NombrePI = new javax.swing.JTextField();
+        idPI = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -45,10 +71,10 @@ CtrlControlador controlador;
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        DButton = new javax.swing.JRadioButton();
+        NDButton = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        ComboBoxObra = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -60,22 +86,29 @@ CtrlControlador controlador;
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        idPI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idPIActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Identificador: ");
 
         jLabel3.setText("Ingrese propiedades del punto de interés a modificar: ");
 
-        jTable1.setAutoCreateColumnsFromModel(false);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID_PuntoInteres", "Nombre", "Disponibilidad"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setText("Seleccione Punto de interés a modificar: ");
@@ -87,36 +120,37 @@ CtrlControlador controlador;
 
         jLabel6.setText("Disponibilidad:");
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Disponible");
-        jRadioButton1.setFocusPainted(false);
+        DButton.setBackground(new java.awt.Color(255, 255, 255));
+        disponibilidadpi.add(DButton);
+        DButton.setText("Disponible");
+        DButton.setFocusPainted(false);
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("No Disponible");
-        jRadioButton2.setFocusPainted(false);
+        NDButton.setBackground(new java.awt.Color(255, 255, 255));
+        disponibilidadpi.add(NDButton);
+        NDButton.setText("No Disponible");
+        NDButton.setFocusPainted(false);
 
         jLabel7.setText("Agregar obras: ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setFocusable(false);
+        ComboBoxObra.setFocusable(false);
+        ComboBoxObra.setOpaque(false);
 
         jButton1.setBackground(new java.awt.Color(246, 246, 246));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton1.setText("Agregar Obra");
         jButton1.setFocusPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jTable2.setAutoCreateColumnsFromModel(false);
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID_Obra", "Titulo"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -144,26 +178,8 @@ CtrlControlador controlador;
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(91, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 33, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -186,9 +202,6 @@ CtrlControlador controlador;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(136, 136, 136))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -196,6 +209,27 @@ CtrlControlador controlador;
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(136, 136, 136))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ComboBoxObra, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(DButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(NDButton))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(NombrePI, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(idPI, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,20 +245,20 @@ CtrlControlador controlador;
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NombrePI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(DButton)
+                    .addComponent(NDButton))
                 .addGap(28, 28, 28)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ComboBoxObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(19, 19, 19)
@@ -251,12 +285,78 @@ CtrlControlador controlador;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        IAdministracionPI administracionpi = new IAdministracionPI();
        administracionpi.setVisible(true); 
        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+           
+            DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+            int filas= jTable2.getRowCount();
+            for (int i = 0; filas>i; i++) {
+                modelo2.removeRow(0);
+            }
+        String Id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String Nombre = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String Disp = jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        idPI.setText(Id);
+        NombrePI.setText(Nombre);
+        if(Disp == "Disponible"){
+             disponibilidadpi.setSelected(DButton.getModel(), true);
+        }else if(Disp == "No Disponible"){
+             disponibilidadpi.setSelected(NDButton.getModel(), true);
+        }
+         
+        for (int i=0;i<CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
+
+              aux =  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
+              String IdPI = aux.getIdentificador();
+
+                if( Id == null ? IdPI == null : Id.equals(IdPI) ){
+                    DefaultTableModel modeloO = (DefaultTableModel)jTable2.getModel();
+                    for(int j=0; j<aux.getObrasPuntoDeInteresArray().size(); j++){   
+                       //aux.getObrasPuntoDeInteresArray().get(i).getTituloObra();
+                       //aux.getObrasPuntoDeInteresArray().get(i).getIdObra();
+                       modeloO.addRow(new Object[]{aux.getObrasPuntoDeInteresArray().get(j).getIdObra(), aux.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
+                   }   
+                }     
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void idPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idPIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idPIActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         String O =(String) ComboBoxObra.getSelectedItem(); 
+            StringTokenizer id = new StringTokenizer(O," ");
+            String token =  id.nextToken();
+            String Id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            for(int j=0; j<CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size(); j++){
+                    String IDPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getIdentificador();
+                    if(Id == IDPI){
+                        for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){
+
+                            String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
+
+                            if( token == null ? IdObra == null : token.equals(IdObra) ){
+
+                                 DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+
+                                 modelo2.insertRow(0, new Object[]{CtrlObras.getInstancia().getObrasArray().get(i).getIdObra(),
+                                 CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
+                            }
+                            auxO = CtrlObras.getInstancia().getObrasArray().get(i);
+                        }
+                        CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().add(auxO);
+                    }
+            }
+            
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,12 +364,16 @@ CtrlControlador controlador;
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox ComboBoxObra;
+    private javax.swing.JRadioButton DButton;
+    private javax.swing.JRadioButton NDButton;
+    private javax.swing.JTextField NombrePI;
+    private javax.swing.ButtonGroup disponibilidadpi;
+    private javax.swing.JTextField idPI;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -278,13 +382,9 @@ CtrlControlador controlador;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
