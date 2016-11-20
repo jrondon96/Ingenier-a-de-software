@@ -170,6 +170,11 @@ private PuntoDeInteres PI;
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         jButton2.setText("Eliminar Obra");
         jButton2.setFocusPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setText("Crear");
@@ -326,19 +331,14 @@ private PuntoDeInteres PI;
                 String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
 
                 if( token == null ? IdObra == null : token.equals(IdObra) ){
-                    System.out.println("Marico el que lo lea");
                     ObrasAux.add(CtrlObras.getInstancia().getObrasArray().get(i));
-                   // System.out.println(PI.getObrasPuntoDeInteresArray().get(0).getIdObra());
+                    
+                     DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+                    
+                     modelo2.insertRow(0, new Object[]{CtrlObras.getInstancia().getObrasArray().get(i).getIdObra(),
+                     CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
                 }     
-            }
-       
-            DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
-            
-            for (int j=0; j < ObrasAux.size(); j++){
-                modelo2.insertRow(0, new Object[]{ObrasAux.get(j).getIdObra(),
-                ObrasAux.get(j).getTituloObra()});
-            }
-     
+            }                                      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -357,16 +357,6 @@ private PuntoDeInteres PI;
             DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
             modelo.insertRow(0, new Object[]{pi.getIdentificador(),pi.getNombre(),pi.getDisponibilidad()});
             
-            for(int i = 0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size(); i++){ 
-                System.out.println(CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getNombre());    
-            }
-            
-            for(int j = 0; j < pi.getObrasPuntoDeInteresArray().size(); j++){
-                Integer aux = j+1;
-                System.out.println("#" + aux + " IdObra asociada al Punto de Interes " + pi.getObrasPuntoDeInteresArray().get(j).getIdObra());
-                
-            }
-            
             idpi.setText(null);
             nombrepi.setText(null);
             jRadioButton1.setSelected(false);
@@ -374,8 +364,7 @@ private PuntoDeInteres PI;
             
             try{
                 String Obra =(String) ComboBoxObra.getSelectedItem();
-                //System.out.println(Obra);
-                
+                       
             }catch(NullPointerException e){
                 JOptionPane.showMessageDialog(null, "Debe seleccionar una obra.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
             }
@@ -387,7 +376,7 @@ private PuntoDeInteres PI;
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
+               
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -397,6 +386,15 @@ private PuntoDeInteres PI;
     private void ComboBoxObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxObraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxObraActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String Id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
+        for(int i = 0; i<ObrasAux.size(); i++)
+            if( Id == null ? ObrasAux.get(i).getIdObra() == null : Id.equals(ObrasAux.get(i).getIdObra())){    
+                  ObrasAux.remove(i);
+                  ((DefaultTableModel)jTable2.getModel()).removeRow(jTable2.getSelectedRow());
+            } 
+    }//GEN-LAST:event_jButton2ActionPerformed
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
