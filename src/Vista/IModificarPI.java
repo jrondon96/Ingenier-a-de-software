@@ -10,6 +10,7 @@ import Controlador.CtrlPuntoDeInteres;
 import Controlador.CtrlObras;
 import Modelo.Obra;
 import Modelo.PuntoDeInteres;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +28,7 @@ private Iterator<PuntoDeInteres> it = controladorPI.getInstancia().getPuntoDeInt
 private Iterator<Obra> ite = controladorObra.getInstancia().getObrasArray().iterator();
 private PuntoDeInteres aux;
 private Obra auxO;
+private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
     /**
      * Creates new form CrearTV
      */
@@ -159,6 +161,11 @@ private Obra auxO;
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         jButton2.setText("Eliminar Obra");
         jButton2.setFocusPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
@@ -310,6 +317,7 @@ private Obra auxO;
         }else if(Disp == "No Disponible"){
              disponibilidadpi.setSelected(NDButton.getModel(), true);
         }
+        
          
         for (int i=0;i<CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
 
@@ -322,6 +330,7 @@ private Obra auxO;
                        //aux.getObrasPuntoDeInteresArray().get(i).getTituloObra();
                        //aux.getObrasPuntoDeInteresArray().get(i).getIdObra();
                        modeloO.addRow(new Object[]{aux.getObrasPuntoDeInteresArray().get(j).getIdObra(), aux.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
+                       ObrasPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray();
                    }   
                 }     
         }
@@ -352,11 +361,21 @@ private Obra auxO;
                             }
                             auxO = CtrlObras.getInstancia().getObrasArray().get(i);
                         }
+                        
                         CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().add(auxO);
                     }
             }
             
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String Id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
+        for(int i = 0; i<ObrasPI.size(); i++)
+            if( Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){    
+                  ObrasPI.remove(i);
+                  ((DefaultTableModel)jTable2.getModel()).removeRow(jTable2.getSelectedRow());
+            } 
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
