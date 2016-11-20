@@ -35,8 +35,6 @@ public class IEliminarPI extends javax.swing.JFrame {
             aux=it.next();
             ComboBoxPI.addItem(aux.getIdentificador()+" "+aux.getNombre()); 
         }
-        
-         
     }
 
     
@@ -165,16 +163,16 @@ public class IEliminarPI extends javax.swing.JFrame {
                 }
             }
         }catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Debe seleccionar una tour.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un putno de interes.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
         }
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        IAdministracionO administraciono = new IAdministracionO();
-        administraciono.setVisible(true);
-        this.setVisible(false);
+        IAdministracionPI administracionpi = new IAdministracionPI();
+       administracionpi.setVisible(true); 
+       this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
