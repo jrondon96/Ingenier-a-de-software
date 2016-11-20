@@ -21,18 +21,35 @@ public class PuntoDeInteres {
     public ArrayList<Obra> getObrasPuntoDeInteresArray() {
         return obrasPuntoDeInteresArray;
     }
+    
+    public void setObrasPuntoDeInteresArray(ArrayList<Obra> ObrasPuntoDeInteresArray){
+       this.obrasPuntoDeInteresArray = ObrasPuntoDeInteresArray;
+    }
 
     public String getIdentificador() {
         return identificador;
     }
+    
+    public void setIdentificador(String Identificador){
+      this.identificador = Identificador;
+    }
 
     public String getNombre() {
         return nombre;
+    }
+    
+    public void setNombre(String Nombre){
+        this.nombre = Nombre;
     }
 
     public String getDisponibilidad() {
         return disponibilidad;
     }
     
-    
+    public void setDisponibilidad(String Disponibilidad){
+       this.disponibilidad = Disponibilidad;
+    }
 }
+    
+    
+

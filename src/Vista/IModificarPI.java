@@ -29,6 +29,7 @@ private Iterator<Obra> ite = controladorObra.getInstancia().getObrasArray().iter
 private PuntoDeInteres aux;
 private Obra auxO;
 private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
+private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
     /**
      * Creates new form CrearTV
      */
@@ -171,6 +172,11 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
         jButton4.setText("Modificar");
         jButton4.setFocusPainted(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setText("Finalizar");
@@ -208,14 +214,11 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(136, 136, 136))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(136, 136, 136))))
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(136, 136, 136))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,8 +364,9 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
                             }
                             auxO = CtrlObras.getInstancia().getObrasArray().get(i);
                         }
-                        
-                        CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().add(auxO);
+                        aux  =   CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j);
+                        aux.getObrasPuntoDeInteresArray().add(auxO);
+                      //  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().add(auxO);
                     }
             }
             
@@ -370,12 +374,35 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String Id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
-        for(int i = 0; i<ObrasPI.size(); i++)
-            if( Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){    
-                  ObrasPI.remove(i);
+        ObrasPIAux = ObrasPI;
+        for(int i = 0; i<ObrasPIAux.size(); i++)
+            if( Id == null ? ObrasPIAux.get(i).getIdObra() == null : Id.equals(ObrasPIAux.get(i).getIdObra())){    
+                  ObrasPIAux.remove(i);
                   ((DefaultTableModel)jTable2.getModel()).removeRow(jTable2.getSelectedRow());
             } 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        aux.setIdentificador( idPI.getText());
+        aux.setNombre(NombrePI.getText());
+        if(disponibilidadpi.getSelection().equals(DButton.getModel())) {
+                aux.setDisponibilidad("Disponible");
+        }
+        if(disponibilidadpi.getSelection().equals(NDButton.getModel())) {
+                aux.setDisponibilidad("No Disponible");
+        }
+    
+    idPI.setText(null);
+    NombrePI.setText(null);
+    disponibilidadpi.clearSelection();
+    
+    DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+            int filas= jTable2.getRowCount();
+            for (int i = 0; filas>i; i++) {
+                modelo2.removeRow(0);
+            }
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
