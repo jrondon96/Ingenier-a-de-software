@@ -1,14 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 
-/**
- *
- * @author Jesus Antonio
- */
-public class CtrlTourVirtual {
+
+import Modelo.TourVirtual;
+import java.util.ArrayList;
+
+
+public class CtrlTourVirtual { 
     
+    private static final CtrlTourVirtual unicaInstancia = new CtrlTourVirtual(); 
+    
+    
+    private ArrayList <TourVirtual> toursVirtualesArray= new ArrayList <TourVirtual>(); 
+
+    public static CtrlTourVirtual getInstancia() {
+        return unicaInstancia;
+    }
+
+    public ArrayList<TourVirtual> getToursVirtualesArray() {
+        return toursVirtualesArray;
+    }  
 }

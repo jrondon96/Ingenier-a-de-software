@@ -24,7 +24,6 @@ private PuntoDeInteres PI;
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Crear Punto de Interes");  
-        //ComboBoxObra.removeAllItems(); 
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel(); 
         
         for (int i=0; i < controladorPi.getInstancia().getPuntoDeInteresArray().size(); i++){
@@ -81,7 +80,15 @@ private PuntoDeInteres PI;
             new String [] {
                 "ID_PuntoInteres", "Nombre", "Disponibilidad"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         jTable1.getAccessibleContext().setAccessibleDescription("");
 
