@@ -55,7 +55,7 @@ private PuntoDeInteres PI;
         
         while(ite.hasNext()){
             aux = ite.next();
-            ComboBoxPIS.addItem(aux.getIdentificador() + " " + aux.getNombre());   
+            ComboBoxPIS.addItem(aux.getIdentificador() + " " + aux.getNombre() + " " + aux.getDisponibilidad());   
         } 
     }
 
@@ -326,7 +326,7 @@ private PuntoDeInteres PI;
         // TODO add your handling code here:
         DefaultTableModel modelo2 = (DefaultTableModel) TablaPIS.getModel();
         
-        int filas= TablaPIS.getRowCount();
+        int filas = TablaPIS.getRowCount();
         
         for (int i = 0; filas>i; i++) {
             modelo2.removeRow(0);
@@ -345,16 +345,16 @@ private PuntoDeInteres PI;
 
         for (int i=0;i<CtrlTourVirtual.getInstancia().getToursVirtualesArray().size();i++){
 
-              tour =  CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i);
-              String IdTour = tour.getIdentificador();
+            tour =  CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i);
+            String IdTour = tour.getIdentificador();
 
-                if( Id == null ? IdTour == null : Id.equals(IdTour) ){
-                    DefaultTableModel modeloO = (DefaultTableModel)TablaPIS.getModel();
-                    for(int j = 0; j < aux.getObrasPuntoDeInteresArray().size(); j++){   
-                       modeloO.addRow(new Object[]{aux.getObrasPuntoDeInteresArray().get(j).getIdObra(), aux.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
-                       puntoDeInteres = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).getTourspuntoDeInteresArray();
-                   }   
-                }     
+            if( Id == null ? IdTour == null : Id.equals(IdTour) ){
+                DefaultTableModel modeloO = (DefaultTableModel)TablaPIS.getModel();
+                for(int j = 0; j < tour.getTourspuntoDeInteresArray().size(); j++){   
+                    modeloO.addRow(new Object[]{tour.getTourspuntoDeInteresArray().get(j).getIdentificador(), tour.getTourspuntoDeInteresArray().get(j).getNombre()});
+                    puntoDeInteres = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).getTourspuntoDeInteresArray();
+                }   
+            }     
         }
         
     }//GEN-LAST:event_ToursVirtualesMouseClicked
