@@ -69,8 +69,8 @@ private PuntoDeInteres PI;
 
         disponibilidadtour = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        NombreTour = new javax.swing.JTextField();
-        IDTour = new javax.swing.JTextField();
+        nombreTour = new javax.swing.JTextField();
+        idTour = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -83,12 +83,12 @@ private PuntoDeInteres PI;
         NDButton = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         ComboBoxPIS = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        agregarPuntoInteres = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaPIS = new javax.swing.JTable();
-        EliminarPI = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        eliminarPuntoInteres = new javax.swing.JButton();
+        modificarTourVirtual = new javax.swing.JButton();
+        finalizarModificarTV = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -141,14 +141,19 @@ private PuntoDeInteres PI;
         jLabel7.setText("Agregar Puntos de interes: ");
 
         ComboBoxPIS.setFocusable(false);
-
-        jButton1.setBackground(new java.awt.Color(246, 246, 246));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
-        jButton1.setText("Agregar Punto de interes");
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ComboBoxPIS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ComboBoxPISActionPerformed(evt);
+            }
+        });
+
+        agregarPuntoInteres.setBackground(new java.awt.Color(246, 246, 246));
+        agregarPuntoInteres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
+        agregarPuntoInteres.setText("Agregar Punto de interes");
+        agregarPuntoInteres.setFocusPainted(false);
+        agregarPuntoInteres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarPuntoInteresActionPerformed(evt);
             }
         });
 
@@ -162,32 +167,32 @@ private PuntoDeInteres PI;
         ));
         jScrollPane2.setViewportView(TablaPIS);
 
-        EliminarPI.setBackground(new java.awt.Color(246, 246, 246));
-        EliminarPI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
-        EliminarPI.setText("Eliminar Punto de interes");
-        EliminarPI.setFocusPainted(false);
-        EliminarPI.addActionListener(new java.awt.event.ActionListener() {
+        eliminarPuntoInteres.setBackground(new java.awt.Color(246, 246, 246));
+        eliminarPuntoInteres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
+        eliminarPuntoInteres.setText("Eliminar Punto de interes");
+        eliminarPuntoInteres.setFocusPainted(false);
+        eliminarPuntoInteres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EliminarPIActionPerformed(evt);
+                eliminarPuntoInteresActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(246, 246, 246));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
-        jButton4.setText("Modificar");
-        jButton4.setFocusPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        modificarTourVirtual.setBackground(new java.awt.Color(246, 246, 246));
+        modificarTourVirtual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
+        modificarTourVirtual.setText("Modificar");
+        modificarTourVirtual.setFocusPainted(false);
+        modificarTourVirtual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                modificarTourVirtualActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(246, 246, 246));
-        jButton3.setText("Finalizar");
-        jButton3.setFocusPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        finalizarModificarTV.setBackground(new java.awt.Color(246, 246, 246));
+        finalizarModificarTV.setText("Finalizar");
+        finalizarModificarTV.setFocusPainted(false);
+        finalizarModificarTV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                finalizarModificarTVActionPerformed(evt);
             }
         });
 
@@ -223,28 +228,28 @@ private PuntoDeInteres PI;
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(jLabel4)
                                             .addGap(30, 30, 30)
-                                            .addComponent(IDTour, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(idTour, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jLabel3)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(jLabel5)
                                             .addGap(57, 57, 57)
-                                            .addComponent(NombreTour, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(nombreTour, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGap(12, 12, 12)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(agregarPuntoInteres)
                                 .addGap(36, 36, 36))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton4)
+                                .addComponent(modificarTourVirtual)
                                 .addGap(62, 62, 62)))
                         .addGap(95, 95, 95))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(finalizarModificarTV, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(EliminarPI)
+                        .addComponent(eliminarPuntoInteres)
                         .addGap(121, 121, 121))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(108, 108, 108)
@@ -265,11 +270,11 @@ private PuntoDeInteres PI;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(IDTour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idTour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(NombreTour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreTour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -280,15 +285,15 @@ private PuntoDeInteres PI;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ComboBoxPIS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(jButton1)
+                .addComponent(agregarPuntoInteres)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(EliminarPI)
+                .addComponent(eliminarPuntoInteres)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(modificarTourVirtual, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(finalizarModificarTV)
                 .addGap(39, 39, 39))
         );
 
@@ -306,11 +311,11 @@ private PuntoDeInteres PI;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void finalizarModificarTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarModificarTVActionPerformed
        IAdministracionTV administraciontv = new IAdministracionTV();
        administraciontv.setVisible(true); 
        this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_finalizarModificarTVActionPerformed
 
     private void DButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DButtonActionPerformed
         // TODO add your handling code here:
@@ -329,8 +334,8 @@ private PuntoDeInteres PI;
         String Id = ToursVirtuales.getValueAt(ToursVirtuales.getSelectedRow(), 0).toString();
         String Nombre = ToursVirtuales.getValueAt(ToursVirtuales.getSelectedRow(), 1).toString();
         String Disp = ToursVirtuales.getValueAt(ToursVirtuales.getSelectedRow(), 2).toString();
-        IDTour.setText(Id);
-        NombreTour.setText(Nombre);
+        idTour.setText(Id);
+        nombreTour.setText(Nombre);
         if(Disp == "Disponible"){
              disponibilidadtour.setSelected(DButton.getModel(), true);
         }else if(Disp == "No Disponible"){
@@ -353,7 +358,7 @@ private PuntoDeInteres PI;
         
     }//GEN-LAST:event_ToursVirtualesMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void agregarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPuntoInteresActionPerformed
         // TODO add your handling code here:
         
         String O =(String) ComboBoxPIS.getSelectedItem(); 
@@ -372,22 +377,20 @@ private PuntoDeInteres PI;
                     String IdPuntoInteres = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
 
                     if( token == null ? IdPuntoInteres == null : token.equals(IdPuntoInteres) ){
-
                         DefaultTableModel modelo2 = (DefaultTableModel) TablaPIS.getModel();
-
-                            modelo2.insertRow(0, new Object[]{CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador(),
-                            CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getNombre()});
-                        }
+                        modelo2.insertRow(0, new Object[]{CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador(),
+                        CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getNombre(), CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getDisponibilidad()});
+                    }
                     aux = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
                 }
-                    tour  = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(j);
-                    tour.getTourspuntoDeInteresArray().add(aux);
+                tour  = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(j);
+                tour.getTourspuntoDeInteresArray().add(aux);
                       //  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().add(auxO);
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_agregarPuntoInteresActionPerformed
 
-    private void EliminarPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarPIActionPerformed
+    private void eliminarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPuntoInteresActionPerformed
         
         String Id = TablaPIS.getValueAt(TablaPIS.getSelectedRow(), 0).toString();
         puntoDeInteresAux = puntoDeInteres;
@@ -396,11 +399,11 @@ private PuntoDeInteres PI;
                 puntoDeInteresAux.remove(i);
                 ((DefaultTableModel)TablaPIS.getModel()).removeRow(TablaPIS.getSelectedRow());
             } 
-    }//GEN-LAST:event_EliminarPIActionPerformed
+    }//GEN-LAST:event_eliminarPuntoInteresActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        tour.setIdentificador( IDTour.getText());
-        tour.setNombre(NombreTour.getText());
+    private void modificarTourVirtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarTourVirtualActionPerformed
+        tour.setIdentificador(idTour.getText());
+        tour.setNombre(nombreTour.getText());
         if(disponibilidadtour.getSelection().equals(DButton.getModel())) {
             aux.setDisponibilidad("Disponible");
         }
@@ -408,8 +411,8 @@ private PuntoDeInteres PI;
                 aux.setDisponibilidad("No Disponible");
         }
     
-        IDTour.setText(null);
-        NombreTour.setText(null);
+        idTour.setText(null);
+        nombreTour.setText(null);
         disponibilidadtour.clearSelection();
 
         DefaultTableModel modelo2 = (DefaultTableModel) TablaPIS.getModel();
@@ -418,7 +421,11 @@ private PuntoDeInteres PI;
             modelo2.removeRow(0);
         }
         
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_modificarTourVirtualActionPerformed
+
+    private void ComboBoxPISActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxPISActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxPISActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,16 +435,14 @@ private PuntoDeInteres PI;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox ComboBoxPIS;
     private javax.swing.JRadioButton DButton;
-    private javax.swing.JButton EliminarPI;
-    private javax.swing.JTextField IDTour;
     private javax.swing.JRadioButton NDButton;
-    private javax.swing.JTextField NombreTour;
     private javax.swing.JTable TablaPIS;
     private javax.swing.JTable ToursVirtuales;
+    private javax.swing.JButton agregarPuntoInteres;
     private javax.swing.ButtonGroup disponibilidadtour;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton eliminarPuntoInteres;
+    private javax.swing.JButton finalizarModificarTV;
+    private javax.swing.JTextField idTour;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -448,5 +453,7 @@ private PuntoDeInteres PI;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton modificarTourVirtual;
+    private javax.swing.JTextField nombreTour;
     // End of variables declaration//GEN-END:variables
 }
