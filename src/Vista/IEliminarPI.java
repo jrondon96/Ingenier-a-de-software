@@ -170,7 +170,7 @@ public class IEliminarPI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        IAdministracionPI administracionpi = new IAdministracionPI();
+       IAdministracionPI administracionpi = new IAdministracionPI();
        administracionpi.setVisible(true); 
        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
