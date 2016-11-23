@@ -15,6 +15,7 @@ import Modelo.TourVirtual;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -360,34 +361,33 @@ private PuntoDeInteres PI;
 
     private void agregarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPuntoInteresActionPerformed
         // TODO add your handling code here:
-        
-        String O =(String) ComboBoxPIS.getSelectedItem(); 
-        StringTokenizer id = new StringTokenizer(O," ");
-        String token =  id.nextToken();
-        String Id = ToursVirtuales.getValueAt(ToursVirtuales.getSelectedRow(), 0).toString();
-        
-        for(int j=0; j < CtrlTourVirtual.getInstancia().getToursVirtualesArray().size(); j++){
-            
-            String IDTour = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(j).getIdentificador();
-            
-            if(Id == IDTour){
-                
-                for (int i=0;i<CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
+            String O =(String) ComboBoxPIS.getSelectedItem(); 
+            StringTokenizer id = new StringTokenizer(O," ");
+            String token =  id.nextToken();
+            String Id = ToursVirtuales.getValueAt(ToursVirtuales.getSelectedRow(), 0).toString();
 
-                    String IdPuntoInteres = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
+            for(int j=0; j < CtrlTourVirtual.getInstancia().getToursVirtualesArray().size(); j++){
 
-                    if( token == null ? IdPuntoInteres == null : token.equals(IdPuntoInteres) ){
-                        DefaultTableModel modelo2 = (DefaultTableModel) TablaPIS.getModel();
-                        modelo2.insertRow(0, new Object[]{CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador(),
-                        CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getNombre(), CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getDisponibilidad()});
+                String IDTour = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(j).getIdentificador();
+
+                if(Id == IDTour){
+
+                    for (int i=0;i<CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
+
+                        String IdPuntoInteres = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
+
+                        if( token == null ? IdPuntoInteres == null : token.equals(IdPuntoInteres) ){
+                            DefaultTableModel modelo2 = (DefaultTableModel) TablaPIS.getModel();
+                            modelo2.insertRow(0, new Object[]{CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador(),
+                            CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getNombre(), CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getDisponibilidad()});
+                        }
+                        aux = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
                     }
-                    aux = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
+                    tour  = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(j);
+                    tour.getTourspuntoDeInteresArray().add(aux);
+                          //  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().add(auxO);
                 }
-                tour  = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(j);
-                tour.getTourspuntoDeInteresArray().add(aux);
-                      //  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().add(auxO);
             }
-        }
     }//GEN-LAST:event_agregarPuntoInteresActionPerformed
 
     private void eliminarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPuntoInteresActionPerformed

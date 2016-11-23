@@ -58,11 +58,11 @@ private PuntoDeInteres PI;
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         ComboBoxObra = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        agregarObra = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        eliminarObra = new javax.swing.JButton();
+        crearPuntoInteres = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -129,12 +129,12 @@ private PuntoDeInteres PI;
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(246, 246, 246));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
-        jButton1.setText("Agregar Obra");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        agregarObra.setBackground(new java.awt.Color(246, 246, 246));
+        agregarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
+        agregarObra.setText("Agregar Obra");
+        agregarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                agregarObraActionPerformed(evt);
             }
         });
 
@@ -167,22 +167,22 @@ private PuntoDeInteres PI;
             jTable2.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jButton2.setBackground(new java.awt.Color(246, 246, 246));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
-        jButton2.setText("Eliminar Obra");
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        eliminarObra.setBackground(new java.awt.Color(246, 246, 246));
+        eliminarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
+        eliminarObra.setText("Eliminar Obra");
+        eliminarObra.setFocusPainted(false);
+        eliminarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                eliminarObraActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(246, 246, 246));
-        jButton4.setText("Crear");
-        jButton4.setFocusPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        crearPuntoInteres.setBackground(new java.awt.Color(246, 246, 246));
+        crearPuntoInteres.setText("Crear");
+        crearPuntoInteres.setFocusPainted(false);
+        crearPuntoInteres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                crearPuntoInteresActionPerformed(evt);
             }
         });
 
@@ -232,7 +232,7 @@ private PuntoDeInteres PI;
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(eliminarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(136, 136, 136))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +242,7 @@ private PuntoDeInteres PI;
                             .addComponent(jLabel1))
                         .addGap(113, 113, 113))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(agregarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(138, 138, 138))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -257,7 +257,7 @@ private PuntoDeInteres PI;
                         .addComponent(jLabel3)
                         .addGap(102, 102, 102))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(crearPuntoInteres)
                         .addGap(183, 183, 183))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -289,13 +289,13 @@ private PuntoDeInteres PI;
                 .addGap(18, 18, 18)
                 .addComponent(ComboBoxObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(jButton1)
+                .addComponent(agregarObra)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(eliminarObra)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(crearPuntoInteres)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(24, 24, 24))
@@ -321,7 +321,7 @@ private PuntoDeInteres PI;
        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void agregarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarObraActionPerformed
             
             String O =(String) ComboBoxObra.getSelectedItem(); 
             StringTokenizer id = new StringTokenizer(O," ");
@@ -340,9 +340,9 @@ private PuntoDeInteres PI;
                      CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
                 }     
             }                                      
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_agregarObraActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void crearPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPuntoInteresActionPerformed
         
         String disp = "No Disponible";
         
@@ -380,7 +380,7 @@ private PuntoDeInteres PI;
             JOptionPane.showMessageDialog(null,"Error, faltan campos por rellenar", "Error", JOptionPane.ERROR_MESSAGE); 
         }
 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_crearPuntoInteresActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
                
@@ -394,24 +394,26 @@ private PuntoDeInteres PI;
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxObraActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void eliminarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarObraActionPerformed
+
         String Id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
-        for(int i = 0; i<ObrasAux.size(); i++)
+        for(int i = 0; i<ObrasAux.size(); i++){
             if( Id == null ? ObrasAux.get(i).getIdObra() == null : Id.equals(ObrasAux.get(i).getIdObra())){    
-                  ObrasAux.remove(i);
-                  ((DefaultTableModel)jTable2.getModel()).removeRow(jTable2.getSelectedRow());
-            } 
-    }//GEN-LAST:event_jButton2ActionPerformed
+                ObrasAux.remove(i);
+                ((DefaultTableModel)jTable2.getModel()).removeRow(jTable2.getSelectedRow());
+            }
+        }
+    }//GEN-LAST:event_eliminarObraActionPerformed
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox ComboBoxObra;
+    private javax.swing.JButton agregarObra;
+    private javax.swing.JButton crearPuntoInteres;
     private javax.swing.ButtonGroup disponibilidadpi;
+    private javax.swing.JButton eliminarObra;
     private javax.swing.JTextField idpi;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
