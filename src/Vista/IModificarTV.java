@@ -55,7 +55,7 @@ private PuntoDeInteres PI;
         
         while(ite.hasNext()){
             aux = ite.next();
-            ComboBoxPIS.addItem(aux.getIdentificador() + " " + aux.getNombre() + " " + aux.getDisponibilidad());   
+            ComboBoxPIS.addItem(aux.getIdentificador() + " " + aux.getNombre());   
         } 
     }
 
