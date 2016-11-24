@@ -26,10 +26,10 @@ CtrlPuntoDeInteres controladorPI;
 CtrlObras controladorObra;
 private Iterator<PuntoDeInteres> it = controladorPI.getInstancia().getPuntoDeInteresArray().iterator();
 private Iterator<Obra> ite = controladorObra.getInstancia().getObrasArray().iterator();
-private PuntoDeInteres aux;
-private Obra auxO, EauxO;
+private PuntoDeInteres aux, copiaPI;
+private Obra auxO;
 private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
-private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
+
     /**
      * Creates new form CrearTV
      */
@@ -333,12 +333,13 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
         for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
 
             aux =  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
-            String IdPI = aux.getIdentificador();
+            copiaPI = aux;
+            String IdPI = copiaPI.getIdentificador();
 
             if( Id == null ? IdPI == null : Id.equals(IdPI) ){
                 DefaultTableModel modeloO = (DefaultTableModel)TablaObras.getModel();
-                for(int j=0; j<aux.getObrasPuntoDeInteresArray().size(); j++){   
-                    modeloO.addRow(new Object[]{aux.getObrasPuntoDeInteresArray().get(j).getIdObra(), aux.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
+                for(int j=0; j<copiaPI.getObrasPuntoDeInteresArray().size(); j++){   
+                    modeloO.addRow(new Object[]{copiaPI.getObrasPuntoDeInteresArray().get(j).getIdObra(), copiaPI.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
                     ObrasPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray();
                 }   
             }     
@@ -364,7 +365,7 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
                 DefaultTableModel modelo2 = (DefaultTableModel) TablaObras.getModel();
                 modelo2.insertRow(0, new Object[]{CtrlObras.getInstancia().getObrasArray().get(i).getIdObra(),
                 CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
-                auxO = CtrlObras.getInstancia().getObrasArray().get(i);
+                aux.getObrasPuntoDeInteresArray().add(CtrlObras.getInstancia().getObrasArray().get(i));
             }
         }
     }//GEN-LAST:event_agregarObraActionPerformed
@@ -373,8 +374,8 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
         
         String Id = TablaObras.getValueAt(TablaObras.getSelectedRow(), 0).toString();
         for(int i = 0; i < ObrasPI.size(); i++){
-            if(Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){    
-                EauxO = ObrasPI.get(i);
+            if(Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){                    
+                aux.getObrasPuntoDeInteresArray().remove(ObrasPI.get(i));
                 ((DefaultTableModel)TablaObras.getModel()).removeRow(TablaObras.getSelectedRow());
             }
         }
@@ -384,27 +385,46 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
     private void modificarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPuntoInteresActionPerformed
         
         aux.setIdentificador( idPI.getText());
-        aux.setNombre(NombrePI.getText());
-        aux.getObrasPuntoDeInteresArray().add(auxO);
-        aux.getObrasPuntoDeInteresArray().remove(EauxO);
-        
+        aux.setNombre(NombrePI.getText());  
         if(disponibilidadpi.getSelection().equals(DButton.getModel())) {
             aux.setDisponibilidad("Disponible");
         }
         if(disponibilidadpi.getSelection().equals(NDButton.getModel())) {
             aux.setDisponibilidad("No Disponible");
         }
+        
+        for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
+           String id = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
+           if(copiaPI.getIdentificador() == id){
+              System.out.println("Something");
+              CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setIdentificador(aux.getIdentificador());
+              CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setNombre(aux.getNombre());
+              CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setDisponibilidad(aux.getDisponibilidad());
+              CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setObrasPuntoDeInteresArray(aux.getObrasPuntoDeInteresArray());
+           }
+        }
     
         idPI.setText(null);
         NombrePI.setText(null);
         disponibilidadpi.clearSelection();
-    
+        aux = null;
+        copiaPI = null;
+        ObrasPI = null;
+        auxO = null;
         DefaultTableModel modelo2 = (DefaultTableModel) TablaObras.getModel();
         
         int filas= TablaObras.getRowCount();
         
         for (int i = 0; filas>i; i++) {
             modelo2.removeRow(0);
+        }
+        for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
+           
+           String pi = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
+           for( int j= 0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().size(); j++){
+             String o = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra();
+               System.out.println("PI "+pi+"- O "+o);
+           }
         }
         
     }//GEN-LAST:event_modificarPuntoInteresActionPerformed
