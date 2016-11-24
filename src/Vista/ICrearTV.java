@@ -28,7 +28,7 @@ public ICrearTV() {
         setResizable(false);
         setTitle("Crear Tour Virtual");  
         
-        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel(); 
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel(); 
         
         for (int i=0; i < controladorTv.getInstancia().getToursVirtualesArray().size(); i++){
             modelo.insertRow(0, new Object[]{controladorTv.getInstancia().getToursVirtualesArray().get(i).getIdentificador(),

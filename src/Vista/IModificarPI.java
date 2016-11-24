@@ -27,7 +27,7 @@ CtrlObras controladorObra;
 private Iterator<PuntoDeInteres> it = controladorPI.getInstancia().getPuntoDeInteresArray().iterator();
 private Iterator<Obra> ite = controladorObra.getInstancia().getObrasArray().iterator();
 private PuntoDeInteres aux;
-private Obra auxO;
+private Obra auxO, EauxO;
 private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
 private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
     /**
@@ -339,8 +339,6 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
                 if( Id == null ? IdPI == null : Id.equals(IdPI) ){
                     DefaultTableModel modeloO = (DefaultTableModel)jTable2.getModel();
                     for(int j=0; j<aux.getObrasPuntoDeInteresArray().size(); j++){   
-                       //aux.getObrasPuntoDeInteresArray().get(i).getTituloObra();
-                       //aux.getObrasPuntoDeInteresArray().get(i).getIdObra();
                        modeloO.addRow(new Object[]{aux.getObrasPuntoDeInteresArray().get(j).getIdObra(), aux.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
                        ObrasPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray();
                    }   
@@ -367,14 +365,13 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
                             if( token == null ? IdObra == null : token.equals(IdObra) ){
 
                                  DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
-
+   
                                  modelo2.insertRow(0, new Object[]{CtrlObras.getInstancia().getObrasArray().get(i).getIdObra(),
                                  CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
+                                 auxO = CtrlObras.getInstancia().getObrasArray().get(i);
                             }
-                            auxO = CtrlObras.getInstancia().getObrasArray().get(i);
                         }
                         aux  =   CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j);
-                        aux.getObrasPuntoDeInteresArray().add(auxO);
                       //  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().add(auxO);
                     }
             }
@@ -383,17 +380,20 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
 
     private void eliminarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarObraActionPerformed
         String Id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
-        ObrasPIAux = ObrasPI;
-        for(int i = 0; i<ObrasPIAux.size(); i++)
-            if( Id == null ? ObrasPIAux.get(i).getIdObra() == null : Id.equals(ObrasPIAux.get(i).getIdObra())){    
-                  ObrasPIAux.remove(i);
+        for(int i = 0; i<ObrasPI.size(); i++){
+            if( Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){    
+                   EauxO = ObrasPI.get(i);
                   ((DefaultTableModel)jTable2.getModel()).removeRow(jTable2.getSelectedRow());
-            } 
+            }
+        }    
     }//GEN-LAST:event_eliminarObraActionPerformed
 
     private void modificarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPuntoInteresActionPerformed
         aux.setIdentificador( idPI.getText());
         aux.setNombre(NombrePI.getText());
+        aux.getObrasPuntoDeInteresArray().add(auxO);
+        aux.getObrasPuntoDeInteresArray().remove(EauxO);
+        
         if(disponibilidadpi.getSelection().equals(DButton.getModel())) {
                 aux.setDisponibilidad("Disponible");
         }
