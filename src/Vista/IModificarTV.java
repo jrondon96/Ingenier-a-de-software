@@ -343,7 +343,7 @@ private PuntoDeInteres PI;
              disponibilidadtour.setSelected(NDButton.getModel(), true);
         }
 
-        for (int i=0;i<CtrlTourVirtual.getInstancia().getToursVirtualesArray().size();i++){
+        for (int i=0; i < CtrlTourVirtual.getInstancia().getToursVirtualesArray().size();i++){
 
             tour =  CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i);
             String IdTour = tour.getIdentificador();
@@ -351,7 +351,7 @@ private PuntoDeInteres PI;
             if( Id == null ? IdTour == null : Id.equals(IdTour) ){
                 DefaultTableModel modeloO = (DefaultTableModel)TablaPIS.getModel();
                 for(int j = 0; j < tour.getTourspuntoDeInteresArray().size(); j++){   
-                    modeloO.addRow(new Object[]{tour.getTourspuntoDeInteresArray().get(j).getIdentificador(), tour.getTourspuntoDeInteresArray().get(j).getNombre()});
+                    modeloO.addRow(new Object[]{tour.getTourspuntoDeInteresArray().get(j).getIdentificador(), tour.getTourspuntoDeInteresArray().get(j).getNombre(), tour.getTourspuntoDeInteresArray().get(j).getDisponibilidad()});
                     puntoDeInteres = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).getTourspuntoDeInteresArray();
                 }   
             }     

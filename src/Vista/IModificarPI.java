@@ -39,7 +39,7 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
         setResizable(false);
         setTitle("Modificar Punto De Interes"); 
         
-        DefaultTableModel modelo  = (DefaultTableModel) jTable1.getModel(); 
+        DefaultTableModel modelo  = (DefaultTableModel) TablaPuntosDeInteres.getModel(); 
         
         while(it.hasNext()){
             aux=it.next();
@@ -68,7 +68,7 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaPuntosDeInteres = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -79,7 +79,7 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
         ComboBoxObras = new javax.swing.JComboBox();
         agregarObra = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        TablaObras = new javax.swing.JTable();
         eliminarObra = new javax.swing.JButton();
         modificarPuntoInteres = new javax.swing.JButton();
         finalizarModificarPI = new javax.swing.JButton();
@@ -98,7 +98,7 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
 
         jLabel3.setText("Ingrese propiedades del punto de interés a modificar: ");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaPuntosDeInteres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -106,12 +106,12 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
                 "ID_PuntoInteres", "Nombre", "Disponibilidad"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        TablaPuntosDeInteres.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                TablaPuntosDeInteresMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaPuntosDeInteres);
 
         jLabel2.setText("Seleccione Punto de interés a modificar: ");
 
@@ -152,7 +152,7 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        TablaObras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -160,7 +160,7 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
                 "ID_Obra", "Titulo"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(TablaObras);
 
         eliminarObra.setBackground(new java.awt.Color(246, 246, 246));
         eliminarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
@@ -312,16 +312,16 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
        this.setVisible(false);
     }//GEN-LAST:event_finalizarModificarPIActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void TablaPuntosDeInteresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPuntosDeInteresMouseClicked
            
-        DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
-        int filas= jTable2.getRowCount();
+        DefaultTableModel modelo2 = (DefaultTableModel) TablaObras.getModel();
+        int filas= TablaObras.getRowCount();
         for (int i = 0; filas>i; i++) {
             modelo2.removeRow(0);
         }
-        String Id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        String Nombre = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        String Disp = jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        String Id = TablaPuntosDeInteres.getValueAt(TablaPuntosDeInteres.getSelectedRow(), 0).toString();
+        String Nombre = TablaPuntosDeInteres.getValueAt(TablaPuntosDeInteres.getSelectedRow(), 1).toString();
+        String Disp = TablaPuntosDeInteres.getValueAt(TablaPuntosDeInteres.getSelectedRow(), 2).toString();
         idPI.setText(Id);
         NombrePI.setText(Nombre);
         if(Disp == "Disponible"){
@@ -330,86 +330,82 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
              disponibilidadpi.setSelected(NDButton.getModel(), true);
         }
         
-         
-        for (int i=0;i<CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
+        for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
 
-              aux =  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
-              String IdPI = aux.getIdentificador();
+            aux =  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
+            String IdPI = aux.getIdentificador();
 
-                if( Id == null ? IdPI == null : Id.equals(IdPI) ){
-                    DefaultTableModel modeloO = (DefaultTableModel)jTable2.getModel();
-                    for(int j=0; j<aux.getObrasPuntoDeInteresArray().size(); j++){   
-                       modeloO.addRow(new Object[]{aux.getObrasPuntoDeInteresArray().get(j).getIdObra(), aux.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
-                       ObrasPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray();
-                   }   
-                }     
+            if( Id == null ? IdPI == null : Id.equals(IdPI) ){
+                DefaultTableModel modeloO = (DefaultTableModel)TablaObras.getModel();
+                for(int j=0; j<aux.getObrasPuntoDeInteresArray().size(); j++){   
+                    modeloO.addRow(new Object[]{aux.getObrasPuntoDeInteresArray().get(j).getIdObra(), aux.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
+                    ObrasPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray();
+                }   
+            }     
         }
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_TablaPuntosDeInteresMouseClicked
 
     private void idPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idPIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idPIActionPerformed
 
     private void agregarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarObraActionPerformed
-         String O =(String) ComboBoxObras.getSelectedItem(); 
-            StringTokenizer id = new StringTokenizer(O," ");
-            String token =  id.nextToken();
-            String Id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-            for(int j=0; j<CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size(); j++){
-                    String IDPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getIdentificador();
-                    if(Id == IDPI){
-                        for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){
+         
+        String O = (String) ComboBoxObras.getSelectedItem(); 
+        StringTokenizer id = new StringTokenizer(O," ");
+        String token =  id.nextToken();
+        
+        for (int i = 0; i<CtrlObras.getInstancia().getObrasArray().size();i++){
 
-                            String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
+            String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
 
-                            if( token == null ? IdObra == null : token.equals(IdObra) ){
+            if( token == null ? IdObra == null : token.equals(IdObra) ){
 
-                                 DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
-   
-                                 modelo2.insertRow(0, new Object[]{CtrlObras.getInstancia().getObrasArray().get(i).getIdObra(),
-                                 CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
-                                 auxO = CtrlObras.getInstancia().getObrasArray().get(i);
-                            }
-                        }
-                        aux  =   CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j);
-                      //  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().add(auxO);
-                    }
+                DefaultTableModel modelo2 = (DefaultTableModel) TablaObras.getModel();
+                modelo2.insertRow(0, new Object[]{CtrlObras.getInstancia().getObrasArray().get(i).getIdObra(),
+                CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
+                auxO = CtrlObras.getInstancia().getObrasArray().get(i);
             }
-            
+        }
     }//GEN-LAST:event_agregarObraActionPerformed
 
     private void eliminarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarObraActionPerformed
-        String Id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
-        for(int i = 0; i<ObrasPI.size(); i++){
-            if( Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){    
-                   EauxO = ObrasPI.get(i);
-                  ((DefaultTableModel)jTable2.getModel()).removeRow(jTable2.getSelectedRow());
+        
+        String Id = TablaObras.getValueAt(TablaObras.getSelectedRow(), 0).toString();
+        for(int i = 0; i < ObrasPI.size(); i++){
+            if(Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){    
+                EauxO = ObrasPI.get(i);
+                ((DefaultTableModel)TablaObras.getModel()).removeRow(TablaObras.getSelectedRow());
             }
-        }    
+        }
+        
     }//GEN-LAST:event_eliminarObraActionPerformed
 
     private void modificarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPuntoInteresActionPerformed
+        
         aux.setIdentificador( idPI.getText());
         aux.setNombre(NombrePI.getText());
         aux.getObrasPuntoDeInteresArray().add(auxO);
         aux.getObrasPuntoDeInteresArray().remove(EauxO);
         
         if(disponibilidadpi.getSelection().equals(DButton.getModel())) {
-                aux.setDisponibilidad("Disponible");
+            aux.setDisponibilidad("Disponible");
         }
         if(disponibilidadpi.getSelection().equals(NDButton.getModel())) {
-                aux.setDisponibilidad("No Disponible");
+            aux.setDisponibilidad("No Disponible");
         }
     
-    idPI.setText(null);
-    NombrePI.setText(null);
-    disponibilidadpi.clearSelection();
+        idPI.setText(null);
+        NombrePI.setText(null);
+        disponibilidadpi.clearSelection();
     
-    DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
-            int filas= jTable2.getRowCount();
-            for (int i = 0; filas>i; i++) {
-                modelo2.removeRow(0);
-            }
+        DefaultTableModel modelo2 = (DefaultTableModel) TablaObras.getModel();
+        
+        int filas= TablaObras.getRowCount();
+        
+        for (int i = 0; filas>i; i++) {
+            modelo2.removeRow(0);
+        }
         
     }//GEN-LAST:event_modificarPuntoInteresActionPerformed
 
@@ -427,6 +423,8 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
     private javax.swing.JRadioButton DButton;
     private javax.swing.JRadioButton NDButton;
     private javax.swing.JTextField NombrePI;
+    private javax.swing.JTable TablaObras;
+    private javax.swing.JTable TablaPuntosDeInteres;
     private javax.swing.JButton agregarObra;
     private javax.swing.ButtonGroup disponibilidadpi;
     private javax.swing.JButton eliminarObra;
@@ -442,8 +440,6 @@ private ArrayList <Obra> ObrasPIAux= new ArrayList <Obra> ();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JButton modificarPuntoInteres;
     // End of variables declaration//GEN-END:variables
 }
