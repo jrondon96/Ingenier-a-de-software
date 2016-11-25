@@ -157,7 +157,7 @@ public class IEliminarTV extends javax.swing.JFrame {
                 }
             }
         }catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un tour.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No hay tours a eliminar.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

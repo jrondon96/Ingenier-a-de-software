@@ -56,6 +56,11 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
             aux = ite.next();
             ComboBoxPIS.addItem(aux.getIdentificador() + " " + aux.getNombre());   
         }
+        
+        if(CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size() <=0){
+            agregarPuntoInteres.setEnabled(false);
+            eliminarPuntoInteres.setEnabled(false);
+        }
     }
 
     /**
@@ -94,6 +99,8 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        idTour.setEditable(false);
 
         jLabel4.setText("Identificador: ");
 
@@ -384,14 +391,19 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
 
     private void eliminarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPuntoInteresActionPerformed
         
-        String Id = TablaPIS.getValueAt(TablaPIS.getSelectedRow(), 0).toString();
-        for(int i = 0; i < puntoDeInteres.size(); i++){
-            if( Id == null ? puntoDeInteres.get(i).getIdentificador() == null : Id.equals(puntoDeInteres.get(i).getIdentificador())){    
-                tour.getTourspuntoDeInteresArray().add(puntoDeInteres.get(i));
-                ((DefaultTableModel)TablaPIS.getModel()).removeRow(TablaPIS.getSelectedRow());
-                break;
+        try{
+            
+            String Id = TablaPIS.getValueAt(TablaPIS.getSelectedRow(), 0).toString();
+            for(int i = 0; i < puntoDeInteres.size(); i++){
+                if( Id == null ? puntoDeInteres.get(i).getIdentificador() == null : Id.equals(puntoDeInteres.get(i).getIdentificador())){    
+                    tour.getTourspuntoDeInteresArray().add(puntoDeInteres.get(i));
+                    ((DefaultTableModel)TablaPIS.getModel()).removeRow(TablaPIS.getSelectedRow());
+                    break;
+                }
             }
-        }    
+        }catch(ArrayIndexOutOfBoundsException  e){
+            JOptionPane.showMessageDialog(null, "Error, no hay puntos de interés a eliminar.", "Error", JOptionPane.WARNING_MESSAGE);
+        }  
     }//GEN-LAST:event_eliminarPuntoInteresActionPerformed
 
     private void modificarTourVirtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarTourVirtualActionPerformed
