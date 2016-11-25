@@ -341,7 +341,8 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
                 for(int j=0; j<copiaPI.getObrasPuntoDeInteresArray().size(); j++){   
                     modeloO.addRow(new Object[]{copiaPI.getObrasPuntoDeInteresArray().get(j).getIdObra(), copiaPI.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
                     ObrasPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray();
-                }   
+                }
+                break;
             }     
         }
     }//GEN-LAST:event_TablaPuntosDeInteresMouseClicked
@@ -378,6 +379,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
             if(Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){                    
                 aux.getObrasPuntoDeInteresArray().remove(ObrasPI.get(i));
                 ((DefaultTableModel)TablaObras.getModel()).removeRow(TablaObras.getSelectedRow());
+                break;
             }
         }
         
@@ -396,12 +398,12 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
         
         for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
            String id = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
-           System.out.println("Copia PI"+ copiaPI.getIdentificador());
            if(copiaPI.getIdentificador() == id){
               CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setIdentificador(aux.getIdentificador());
               CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setNombre(aux.getNombre());
               CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setDisponibilidad(aux.getDisponibilidad());
               CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setObrasPuntoDeInteresArray(aux.getObrasPuntoDeInteresArray());
+              break;
            }
         }
     

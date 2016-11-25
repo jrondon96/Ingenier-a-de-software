@@ -43,5 +43,8 @@ public class TourVirtual {
 
     public void setDisponibilidad(String disponibilidad) {
         this.disponibilidad = disponibilidad;
-    }  
+    }   
+    public void setTourspuntoDeInteresArray(ArrayList <PuntoDeInteres> tourspuntoDeInteresArray) {
+        this.TourspuntoDeInteresArray = tourspuntoDeInteresArray;
+    }
 }

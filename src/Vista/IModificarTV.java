@@ -32,15 +32,14 @@ CtrlObras controladorObra;
 
 private Iterator<TourVirtual> it = controladorTv.getInstancia().getToursVirtualesArray().iterator();
 private Iterator<PuntoDeInteres> ite = controladorPI.getInstancia().getPuntoDeInteresArray().iterator();
-private TourVirtual tour;
+private TourVirtual tour, copiaTour;
 private PuntoDeInteres aux;
 private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeInteres> (); 
-private ArrayList <PuntoDeInteres> puntoDeInteresAux = new ArrayList <PuntoDeInteres> (); 
-private PuntoDeInteres PI;
+
     /**
      * Creates new form CrearTV
      */
-    public IModificarTV() {
+    public IModificarTV(){
         initComponents(); 
         setLocationRelativeTo(null);
         setResizable(false);
@@ -56,7 +55,7 @@ private PuntoDeInteres PI;
         while(ite.hasNext()){
             aux = ite.next();
             ComboBoxPIS.addItem(aux.getIdentificador() + " " + aux.getNombre());   
-        } 
+        }
     }
 
     /**
@@ -328,7 +327,7 @@ private PuntoDeInteres PI;
         
         int filas = TablaPIS.getRowCount();
         
-        for (int i = 0; filas>i; i++) {
+        for (int i = 0; filas>i; i++){
             modelo2.removeRow(0);
         }
         
@@ -343,17 +342,20 @@ private PuntoDeInteres PI;
              disponibilidadtour.setSelected(NDButton.getModel(), true);
         }
 
-        for (int i=0; i < CtrlTourVirtual.getInstancia().getToursVirtualesArray().size();i++){
-
-            tour =  CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i);
-            String IdTour = tour.getIdentificador();
+        for(int i=0; i < CtrlTourVirtual.getInstancia().getToursVirtualesArray().size();i++){
+        
+            
+            String IdTour = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).getIdentificador();
 
             if( Id == null ? IdTour == null : Id.equals(IdTour) ){
+                tour =  CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i);
+                copiaTour = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i);
                 DefaultTableModel modeloO = (DefaultTableModel)TablaPIS.getModel();
                 for(int j = 0; j < tour.getTourspuntoDeInteresArray().size(); j++){   
                     modeloO.addRow(new Object[]{tour.getTourspuntoDeInteresArray().get(j).getIdentificador(), tour.getTourspuntoDeInteresArray().get(j).getNombre(), tour.getTourspuntoDeInteresArray().get(j).getDisponibilidad()});
                     puntoDeInteres = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).getTourspuntoDeInteresArray();
-                }   
+                } 
+                break;
             }     
         }
         
@@ -361,59 +363,65 @@ private PuntoDeInteres PI;
 
     private void agregarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPuntoInteresActionPerformed
         // TODO add your handling code here:
-            String O =(String) ComboBoxPIS.getSelectedItem(); 
-            StringTokenizer id = new StringTokenizer(O," ");
+            String PI =(String) ComboBoxPIS.getSelectedItem(); 
+            StringTokenizer id = new StringTokenizer(PI," ");
             String token =  id.nextToken();
-            String Id = ToursVirtuales.getValueAt(ToursVirtuales.getSelectedRow(), 0).toString();
+                                  
+                for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size(); i++){
 
-            for(int j=0; j < CtrlTourVirtual.getInstancia().getToursVirtualesArray().size(); j++){
+                    String IdPuntoInteres = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
 
-                String IDTour = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(j).getIdentificador();
-
-                if(Id == IDTour){
-
-                    for (int i=0;i<CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
-
-                        String IdPuntoInteres = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
-
-                        if( token == null ? IdPuntoInteres == null : token.equals(IdPuntoInteres) ){
-                            DefaultTableModel modelo2 = (DefaultTableModel) TablaPIS.getModel();
-                            modelo2.insertRow(0, new Object[]{CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador(),
-                            CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getNombre(), CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getDisponibilidad()});
-                        }
-                        aux = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
+                    if( token == null ? IdPuntoInteres == null : token.equals(IdPuntoInteres) ){
+                        
+                        DefaultTableModel modelo2 = (DefaultTableModel) TablaPIS.getModel();
+                        modelo2.insertRow(0, new Object[]{CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador(),
+                        CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getNombre(), CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getDisponibilidad()});
+                        tour.getTourspuntoDeInteresArray().add(CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i));
+                        break;
                     }
-                    tour  = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(j);
-                    tour.getTourspuntoDeInteresArray().add(aux);
-                          //  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().add(auxO);
-                }
-            }
+                }            
     }//GEN-LAST:event_agregarPuntoInteresActionPerformed
 
     private void eliminarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPuntoInteresActionPerformed
         
         String Id = TablaPIS.getValueAt(TablaPIS.getSelectedRow(), 0).toString();
-        puntoDeInteresAux = puntoDeInteres;
-        for(int i = 0; i < puntoDeInteresAux.size(); i++)
-            if( Id == null ? puntoDeInteresAux.get(i).getIdentificador() == null : Id.equals(puntoDeInteresAux.get(i).getIdentificador())){    
-                puntoDeInteresAux.remove(i);
+        for(int i = 0; i < puntoDeInteres.size(); i++){
+            if( Id == null ? puntoDeInteres.get(i).getIdentificador() == null : Id.equals(puntoDeInteres.get(i).getIdentificador())){    
+                tour.getTourspuntoDeInteresArray().add(puntoDeInteres.get(i));
                 ((DefaultTableModel)TablaPIS.getModel()).removeRow(TablaPIS.getSelectedRow());
-            } 
+                break;
+            }
+        }    
     }//GEN-LAST:event_eliminarPuntoInteresActionPerformed
 
     private void modificarTourVirtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarTourVirtualActionPerformed
         tour.setIdentificador(idTour.getText());
         tour.setNombre(nombreTour.getText());
         if(disponibilidadtour.getSelection().equals(DButton.getModel())) {
-            aux.setDisponibilidad("Disponible");
+            tour.setDisponibilidad("Disponible");
         }
         if(disponibilidadtour.getSelection().equals(NDButton.getModel())) {
-                aux.setDisponibilidad("No Disponible");
+            tour.setDisponibilidad("No Disponible");
         }
-    
+        
+        for(int i=0; i < CtrlTourVirtual.getInstancia().getToursVirtualesArray().size();i++){
+            String id = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).getIdentificador();
+            if(copiaTour.getIdentificador() == id){
+                CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setIdentificador(tour.getIdentificador());
+                CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setNombre(tour.getNombre());
+                CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setDisponibilidad(tour.getDisponibilidad());
+                CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setTourspuntoDeInteresArray(tour.getTourspuntoDeInteresArray());
+                break;
+            }    
+        }
         idTour.setText(null);
         nombreTour.setText(null);
         disponibilidadtour.clearSelection();
+        aux = null;
+        copiaTour = null;
+        puntoDeInteres = null;
+        
+        
 
         DefaultTableModel modelo2 = (DefaultTableModel) TablaPIS.getModel();
         int filas = TablaPIS.getRowCount();
