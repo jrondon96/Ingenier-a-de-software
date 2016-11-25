@@ -451,6 +451,10 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
                     break;
                 }    
             }
+            int row = ToursVirtuales.getSelectedRow();
+            ((DefaultTableModel)ToursVirtuales.getModel()).removeRow(row);
+            ((DefaultTableModel)ToursVirtuales.getModel()).insertRow(row, new Object[]{tour.getIdentificador(),tour.getNombre(),tour.getDisponibilidad()});
+            
             idTour.setText(null);
             nombreTour.setText(null);
             disponibilidadtour.clearSelection();
