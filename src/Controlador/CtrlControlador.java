@@ -12,7 +12,8 @@ import Vista.*;
 
 public class CtrlControlador {  
     
-    private IBienvenida bienvenida;     
+    private IBienvenida bienvenida;      
+    private IBienvenidaVisitante bienvenidavisitante;
     private IAdministracion administracion;  
     private IAdministracionO administracionO;
     private IAdministracionTV administraciontv; 
@@ -142,16 +143,13 @@ public class CtrlControlador {
                 
                 break; 
                        
-            case "Visitante":              /* INTERFACES DEL VISITANTE DESAHABILITADAS POR QUE NO SE TRABAJARA CON ELLAS*/                                 
-               break;  
+            case "Visitante":    /* INTERFACES DEL VISITANTE DESAHABILITADAS POR QUE NO SE TRABAJARA CON ELLAS*/                                 
+                interfazActual.setVisible(false);
+                bienvenidavisitante= new IBienvenidaVisitante();
+                bienvenidavisitante.setVisible(true);
                 
-            case "ConsultarTV":
-                
-                break; 
-                
-            case "Recorrer":
-                
-                break;
+                break;  
+                   
                 
             default:  
                 
