@@ -42,7 +42,7 @@ public class IBienvenidaVisitante extends javax.swing.JFrame {
         campoImagen = new javax.swing.JLabel();
         campoTitulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        ComboBoxtour = new javax.swing.JComboBox<String>();
+        ComboBoxtour = new javax.swing.JComboBox<>();
         botonVisitar = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
 
@@ -67,6 +67,7 @@ public class IBienvenidaVisitante extends javax.swing.JFrame {
             }
         });
 
+        botonSalir.setBackground(new java.awt.Color(246, 246, 246));
         botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_md.png"))); // NOI18N
         botonSalir.setText("Salir");
         botonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

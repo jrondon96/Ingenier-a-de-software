@@ -3,13 +3,11 @@ package Vista;
 import Modelo.PuntoDeInteres;
 import Modelo.TourVirtual;
 
-
-
 public class IRecorrido extends javax.swing.JFrame {
  
 private TourVirtual auxTourVirtual; 
 private PuntoDeInteres auxPuntoDeInteres; 
-private int i=0, j=0;  
+private int avancePunto = 0, avanceObra = 0;
 
     public IRecorrido(TourVirtual TourVirtual) {
         
@@ -27,13 +25,13 @@ private int i=0, j=0;
         campoImagen.setText(null); 
         nombretourpunto.setText(null); 
         
-       campoTitulo.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getTituloObra());
-       campoAño.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAñoCreacionObra());
-       campoAutor.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAutorObra());
-       campoUbicacion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getUbicacionObra());
-       campo_descripcion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getDescripcionObra());
-       campoImagen.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra());
-       nombretourpunto.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra()); 
+        campoTitulo.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getTituloObra());
+        campoAño.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getAñoCreacionObra());
+        campoAutor.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getAutorObra());
+        campoUbicacion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getUbicacionObra());
+        campo_descripcion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getDescripcionObra());
+        campoImagen.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getIdObra());
+        nombretourpunto.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getIdObra()); 
 
     }
     @SuppressWarnings("unchecked")
@@ -215,8 +213,6 @@ private int i=0, j=0;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
     private void botonAbandonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbandonarActionPerformed
         IBienvenidaVisitante bienvenida = new IBienvenidaVisitante();
         bienvenida.setVisible(true); 
@@ -225,31 +221,50 @@ private int i=0, j=0;
     
     
     private void botonAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAvanzarActionPerformed
-       if (auxTourVirtual.getTourspuntoDeInteresArray().size() == i){ 
-           botonAvanzar.setEnabled(false);
-           System.out.println("Entro");
-       }  
-       else {
-           if (auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().size()>=j){
-               j++; 
-             
-            campoTitulo.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getTituloObra());
-            campoAño.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAñoCreacionObra());
-            campoAutor.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAutorObra());
-            campoUbicacion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getUbicacionObra());
-            campo_descripcion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getDescripcionObra());
-            campoImagen.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra());
-            nombretourpunto.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra()); 
-               
-           }
-           else {
-               i++;  
-               j=-1;
-           }
-       }
+       
+        System.out.println("Puntos de interes: "+ auxTourVirtual.getTourspuntoDeInteresArray().size() + " obras del punto de Interes: " + auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().size());
+        System.out.println("Puntos de interes recorridos: " + avancePunto + " obras recorridas: " + avanceObra);
+        
+        if(avancePunto == auxTourVirtual.getTourspuntoDeInteresArray().size()){
+            botonAvanzar.setEnabled(false);
+            System.out.println("Puntos recorridos: " + avancePunto);
+        }else{
+            if(avanceObra == auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().size() && avancePunto <= auxTourVirtual.getTourspuntoDeInteresArray().size()){
+                botonAvanzar.setEnabled(false);
+                System.out.println("Obras recorridas: " + avanceObra);
+                avancePunto = avancePunto + 1;
+                avanceObra = 0;
+            }else{
+
+                campoTitulo.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getTituloObra());
+                campoAño.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getAñoCreacionObra());
+                campoAutor.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getAutorObra());
+                campoUbicacion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getUbicacionObra());
+                campo_descripcion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getDescripcionObra());
+                campoImagen.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getIdObra());
+                nombretourpunto.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(avancePunto).getObrasPuntoDeInteresArray().get(avanceObra).getIdObra());   
+
+                avanceObra = avanceObra + 1;
+            }
+        }
+        
+        
+      
+          
+        
+        /*
+        
+        campoTitulo.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getTituloObra());
+                campoAño.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAñoCreacionObra());
+                campoAutor.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAutorObra());
+                campoUbicacion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getUbicacionObra());
+                campo_descripcion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getDescripcionObra());
+                campoImagen.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra());
+                nombretourpunto.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra());   
+        
+        */
         
     }//GEN-LAST:event_botonAvanzarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ImagenO;
