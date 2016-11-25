@@ -3,7 +3,7 @@ package Controlador;
 import Modelo.Obra;
 import java.util.ArrayList;
 
-    /*Clase CtrlObras se encarga de hacer la unica instancia del arreglo de obras*/ 
+    /* Clase CtrlObras se encarga de hacer la unica instancia del arreglo de obras. */ 
 
 public class CtrlObras { 
     private static final CtrlObras unicaInstancia = new CtrlObras();

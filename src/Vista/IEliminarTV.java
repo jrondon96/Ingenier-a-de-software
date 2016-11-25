@@ -28,6 +28,8 @@ public class IEliminarTV extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Eliminar Tour Virtual"); 
         
+        /* Se cargan los tours existentes en el combobox.*/
+        
         while(it.hasNext()){
             aux=it.next();
             ComboBoxTV.addItem(aux.getIdentificador()+" "+aux.getNombre()); 
@@ -40,40 +42,40 @@ public class IEliminarTV extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        labelTitulo = new javax.swing.JLabel();
+        labelSeleccion = new javax.swing.JLabel();
+        botonFinalizar = new javax.swing.JButton();
         ComboBoxTV = new javax.swing.JComboBox();
-        jButton2 = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UCV - Tour Virtual - Comite");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel1.setText("Eliminar Tour Virtual");
+        labelTitulo.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        labelTitulo.setText("Eliminar Tour Virtual");
 
-        jLabel2.setText("Seleccionar Tour virtual a eliminar:");
+        labelSeleccion.setText("Seleccionar Tour virtual a eliminar:");
 
-        jButton1.setBackground(new java.awt.Color(246, 246, 246));
-        jButton1.setText("Abandonar");
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonFinalizar.setBackground(new java.awt.Color(246, 246, 246));
+        botonFinalizar.setText("Finalizar");
+        botonFinalizar.setFocusPainted(false);
+        botonFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonFinalizarActionPerformed(evt);
             }
         });
 
         ComboBoxTV.setFocusable(false);
 
-        jButton2.setBackground(new java.awt.Color(246, 246, 246));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
-        jButton2.setText("Eliminar");
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonEliminar.setBackground(new java.awt.Color(246, 246, 246));
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
+        botonEliminar.setText("Eliminar");
+        botonEliminar.setFocusPainted(false);
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonEliminarActionPerformed(evt);
             }
         });
 
@@ -82,38 +84,37 @@ public class IEliminarTV extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 128, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(142, 142, 142))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(labelSeleccion)
+                            .addComponent(labelTitulo))
                         .addGap(129, 129, 129))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(66, Short.MAX_VALUE)
-                .addComponent(ComboBoxTV, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxTV, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(labelTitulo)
                 .addGap(71, 71, 71)
-                .addComponent(jLabel2)
+                .addComponent(labelSeleccion)
                 .addGap(18, 18, 18)
                 .addComponent(ComboBoxTV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addComponent(botonEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(botonFinalizar)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,15 +135,17 @@ public class IEliminarTV extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarActionPerformed
         IAdministracionTV administracion = new IAdministracionTV();
         administracion.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonFinalizarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
 
         try{
+            /* Se obtiene del ComboBox el tour  a eliminar*/
+            
             String TVElim =(String) ComboBoxTV.getSelectedItem();
             ComboBoxTV.removeItem(ComboBoxTV.getSelectedItem());
             StringTokenizer id = new StringTokenizer(TVElim," ");
@@ -153,20 +156,20 @@ public class IEliminarTV extends javax.swing.JFrame {
                 aux =  CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i);
                 String IdPI= aux.getIdentificador();
                 if( token == null ? IdPI == null : token.equals(IdPI) ){
-                    CtrlTourVirtual.getInstancia().getToursVirtualesArray().remove(aux);
+                    CtrlTourVirtual.getInstancia().getToursVirtualesArray().remove(aux); /* Se elimina el tour del arreglo de tours.*/
                 }
             }
         }catch(NullPointerException e){
             JOptionPane.showMessageDialog(null, "No hay tours a eliminar.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox ComboBoxTV;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonFinalizar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelSeleccion;
+    private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
 }

@@ -31,6 +31,8 @@ public class IEliminarPI extends javax.swing.JFrame {
         setTitle("Eliminar Punto de Interes");
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/icono.png")).getImage()); //PROBANDO 
         
+        /* Se cargan los puntos de interes existentes en el combobox.*/
+        
         while(it.hasNext()){
             aux=it.next();
             ComboBoxPI.addItem(aux.getIdentificador()+" "+aux.getNombre()); 
@@ -48,20 +50,20 @@ public class IEliminarPI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
+        labelSeleccion = new javax.swing.JLabel();
         ComboBoxPI = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
+        botonFinalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Eliminar Punto de Interes");
+        labelTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelTitulo.setText("Eliminar Punto de Interes");
 
-        jLabel2.setText("Seleccionar Punto de Interes a Eliminar:");
+        labelSeleccion.setText("Seleccionar Punto de Interes a Eliminar:");
 
         ComboBoxPI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ComboBoxPI.setFocusable(false);
@@ -71,24 +73,24 @@ public class IEliminarPI extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(246, 246, 246));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
-        jButton2.setText("Eliminar");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonEliminar.setBackground(new java.awt.Color(246, 246, 246));
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
+        botonEliminar.setText("Eliminar");
+        botonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEliminar.setFocusPainted(false);
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonEliminarActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(246, 246, 246));
-        jButton3.setText("Finalizar");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setFocusPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonFinalizar.setBackground(new java.awt.Color(246, 246, 246));
+        botonFinalizar.setText("Finalizar");
+        botonFinalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonFinalizar.setFocusPainted(false);
+        botonFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonFinalizarActionPerformed(evt);
             }
         });
 
@@ -98,36 +100,34 @@ public class IEliminarPI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(botonEliminar)
                 .addGap(139, 139, 139))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(ComboBoxPI, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(labelSeleccion)
+                    .addComponent(labelTitulo))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(43, 43, 43))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonFinalizar)
+                    .addComponent(ComboBoxPI, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(labelTitulo)
                 .addGap(84, 84, 84)
-                .addComponent(jLabel2)
+                .addComponent(labelSeleccion)
                 .addGap(11, 11, 11)
                 .addComponent(ComboBoxPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(botonEliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(botonFinalizar)
                 .addGap(20, 20, 20))
         );
 
@@ -149,9 +149,11 @@ public class IEliminarPI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxPIActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         
         try{
+            /* Se obtiene del ComboBox el punto de interes a eliminar*/
+            
             String OElim =(String) ComboBoxPI.getSelectedItem();
             ComboBoxPI.removeItem(ComboBoxPI.getSelectedItem());
             StringTokenizer id = new StringTokenizer(OElim," ");
@@ -162,7 +164,7 @@ public class IEliminarPI extends javax.swing.JFrame {
                 aux =  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
                 String IdPI= aux.getIdentificador();
                 if( token == null ? IdPI == null : token.equals(IdPI) ){
-                    CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().remove(aux);
+                    CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().remove(aux); /* Se elimina el punto de interes del arreglo de puntos de interes.*/
                 }
             }
         }catch(NullPointerException e){
@@ -170,22 +172,22 @@ public class IEliminarPI extends javax.swing.JFrame {
         }
         
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonEliminarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarActionPerformed
        IAdministracionPI administracionpi = new IAdministracionPI();
        administracionpi.setVisible(true); 
        this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonFinalizarActionPerformed
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxPI;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonFinalizar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelSeleccion;
+    private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
 }

@@ -40,6 +40,8 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
         setResizable(false);
         setTitle("Modificar Punto De Interes"); 
         
+        /* Se cagran los puntos de interes existentes en la tabla de puntos de interes. */
+        
         DefaultTableModel modelo  = (DefaultTableModel) TablaPuntosDeInteres.getModel(); 
         
         while(it.hasNext()){
@@ -47,10 +49,14 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
             modelo.addRow(new Object[]{aux.getIdentificador(),aux.getNombre(),aux.getDisponibilidad()});       
         }
         
+        /* Se cargan las obras en el combobox de obras.*/
+        
         while(ite.hasNext()){
             auxO = ite.next();
             ComboBoxObras.addItem(auxO.getIdObra()+" "+auxO.getTituloObra());   
         }   
+        
+        /* Si no existen obras se deshabilitan las opciones de agregar o eliminar obras. */
         
         if(CtrlObras.getInstancia().getObrasArray().size() <=0){
             agregarObra.setEnabled(false);
@@ -346,11 +352,15 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
             modelo2.removeRow(0);
         }
         
+        /* Se cargan los datos del punto de interes en los respectivos campos.*/
+        
         String Id = TablaPuntosDeInteres.getValueAt(TablaPuntosDeInteres.getSelectedRow(), 0).toString();
         String Nombre = TablaPuntosDeInteres.getValueAt(TablaPuntosDeInteres.getSelectedRow(), 1).toString();
         String Disp = TablaPuntosDeInteres.getValueAt(TablaPuntosDeInteres.getSelectedRow(), 2).toString();
+        
         idPI.setText(Id);
         NombrePI.setText(Nombre);
+        
         if(Disp == "Disponible"){
              disponibilidadpi.setSelected(DButton.getModel(), true);
         }else if(Disp == "No Disponible"){
@@ -362,10 +372,14 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
             String IdPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
 
             if( Id == null ? IdPI == null : Id.equals(IdPI) ){
+                
                 aux =  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
-                copiaPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
+                copiaPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);          
                 DefaultTableModel modeloO = (DefaultTableModel)TablaObras.getModel();
-                for(int j=0; j<copiaPI.getObrasPuntoDeInteresArray().size(); j++){   
+                
+                for(int j = 0; j < copiaPI.getObrasPuntoDeInteresArray().size(); j++){
+     
+                    /* Se cargan los cambios de obras de interes a la tabla y al arreglo de obras del punto de interes. */
                     modeloO.addRow(new Object[]{copiaPI.getObrasPuntoDeInteresArray().get(j).getIdObra(), copiaPI.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
                     ObrasPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray();
                 }
@@ -392,7 +406,8 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
 
                 DefaultTableModel modelo2 = (DefaultTableModel) TablaObras.getModel();
                 modelo2.insertRow(0, new Object[]{CtrlObras.getInstancia().getObrasArray().get(i).getIdObra(),
-                CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
+                    
+                CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});                
                 aux.getObrasPuntoDeInteresArray().add(CtrlObras.getInstancia().getObrasArray().get(i));
                 break;
             }
@@ -402,6 +417,8 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
     private void eliminarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarObraActionPerformed
         
         try{
+            /* Se eliminan obras asociadas al punto de interes seleccionado. */
+            
             String Id = TablaObras.getValueAt(TablaObras.getSelectedRow(), 0).toString();
             for(int i = 0; i < ObrasPI.size(); i++){
                 if(Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){                    
@@ -411,7 +428,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
                 }
             }
         }catch(ArrayIndexOutOfBoundsException  e){
-            JOptionPane.showMessageDialog(null, "Error, no hay obras a eliminar.", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No hay obras a eliminar.", "Atención.", JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_eliminarObraActionPerformed
@@ -437,11 +454,15 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
                   break;
                }
             }
+            
+            /* Los cambios se guardan en la tabla. */
+            
             int row = TablaPuntosDeInteres.getSelectedRow();
             ((DefaultTableModel)TablaPuntosDeInteres.getModel()).removeRow(row);
             ((DefaultTableModel)TablaPuntosDeInteres.getModel()).insertRow(row, new Object[]{aux.getIdentificador(),aux.getNombre(),aux.getDisponibilidad()});
+        
         }else{
-            JOptionPane.showMessageDialog(null, "Error, no deben haber campos vacíos.", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No deben haber campos vacíos.", "Atención.", JOptionPane.WARNING_MESSAGE);
         }
     
         idPI.setText(null);

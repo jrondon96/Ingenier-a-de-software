@@ -16,8 +16,8 @@ public class IAdministracionPI extends javax.swing.JFrame {
         setTitle("Administrar Puntos de Interes"); 
         
         if(CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size() <= 0){
-           botonEliminarPuntoInteres.setEnabled(false);
-           botonModificarPuntoInteres.setEnabled(false);
+           botonEliminarPuntoInteres.setEnabled(false); /* Se deshabilita la eliminación de puntos de interes en caso de que no existan. */
+           botonModificarPuntoInteres.setEnabled(false); /* Se deshabilita la modificación de puntos de interes en caso de que no existan. */
         }
     }
 

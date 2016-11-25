@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class ICrearPI extends javax.swing.JFrame {
 private CtrlObras controladorObras;  
 private CtrlPuntoDeInteres controladorPi; 
@@ -20,25 +19,31 @@ private Iterator<Obra> it = controladorObras.getInstancia().getObrasArray().iter
 private Obra aux;
 private ArrayList <Obra> ObrasAux= new ArrayList <Obra> (); 
 private PuntoDeInteres PI;
+
     public ICrearPI() {
         initComponents(); 
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Crear Punto de Interes");  
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel(); 
+        setTitle("Crear Punto de Interes"); 
         
-        for (int i=0; i < controladorPi.getInstancia().getPuntoDeInteresArray().size(); i++){
+        DefaultTableModel modelo = (DefaultTableModel) tablaPuntosInteresExistentes.getModel(); 
+        
+        for (int i=0; i < controladorPi.getInstancia().getPuntoDeInteresArray().size(); i++){ /* Se cargan los puntos de interes existentes a la tabla correspondiente. */
             modelo.insertRow(0, new Object[]{controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador(),
             controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getNombre(), 
             controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getDisponibilidad()});
         }
             
+        /* Se cargan las obras existentes en el ComboBox de obras. */
+        
         while(it.hasNext()){
             aux=it.next();
             ComboBoxObra.addItem(aux.getIdObra()+" "+aux.getTituloObra());   
         }  
         
-        if(CtrlObras.getInstancia().getObrasArray().size() <=0){
+        /* Deshabilitación de opciones eliminarObra y modificarObra en caso de que no existan obras cargadas al arreglo de obras.*/
+        
+        if(CtrlObras.getInstancia().getObrasArray().size() <= 0){
             agregarObra.setEnabled(false);
             eliminarObra.setEnabled(false);
         }
@@ -56,18 +61,18 @@ private PuntoDeInteres PI;
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaPuntosInteresExistentes = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        DButton = new javax.swing.JRadioButton();
+        NDButton = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         ComboBoxObra = new javax.swing.JComboBox();
         agregarObra = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaObras = new javax.swing.JTable();
         eliminarObra = new javax.swing.JButton();
         crearPuntoInteres = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -85,7 +90,7 @@ private PuntoDeInteres PI;
 
         jLabel3.setText("Ingrese propiedades del tour virtual a crear: ");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPuntosInteresExistentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -101,9 +106,9 @@ private PuntoDeInteres PI;
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getAccessibleContext().setAccessibleDescription("");
+        tablaPuntosInteresExistentes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane1.setViewportView(tablaPuntosInteresExistentes);
+        tablaPuntosInteresExistentes.getAccessibleContext().setAccessibleDescription("");
 
         jLabel2.setText("Puntos de interes Existentes:");
 
@@ -114,23 +119,23 @@ private PuntoDeInteres PI;
 
         jLabel6.setText("Disponibilidad:");
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        disponibilidadpi.add(jRadioButton1);
-        jRadioButton1.setText("Disponible");
-        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        DButton.setBackground(new java.awt.Color(255, 255, 255));
+        disponibilidadpi.add(DButton);
+        DButton.setText("Disponible");
+        DButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        DButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                DButtonActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        disponibilidadpi.add(jRadioButton2);
-        jRadioButton2.setText("No Disponible");
-        jRadioButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        NDButton.setBackground(new java.awt.Color(255, 255, 255));
+        disponibilidadpi.add(NDButton);
+        NDButton.setText("No Disponible");
+        NDButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        NDButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                NDButtonActionPerformed(evt);
             }
         });
 
@@ -153,7 +158,7 @@ private PuntoDeInteres PI;
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaObras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -176,11 +181,11 @@ private PuntoDeInteres PI;
                 return canEdit [columnIndex];
             }
         });
-        jTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jScrollPane2.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setResizable(false);
-            jTable2.getColumnModel().getColumn(1).setResizable(false);
+        tablaObras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane2.setViewportView(tablaObras);
+        if (tablaObras.getColumnModel().getColumnCount() > 0) {
+            tablaObras.getColumnModel().getColumn(0).setResizable(false);
+            tablaObras.getColumnModel().getColumn(1).setResizable(false);
         }
 
         eliminarObra.setBackground(new java.awt.Color(246, 246, 246));
@@ -234,11 +239,11 @@ private PuntoDeInteres PI;
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addGap(133, 133, 133)
-                                        .addComponent(jRadioButton2))))))
+                                        .addComponent(NDButton))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
+                            .addComponent(DButton)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(idpi, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                                 .addComponent(nombrepi))
@@ -301,8 +306,8 @@ private PuntoDeInteres PI;
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(DButton)
+                    .addComponent(NDButton))
                 .addGap(14, 14, 14)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -342,7 +347,7 @@ private PuntoDeInteres PI;
 
     private void agregarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarObraActionPerformed
   
-        String O =(String) ComboBoxObra.getSelectedItem(); 
+        String O =(String) ComboBoxObra.getSelectedItem(); /* Se obtiene la obra seleccionada en el ComboBox*/
         StringTokenizer id = new StringTokenizer(O," ");
         String token =  id.nextToken();
             
@@ -351,9 +356,9 @@ private PuntoDeInteres PI;
             String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
 
             if( token == null ? IdObra == null : token.equals(IdObra) ){
-                ObrasAux.add(CtrlObras.getInstancia().getObrasArray().get(i));
+                ObrasAux.add(CtrlObras.getInstancia().getObrasArray().get(i)); /* Se cargan las obras al arreglo temporal para el punto de interes. */
                     
-                DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+                DefaultTableModel modelo2 = (DefaultTableModel) tablaObras.getModel();
                     
                 modelo2.insertRow(0, new Object[]{CtrlObras.getInstancia().getObrasArray().get(i).getIdObra(),
                 CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
@@ -364,9 +369,11 @@ private PuntoDeInteres PI;
     private void crearPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPuntoInteresActionPerformed
         
         String disp = "No Disponible";
-        boolean mark_zuckerberg = false;
+        boolean mark_zuckerberg = false; /* Control de existencia de un punto de interes. */
 
         if ((idpi.getText().length()!=0) && (nombrepi.getText().length()!=0)) {
+            
+            /* Se verifica si existe un punto de interes con el mismo identificador. */
             
             for(int i = 0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size(); i++){
         
@@ -374,70 +381,76 @@ private PuntoDeInteres PI;
             String IdPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
 
                 if(IdPI == null ? IdEntrada == null : IdPI.equals(IdEntrada)){                   
-                    mark_zuckerberg = true;
-                    break;
+                    mark_zuckerberg = true; /* Existe el punto de interes con el mismo identificador. */
+                    break; 
                 }   
             }
             
             if(mark_zuckerberg == true){
                 
+                /* Se reinician los campos de ICrearPI*/
+                
                 idpi.setText(null);
                 nombrepi.setText(null);
                 disponibilidadpi.clearSelection(); 
-                DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
-                int filas= jTable2.getRowCount();
+                
+                /* La tabla de obras del punto de interes seleccionado se limpia. */
+                
+                DefaultTableModel modelo2 = (DefaultTableModel) tablaObras.getModel();
+                int filas= tablaObras.getRowCount();
                 
                 for (int i = 0; filas>i; i++) {
                     modelo2.removeRow(0);
                 }
                 
-                JOptionPane.showMessageDialog(null, "Error, el punto de interés ya existe.", "Error", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El punto de interés ya existe.", "Ha ocurrido un error.", JOptionPane.WARNING_MESSAGE); /* No pueden existir puntos de interes con el mismo identificador. */
             }else{
                 
-                if(disponibilidadpi.getSelection().equals(jRadioButton1.getModel())) {
+                if(disponibilidadpi.getSelection().equals(DButton.getModel())) {
                     disp = "Disponible";
                 }    
 
                 PuntoDeInteres pi = new PuntoDeInteres(idpi.getText(),nombrepi.getText(),disp, ObrasAux);
-                CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().add(pi);
+                CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().add(pi); /* Se carga el punto de interes al arreglo de puntos de interes. */
 
-                DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-                modelo.insertRow(0, new Object[]{pi.getIdentificador(),pi.getNombre(),pi.getDisponibilidad()});
+                DefaultTableModel modelo = (DefaultTableModel) tablaPuntosInteresExistentes.getModel();
+                modelo.insertRow(0, new Object[]{pi.getIdentificador(),pi.getNombre(),pi.getDisponibilidad()}); /* Se carga el punto de interes cargado a la tabla de puntos de interes existentes. */
 
+                 /* Se reinician los campos de ICrearPI*/
+                
                 idpi.setText(null);
                 nombrepi.setText(null);
                 disponibilidadpi.clearSelection(); 
                 ObrasAux = new ArrayList <Obra> (); 
 
-                DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
-                int filas= jTable2.getRowCount();
+                /* La tabla de obras del punto de interes seleccionado se limpia. */
+                
+                DefaultTableModel modelo2 = (DefaultTableModel) tablaObras.getModel();
+                int filas= tablaObras.getRowCount();
                 for (int i = 0; filas>i; i++) {
                     modelo2.removeRow(0);
                 }
 
                 try{
-                    String Obra =(String) ComboBoxObra.getSelectedItem();
-
+                    String Obra = (String) ComboBoxObra.getSelectedItem();
                 }catch(NullPointerException e){
                     JOptionPane.showMessageDialog(null, "Debe seleccionar una obra.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
                 }
             }
             
-            
-
         }else{
-            JOptionPane.showMessageDialog(null,"Error, faltan campos por rellenar", "Error", JOptionPane.ERROR_MESSAGE); 
+            JOptionPane.showMessageDialog(null,"Faltan campos por rellenar", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE); /* No pueden faltar campos por rellenar. */
         }
 
     }//GEN-LAST:event_crearPuntoInteresActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void NDButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NDButtonActionPerformed
                
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_NDButtonActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void DButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_DButtonActionPerformed
 
     private void ComboBoxObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxObraActionPerformed
         // TODO add your handling code here:
@@ -446,11 +459,11 @@ private PuntoDeInteres PI;
     private void eliminarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarObraActionPerformed
 
         try{
-            String Id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
+            String Id = tablaObras.getValueAt(tablaObras.getSelectedRow(), 0).toString();
             for(int i = 0; i<ObrasAux.size(); i++){
                 if( Id == null ? ObrasAux.get(i).getIdObra() == null : Id.equals(ObrasAux.get(i).getIdObra())){    
                     ObrasAux.remove(i);
-                    ((DefaultTableModel)jTable2.getModel()).removeRow(jTable2.getSelectedRow());
+                    ((DefaultTableModel)tablaObras.getModel()).removeRow(tablaObras.getSelectedRow());
                 }
             }
         }catch(ArrayIndexOutOfBoundsException  e){
@@ -462,6 +475,8 @@ private PuntoDeInteres PI;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox ComboBoxObra;
+    private javax.swing.JRadioButton DButton;
+    private javax.swing.JRadioButton NDButton;
     private javax.swing.JButton agregarObra;
     private javax.swing.JButton crearPuntoInteres;
     private javax.swing.ButtonGroup disponibilidadpi;
@@ -476,12 +491,10 @@ private PuntoDeInteres PI;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField nombrepi;
+    private javax.swing.JTable tablaObras;
+    private javax.swing.JTable tablaPuntosInteresExistentes;
     // End of variables declaration//GEN-END:variables
 }

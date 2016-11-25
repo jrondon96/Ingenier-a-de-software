@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author roybert
  */
 public class IEliminarO extends javax.swing.JFrame {
-private final Iterator<Obra> it = CtrlObras.getInstancia().getObrasArray().iterator();
+private final Iterator<Obra> it = CtrlObras.getInstancia().getObrasArray().iterator(); /* Iterador de obras. */
 
 private Obra aux;
   
@@ -23,12 +23,13 @@ private Obra aux;
         setTitle("Eliminar Obra de Arte");
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/icono.png")).getImage()); //PROBANDO 
         
+        /* Se cargan las obras existentes en el combobox.*/
+        
         while(it.hasNext()){
             aux=it.next();
             ComboBoxObra.addItem(aux.getIdObra()+" "+aux.getTituloObra()); 
         }
-        
-         
+   
     }
     
     
@@ -43,11 +44,11 @@ private Obra aux;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
         ComboBoxObra = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        labelSeleccion = new javax.swing.JLabel();
+        botonEliminar = new javax.swing.JButton();
+        botonFinalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eliminar Obra de Arte");
@@ -56,8 +57,8 @@ private Obra aux;
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Eliminar Obra de Arte");
+        labelTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelTitulo.setText("Eliminar Obra de Arte");
 
         ComboBoxObra.setFocusable(false);
         ComboBoxObra.addActionListener(new java.awt.event.ActionListener() {
@@ -66,26 +67,26 @@ private Obra aux;
             }
         });
 
-        jLabel2.setText("Seleccionar Obra a Eliminar:");
+        labelSeleccion.setText("Seleccionar Obra a Eliminar:");
 
-        jButton2.setBackground(new java.awt.Color(246, 246, 246));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
-        jButton2.setText("Eliminar");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonEliminar.setBackground(new java.awt.Color(246, 246, 246));
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
+        botonEliminar.setText("Eliminar");
+        botonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEliminar.setFocusPainted(false);
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonEliminarActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(246, 246, 246));
-        jButton3.setText("Finalizar");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setFocusPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonFinalizar.setBackground(new java.awt.Color(246, 246, 246));
+        botonFinalizar.setText("Finalizar");
+        botonFinalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonFinalizar.setFocusPainted(false);
+        botonFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonFinalizarActionPerformed(evt);
             }
         });
 
@@ -97,7 +98,7 @@ private Obra aux;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-                        .addComponent(jButton2))
+                        .addComponent(botonEliminar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(ComboBoxObra, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -106,32 +107,32 @@ private Obra aux;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(labelTitulo)
                         .addGap(115, 115, 115))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(labelSeleccion)
                         .addGap(134, 134, 134))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(labelTitulo)
                 .addGap(97, 97, 97)
-                .addComponent(jLabel2)
+                .addComponent(labelSeleccion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ComboBoxObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(botonEliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(botonFinalizar)
                 .addContainerGap())
         );
 
-        jLabel1.getAccessibleContext().setAccessibleParent(jLabel1);
+        labelTitulo.getAccessibleContext().setAccessibleParent(labelTitulo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,16 +148,18 @@ private Obra aux;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarActionPerformed
         IAdministracionO administraciono = new IAdministracionO();
         administraciono.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonFinalizarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
       
       
         try{
+            /* Se obtiene del ComboBox la obra a eliminar*/
+            
             String OElim =(String) ComboBoxObra.getSelectedItem();
             ComboBoxObra.removeItem(ComboBoxObra.getSelectedItem());
             StringTokenizer id = new StringTokenizer(OElim," ");
@@ -168,7 +171,7 @@ private Obra aux;
               String IdObra = aux.getIdObra();
 
                 if( token == null ? IdObra == null : token.equals(IdObra) ){
-                    CtrlObras.getInstancia().getObrasArray().remove(aux);
+                    CtrlObras.getInstancia().getObrasArray().remove(aux); /* Se elimina la obra del arreglo de obras.*/
 
                 }     
             }
@@ -177,7 +180,7 @@ private Obra aux;
             JOptionPane.showMessageDialog(null, "No existen obras a eliminar.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
         }
              
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void ComboBoxObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxObraActionPerformed
         // TODO add your handling code here:
@@ -188,11 +191,11 @@ private Obra aux;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxObra;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonFinalizar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelSeleccion;
+    private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
 
     

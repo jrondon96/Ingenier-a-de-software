@@ -31,18 +31,24 @@ public ICrearTV() {
         
         DefaultTableModel modelo = (DefaultTableModel) tablaTours.getModel(); 
         
+        /* Se cargan los tours existentes a la tabla correspondiente. */
+        
         for (int i=0; i < controladorTv.getInstancia().getToursVirtualesArray().size(); i++){
             modelo.insertRow(0, new Object[]{controladorTv.getInstancia().getToursVirtualesArray().get(i).getIdentificador(),
             controladorTv.getInstancia().getToursVirtualesArray().get(i).getNombre(), 
             controladorTv.getInstancia().getToursVirtualesArray().get(i).getDisponibilidad()});
         }
-            
+        
+        /* Se cargan los puntos de interes existentes en el combobox correspondiente. */
+        
         while(it.hasNext()){
             aux=it.next();
             ComboBoxPI.addItem(aux.getIdentificador()+" "+aux.getNombre());   
         }
         
-        if(CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size() <=0){
+        /* Si no existen puntos de interes se deshabilitan las opciones de agregar o eliminar puntos de interes al momento de crear un tour virtual.  */
+        
+        if(CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size() <= 0){
             agregarPuntoDeInteres.setEnabled(false);
             eliminarPuntoDeInteres.setEnabled(false);
         }
@@ -56,20 +62,20 @@ public ICrearTV() {
         jPanel1 = new javax.swing.JPanel();
         nombretv = new javax.swing.JTextField();
         idtv = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        labelIdentificador = new javax.swing.JLabel();
+        labelPropiedades = new javax.swing.JLabel();
+        labelTExistentes = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
+        labelNombre = new javax.swing.JLabel();
+        labelDisponibilidad = new javax.swing.JLabel();
+        labelAgregar = new javax.swing.JLabel();
         ComboBoxPI = new javax.swing.JComboBox();
         agregarPuntoDeInteres = new javax.swing.JButton();
         eliminarPuntoDeInteres = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        botonCrearTour = new javax.swing.JButton();
+        botonFinalizar = new javax.swing.JButton();
+        DButton = new javax.swing.JRadioButton();
+        NDButton = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPuntos = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -79,32 +85,20 @@ public ICrearTV() {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        nombretv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombretvActionPerformed(evt);
-            }
-        });
+        labelIdentificador.setText("Identificador: ");
 
-        idtv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idtvActionPerformed(evt);
-            }
-        });
+        labelPropiedades.setText("Ingrese propiedades del tour virtual a crear: ");
 
-        jLabel4.setText("Identificador: ");
+        labelTExistentes.setText("Tours Virtuales Existentes:");
 
-        jLabel3.setText("Ingrese propiedades del tour virtual a crear: ");
+        labelTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelTitulo.setText("Crear Tour Virtual");
 
-        jLabel2.setText("Tours Virtuales Existentes:");
+        labelNombre.setText("Nombre:");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Crear Tour Virtual");
+        labelDisponibilidad.setText("Disponibilidad:");
 
-        jLabel5.setText("Nombre:");
-
-        jLabel6.setText("Disponibilidad:");
-
-        jLabel7.setText("Agregar Puntos de interes: ");
+        labelAgregar.setText("Agregar Puntos de interes: ");
 
         ComboBoxPI.setFocusable(false);
 
@@ -130,40 +124,40 @@ public ICrearTV() {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(246, 246, 246));
-        jButton4.setText("Crear");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setFocusPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonCrearTour.setBackground(new java.awt.Color(246, 246, 246));
+        botonCrearTour.setText("Crear");
+        botonCrearTour.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonCrearTour.setFocusPainted(false);
+        botonCrearTour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonCrearTourActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(246, 246, 246));
-        jButton3.setText("Finalizar");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setFocusPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonFinalizar.setBackground(new java.awt.Color(246, 246, 246));
+        botonFinalizar.setText("Finalizar");
+        botonFinalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonFinalizar.setFocusPainted(false);
+        botonFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonFinalizarActionPerformed(evt);
             }
         });
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        disponibilidadtv.add(jRadioButton1);
-        jRadioButton1.setText("Disponible");
-        jRadioButton1.setFocusPainted(false);
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        DButton.setBackground(new java.awt.Color(255, 255, 255));
+        disponibilidadtv.add(DButton);
+        DButton.setText("Disponible");
+        DButton.setFocusPainted(false);
+        DButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                DButtonActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        disponibilidadtv.add(jRadioButton2);
-        jRadioButton2.setText("No Disponible");
-        jRadioButton2.setFocusPainted(false);
+        NDButton.setBackground(new java.awt.Color(255, 255, 255));
+        disponibilidadtv.add(NDButton);
+        NDButton.setText("No Disponible");
+        NDButton.setFocusPainted(false);
 
         tablaPuntos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -211,22 +205,22 @@ public ICrearTV() {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addGap(18, 18, 18)
-                            .addComponent(jRadioButton1)
-                            .addGap(18, 18, 18)
-                            .addComponent(jRadioButton2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelDisponibilidad)
+                        .addGap(18, 18, 18)
+                        .addComponent(DButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(NDButton))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(labelPropiedades)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(labelNombre)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(nombretv, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(labelIdentificador)
                                 .addGap(18, 18, 18)
                                 .addComponent(idtv, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -235,12 +229,12 @@ public ICrearTV() {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelTitulo)
+                            .addComponent(labelTExistentes, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(110, 110, 110))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26))))
@@ -248,7 +242,7 @@ public ICrearTV() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(labelAgregar)
                         .addGap(143, 143, 143))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -259,35 +253,35 @@ public ICrearTV() {
                         .addComponent(eliminarPuntoDeInteres, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(109, 109, 109))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(botonCrearTour)
                         .addGap(185, 185, 185))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(labelTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(labelTExistentes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(labelPropiedades)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(idtv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(labelIdentificador))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombretv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(labelNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(labelDisponibilidad)
+                    .addComponent(DButton)
+                    .addComponent(NDButton))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(labelAgregar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ComboBoxPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -297,9 +291,9 @@ public ICrearTV() {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(eliminarPuntoDeInteres)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
+                .addComponent(botonCrearTour)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(botonFinalizar)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -317,39 +311,45 @@ public ICrearTV() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void DButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_DButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarActionPerformed
         IAdministracionTV administraciontv = new IAdministracionTV();
         administraciontv.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonFinalizarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void botonCrearTourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearTourActionPerformed
 
         String disp = "No Disponible";
         boolean mark_zuckerberg = false;
         
-        if ((idtv.getText().length()!=0) && (nombretv.getText().length()!=0)) {
-
+        if ((idtv.getText().length()!=0) && (nombretv.getText().length()!=0)) { /* Los campos no pueden estar vacíos.*/
+            
+            /* Se verifica que no exista un tour virtual con identificador igual.*/
+            
             for(int i = 0; i < CtrlTourVirtual.getInstancia().getToursVirtualesArray().size(); i++){
         
             String IdEntrada = idtv.getText();
             String IdTour = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).getIdentificador();
 
                 if(IdTour == null ? IdEntrada == null : IdTour.equals(IdEntrada)){                   
-                    mark_zuckerberg = true;
+                    mark_zuckerberg = true; /* Si existe un tour con identificador repetido se marca la bandera. */
                     break;
                 }   
             }
             
             if(mark_zuckerberg == true){
             
+                /* Se reinician los campos de ICrearTV*/
+                
                 idtv.setText(null);
                 nombretv.setText(null);
                 disponibilidadtv.clearSelection();
+                
+                /* Se reinicia la tabla de puntos de interes. */
                 
                 DefaultTableModel modelo2 = (DefaultTableModel) tablaPuntos.getModel();
                 int filas = tablaPuntos.getRowCount();
@@ -358,58 +358,68 @@ public ICrearTV() {
                     modelo2.removeRow(0);
                 }
                 
-                JOptionPane.showMessageDialog(null, "Error, el tour virtual ya existe.", "Error", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El tour virtual ya existe.", "Ha ocurrido un error.", JOptionPane.WARNING_MESSAGE); /* No pueden haber tours con un mismo identificador. */
             }else{
-                if(disponibilidadtv.getSelection().equals(jRadioButton1.getModel())) {
+                
+                if(disponibilidadtv.getSelection().equals(DButton.getModel())) {
                     disp = "Disponible";
                 }
 
                 TourVirtual tv = new TourVirtual(idtv.getText(),nombretv.getText(),disp,puntoDeInteresAux);
-                CtrlTourVirtual.getInstancia().getToursVirtualesArray().add(tv);
+                CtrlTourVirtual.getInstancia().getToursVirtualesArray().add(tv); /* Se agrega el nuevo tour al arreglo de tours. */
 
+                /* Se carga el nuevo tour a la tabla de tours existentes. */
+                
                 DefaultTableModel modelo = (DefaultTableModel) tablaTours.getModel();
-                modelo.insertRow(0, new Object[]{tv.getIdentificador(),tv.getNombre(),tv.getDisponibilidad()});
+                modelo.insertRow(0, new Object[]{tv.getIdentificador(),tv.getNombre(),tv.getDisponibilidad()}); 
 
+                /* Se reinician los campos de ICrearTV*/
+                
                 idtv.setText(null);
                 nombretv.setText(null);
                 disponibilidadtv.clearSelection();
                 puntoDeInteresAux = new ArrayList <PuntoDeInteres> ();
 
+                /*Se limpia la tabla de puntos de interes. */
+                
                 DefaultTableModel modelo2 = (DefaultTableModel) tablaPuntos.getModel();
-
                 int filas= tablaPuntos.getRowCount();
+                
                 for (int i = 0; filas>i; i++) {
                     modelo2.removeRow(0);
                 }
             }
 
             try{
-                String Obra =(String) ComboBoxPI.getSelectedItem();
+                String Obra = (String) ComboBoxPI.getSelectedItem();
 
             }catch(NullPointerException e){
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un punto de interes.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
             }
 
         }else{
-            JOptionPane.showMessageDialog(null,"Error, faltan campos por rellenar.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Faltan campos por rellenar.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE); /* Si algún campo está vacío.*/
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_botonCrearTourActionPerformed
 
     private void eliminarPuntoDeInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPuntoDeInteresActionPerformed
         try{
             
             String Id = tablaPuntos.getValueAt(tablaPuntos.getSelectedRow(), 0).toString();
-            for(int i = 0; i<puntoDeInteresAux.size(); i++)
+            for(int i = 0; i < puntoDeInteresAux.size(); i++)
             if( Id == null ? puntoDeInteresAux.get(i).getIdentificador() == null : Id.equals(puntoDeInteresAux.get(i).getIdentificador())){
-                puntoDeInteresAux.remove(i);
+                puntoDeInteresAux.remove(i); /* Se elimina el punto de interes seleccionado en la tabla de puntos de interes. */
                 ((DefaultTableModel)tablaPuntos.getModel()).removeRow(tablaPuntos.getSelectedRow());
             }
         }catch(ArrayIndexOutOfBoundsException  e){
-            JOptionPane.showMessageDialog(null, "Error, no hay puntos de interés a eliminar.", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No hay puntos de interés a eliminar.", "Ha ocurrido un error.", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_eliminarPuntoDeInteresActionPerformed
 
     private void agregarPuntoDeInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPuntoDeInteresActionPerformed
+        
+        /* Se agregan puntos de interes al tour que se está creando. */
+        
         String O =(String) ComboBoxPI.getSelectedItem();
         StringTokenizer id = new StringTokenizer(O," ");
         String token =  id.nextToken();
@@ -425,44 +435,32 @@ public ICrearTV() {
 
                 modelo2.insertRow(0, new Object[]{controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador(),
                     controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getNombre(),controladorPi.getInstancia().getPuntoDeInteresArray().get(i).getDisponibilidad()});
-        }
+            }
         }
     }//GEN-LAST:event_agregarPuntoDeInteresActionPerformed
-
-    private void idtvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idtvActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_idtvActionPerformed
-
-    private void nombretvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretvActionPerformed
-        // TODO add your handling code here:
-        String nombre;
-        nombre = nombretv.getText();
-        System.out.println(nombre);
-    }//GEN-LAST:event_nombretvActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox ComboBoxPI;
+    private javax.swing.JRadioButton DButton;
+    private javax.swing.JRadioButton NDButton;
     private javax.swing.JButton agregarPuntoDeInteres;
+    private javax.swing.JButton botonCrearTour;
+    private javax.swing.JButton botonFinalizar;
     private javax.swing.ButtonGroup disponibilidadtv;
     private javax.swing.JButton eliminarPuntoDeInteres;
     private javax.swing.JTextField idtv;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel labelAgregar;
+    private javax.swing.JLabel labelDisponibilidad;
+    private javax.swing.JLabel labelIdentificador;
+    private javax.swing.JLabel labelNombre;
+    private javax.swing.JLabel labelPropiedades;
+    private javax.swing.JLabel labelTExistentes;
+    private javax.swing.JLabel labelTitulo;
     private javax.swing.JTextField nombretv;
     private javax.swing.JTable tablaPuntos;
     private javax.swing.JTable tablaTours;

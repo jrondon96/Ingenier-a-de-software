@@ -113,7 +113,17 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
             new String [] {
                 "ID_Tour", "Nombre_Tour", "Disponibilidad"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ToursVirtuales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ToursVirtuales.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ToursVirtuales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ToursVirtualesMouseClicked(evt);
@@ -157,6 +167,7 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
         agregarPuntoInteres.setBackground(new java.awt.Color(246, 246, 246));
         agregarPuntoInteres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         agregarPuntoInteres.setText("Agregar Punto de interes");
+        agregarPuntoInteres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         agregarPuntoInteres.setFocusPainted(false);
         agregarPuntoInteres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,7 +182,17 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
             new String [] {
                 "ID_PuntoInteres", "Nombre_PInteres", "Disponibilidad"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaPIS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TablaPIS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(TablaPIS);
 
         eliminarPuntoInteres.setBackground(new java.awt.Color(246, 246, 246));
@@ -187,6 +208,7 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
         modificarTourVirtual.setBackground(new java.awt.Color(246, 246, 246));
         modificarTourVirtual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
         modificarTourVirtual.setText("Modificar");
+        modificarTourVirtual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         modificarTourVirtual.setFocusPainted(false);
         modificarTourVirtual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +218,7 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
 
         finalizarModificarTV.setBackground(new java.awt.Color(246, 246, 246));
         finalizarModificarTV.setText("Finalizar");
+        finalizarModificarTV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         finalizarModificarTV.setFocusPainted(false);
         finalizarModificarTV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -402,45 +425,47 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
                 }
             }
         }catch(ArrayIndexOutOfBoundsException  e){
-            JOptionPane.showMessageDialog(null, "Error, no hay puntos de interés a eliminar.", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No hay puntos de interés a eliminar.", "Atención.", JOptionPane.WARNING_MESSAGE);
         }  
     }//GEN-LAST:event_eliminarPuntoInteresActionPerformed
 
     private void modificarTourVirtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarTourVirtualActionPerformed
-        tour.setIdentificador(idTour.getText());
-        tour.setNombre(nombreTour.getText());
-        if(disponibilidadtour.getSelection().equals(DButton.getModel())) {
-            tour.setDisponibilidad("Disponible");
-        }
-        if(disponibilidadtour.getSelection().equals(NDButton.getModel())) {
-            tour.setDisponibilidad("No Disponible");
-        }
         
-        for(int i=0; i < CtrlTourVirtual.getInstancia().getToursVirtualesArray().size();i++){
-            String id = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).getIdentificador();
-            if(copiaTour.getIdentificador() == id){
-                CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setIdentificador(tour.getIdentificador());
-                CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setNombre(tour.getNombre());
-                CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setDisponibilidad(tour.getDisponibilidad());
-                CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setTourspuntoDeInteresArray(tour.getTourspuntoDeInteresArray());
-                break;
-            }    
-        }
-        idTour.setText(null);
-        nombreTour.setText(null);
-        disponibilidadtour.clearSelection();
-        aux = null;
-        copiaTour = null;
-        puntoDeInteres = null;
-        
-        
+        if((nombreTour.getText().length()!=0)){
+            tour.setIdentificador(idTour.getText());
+            tour.setNombre(nombreTour.getText());
+            if(disponibilidadtour.getSelection().equals(DButton.getModel())) {
+                tour.setDisponibilidad("Disponible");
+            }
+            if(disponibilidadtour.getSelection().equals(NDButton.getModel())) {
+                tour.setDisponibilidad("No Disponible");
+            }
 
-        DefaultTableModel modelo2 = (DefaultTableModel) TablaPIS.getModel();
-        int filas = TablaPIS.getRowCount();
-        for (int i = 0; filas>i; i++) {
-            modelo2.removeRow(0);
+            for(int i=0; i < CtrlTourVirtual.getInstancia().getToursVirtualesArray().size();i++){
+                String id = CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).getIdentificador();
+                if(copiaTour.getIdentificador() == id){
+                    CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setIdentificador(tour.getIdentificador());
+                    CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setNombre(tour.getNombre());
+                    CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setDisponibilidad(tour.getDisponibilidad());
+                    CtrlTourVirtual.getInstancia().getToursVirtualesArray().get(i).setTourspuntoDeInteresArray(tour.getTourspuntoDeInteresArray());
+                    break;
+                }    
+            }
+            idTour.setText(null);
+            nombreTour.setText(null);
+            disponibilidadtour.clearSelection();
+            aux = null;
+            copiaTour = null;
+            puntoDeInteres = null;
+
+            DefaultTableModel modelo2 = (DefaultTableModel) TablaPIS.getModel();
+            int filas = TablaPIS.getRowCount();
+            for (int i = 0; filas>i; i++) {
+                modelo2.removeRow(0);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No deben haber campos vacíos.", "Atención.", JOptionPane.WARNING_MESSAGE);
         }
-        
     }//GEN-LAST:event_modificarTourVirtualActionPerformed
 
     private void ComboBoxPISActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxPISActionPerformed

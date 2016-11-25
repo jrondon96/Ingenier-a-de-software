@@ -22,16 +22,17 @@ CtrlObras controladorObra;
 
     
     public IAgregarO() {
-        initComponents(); 
+        initComponents(); /* Se inicializan la interfaz y los componentes de IAgregarO */
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Crear Obra de arte");  
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel(); 
+
+        DefaultTableModel modelo = (DefaultTableModel) obrasExistentes.getModel(); 
        
-        for (int i=0;i<controladorObra.getInstancia().getObrasArray().size();i++){
+        for (int i = 0; i < controladorObra.getInstancia().getObrasArray().size(); i++){ 
             modelo.addRow(new Object[]{controladorObra.getInstancia().getObrasArray().get(i).getIdObra(),
                 controladorObra.getInstancia().getObrasArray().get(i).getTituloObra(), 
-                controladorObra.getInstancia().getObrasArray().get(i).getAutorObra()});
+                controladorObra.getInstancia().getObrasArray().get(i).getAutorObra()}); /* Se cargan en la tabla obrasExistentes las obras existentes en el arreglo de obras. */
         }
     }
 
@@ -49,21 +50,21 @@ CtrlObras controladorObra;
         idO = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        obrasExistentes = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        tituloVentana = new javax.swing.JLabel();
+        labelIdentificador = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
         tituloO = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        labelAutor = new javax.swing.JLabel();
         autorO = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        labelACreacion = new javax.swing.JLabel();
         añoO = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        labelUbicacion = new javax.swing.JLabel();
         ubicacionO = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
+        labelDescripcion = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         descripcionO = new javax.swing.JTextArea();
 
@@ -74,7 +75,7 @@ CtrlObras controladorObra;
 
         jLabel3.setText("Ingrese propiedades de la obra de arte a crear: ");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        obrasExistentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -90,16 +91,16 @@ CtrlObras controladorObra;
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable1);
+        obrasExistentes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        obrasExistentes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(obrasExistentes);
 
         jLabel2.setText("Obras De Arte Existentes:");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Agregar Obra de Arte");
+        tituloVentana.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tituloVentana.setText("Agregar Obra de Arte");
 
-        jLabel5.setText("Identificador:");
+        labelIdentificador.setText("Identificador:");
 
         jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
@@ -122,15 +123,15 @@ CtrlObras controladorObra;
             }
         });
 
-        jLabel8.setText("Titulo:");
+        labelTitulo.setText("Titulo:");
 
-        jLabel9.setText("Autor:");
+        labelAutor.setText("Autor:");
 
-        jLabel10.setText("Año de creación:");
+        labelACreacion.setText("Año de creación:");
 
-        jLabel11.setText("Ubicación");
+        labelUbicacion.setText("Ubicación");
 
-        jLabel12.setText("Descripción: ");
+        labelDescripcion.setText("Descripción: ");
 
         descripcionO.setColumns(20);
         descripcionO.setLineWrap(true);
@@ -150,7 +151,7 @@ CtrlObras controladorObra;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(134, 134, 134)
-                        .addComponent(jLabel1))
+                        .addComponent(tituloVentana))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(jLabel3)))
@@ -158,16 +159,16 @@ CtrlObras controladorObra;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
+                    .addComponent(labelTitulo)
+                    .addComponent(labelAutor)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel10)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel12))
+                                .addComponent(labelACreacion)
+                                .addComponent(labelUbicacion)
+                                .addComponent(labelIdentificador)
+                                .addComponent(labelDescripcion))
                             .addGap(37, 37, 37)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(idO)
@@ -191,7 +192,7 @@ CtrlObras controladorObra;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(tituloVentana)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,27 +201,27 @@ CtrlObras controladorObra;
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(labelIdentificador)
                     .addComponent(idO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(labelTitulo)
                     .addComponent(tituloO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(autorO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(labelAutor))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                    .addComponent(labelACreacion)
                     .addComponent(añoO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
+                    .addComponent(labelUbicacion)
                     .addComponent(ubicacionO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
+                    .addComponent(labelDescripcion)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jButton4)
@@ -252,18 +253,18 @@ CtrlObras controladorObra;
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         
-        boolean mark_zuckerberg = false;
+        boolean mark_zuckerberg = false; /* flag para controlar que no se repitan los identificadores de las obras. */
         
         if ((idO.getText().length()!=0) && (autorO.getText().length()!=0) && (tituloO.getText().length()!=0) &&(añoO.getText().length()!=0) && (ubicacionO.getText().length()!=0)&&(descripcionO.getText().length()!=0)){
 
-            for(int i = 0; i < CtrlObras.getInstancia().getObrasArray().size(); i++){
+            for(int i = 0; i < CtrlObras.getInstancia().getObrasArray().size(); i++){ /* Se recorre el arreglo de obras. */
         
             String IdEntrada = idO.getText();
             String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
 
-                if(IdObra == null ? IdEntrada == null : IdObra.equals(IdEntrada)){                   
+                if(IdObra == null ? IdEntrada == null : IdObra.equals(IdEntrada)){   /* Se compara el id actual con el existente para asegurarse de que no se repitan obras por identificador. */                
                     mark_zuckerberg = true;
-                    break;
+                    break; /* Fin del ciclo con flag marcada. */
                 }   
             }
             
@@ -274,20 +275,25 @@ CtrlObras controladorObra;
                 añoO.setText(null);
                 ubicacionO.setText(null);
                 descripcionO.setText(null);
-                JOptionPane.showMessageDialog(null, "Error, la obra ya existe.", "Error", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error, la obra ya existe.", "Error", JOptionPane.WARNING_MESSAGE); /* Las obras tienen un identificador único y no deben repetirse.*/
             }else{
                 Obra obra = new Obra(idO.getText(),autorO.getText(),tituloO.getText(),añoO.getText(),ubicacionO.getText(),descripcionO.getText());
-                DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-                controladorObra.getInstancia().getObrasArray().add(obra);
-
-                modelo.addRow(new Object[]{obra.getIdObra(),obra.getTituloObra(),obra.getAutorObra()});
-                idO.setText(null);
+                DefaultTableModel modelo = (DefaultTableModel) obrasExistentes.getModel();
+                
+                controladorObra.getInstancia().getObrasArray().add(obra); /* Se carga la obra en el arreglo de obras. */
+                modelo.addRow(new Object[]{obra.getIdObra(),obra.getTituloObra(),obra.getAutorObra()}); /* Se cargan los datos en la tabla de obrasExistentes.*/
+                
+                /* REINICIO DE CAMPOS DE AGREGAR OBRA.*/
+               
+                idO.setText(null); 
                 autorO.setText(null);
                 tituloO.setText(null);
                 añoO.setText(null);
-
                 ubicacionO.setText(null);
                 descripcionO.setText(null);
+                
+                /* Mensaje de respuesta al cargar la obra.*/
+                
                 JOptionPane.showMessageDialog(null, "Obra agregada correctamente");
             }
             
@@ -307,20 +313,20 @@ CtrlObras controladorObra;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JColorChooser jColorChooser1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel labelACreacion;
+    private javax.swing.JLabel labelAutor;
+    private javax.swing.JLabel labelDescripcion;
+    private javax.swing.JLabel labelIdentificador;
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JLabel labelUbicacion;
+    private javax.swing.JTable obrasExistentes;
     private javax.swing.JTextField tituloO;
+    private javax.swing.JLabel tituloVentana;
     private javax.swing.JTextField ubicacionO;
     // End of variables declaration//GEN-END:variables
 }

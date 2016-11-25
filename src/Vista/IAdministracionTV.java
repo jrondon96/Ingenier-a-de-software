@@ -9,13 +9,14 @@ public class IAdministracionTV extends javax.swing.JFrame {
     CtrlControlador controlador; 
     
     public IAdministracionTV() {
-        initComponents(); 
+        initComponents(); /* Se inicializan la interfaz y los componentes de IAdministracionTV */
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Administrar Tours Virtuales");
+        
         if(CtrlTourVirtual.getInstancia().getToursVirtualesArray().size() <= 0){
-           botonEliminarTour.setEnabled(false);
-           botonModificarTour.setEnabled(false);
+           botonEliminarTour.setEnabled(false); /* Se deshabilita la eliminación de tours en caso de que no existan tours cargados. */
+           botonModificarTour.setEnabled(false); /* Se deshabilita la modificación de tours en caso de que no existan tours cargados. */
         }
     }
 

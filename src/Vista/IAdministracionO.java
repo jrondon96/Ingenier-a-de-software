@@ -8,15 +8,15 @@ import Controlador.CtrlObras;
 public class IAdministracionO extends javax.swing.JFrame {
 
     CtrlControlador controlador; 
-    public IAdministracionO() {
+    public IAdministracionO() { /* Incialización de la interfaz de administracion de obras. */
         initComponents(); 
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Administrar Obras de arte");
 
         if(CtrlObras.getInstancia().getObrasArray().size() <= 0){
-           botonEliminarObra.setEnabled(false);
-           botonModificarObra.setEnabled(false);
+           botonEliminarObra.setEnabled(false); /* Se deshabilita la eliminación de obras en caso de que no hayan obras en el arreglo de obras. */
+           botonModificarObra.setEnabled(false); /* Se deshabilita la modificación de obras en caso de que no hayan obras en el arreglo de obras. */
         }
     }
 
