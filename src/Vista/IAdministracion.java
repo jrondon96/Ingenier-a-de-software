@@ -2,12 +2,13 @@ package Vista;
 
 import Controlador.CtrlControlador;
 
+/*Interfaz grafica de panel de administracion del comite*/
 
 public class IAdministracion extends javax.swing.JFrame { 
     CtrlControlador controlador; 
 
     
-    public IAdministracion() {
+    public IAdministracion() {                                      /*Inicializacion de los componentes graficos de la interfaz*/
         initComponents(); 
         setLocationRelativeTo(null);
         setResizable(false);
@@ -155,23 +156,30 @@ public class IAdministracion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        
+       /*Metodo Inutil que no sabemos como eliminar*/ 
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
+    /*Metodo para el boton Finalizar*/
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         IBienvenida bienvenida = new IBienvenida();
         bienvenida.setVisible(true); 
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    /*Metodo para el boton Administrar Tours Virtuales*/
+    
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         controlador.getInstancia().opcionSeleccionada("AdministracionTV",this);
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
+    /*Metodo para el boton Administrar Puntos de Interes*/
+    
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         controlador.getInstancia().opcionSeleccionada("AdministracionPI",this);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
-
+    
+    /*Metodo para el boton Administrar Obras*/
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         controlador.getInstancia().opcionSeleccionada("AdministracionO",this);
     }//GEN-LAST:event_jButton1ActionPerformed

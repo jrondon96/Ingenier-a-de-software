@@ -2,14 +2,16 @@ package Modelo;
 
 import java.util.ArrayList;
 
+/*Clase que contiene todos los atributos referente al tour virtual y sus respectivos metodos set y get*/
 
 public class TourVirtual { 
     
     private String identificador;
     private String nombre; 
     private String disponibilidad; 
-    private ArrayList <PuntoDeInteres> TourspuntoDeInteresArray= new ArrayList <PuntoDeInteres>();   
-
+    private ArrayList <PuntoDeInteres> TourspuntoDeInteresArray= new ArrayList <PuntoDeInteres>(); /*Arreglo que contiene los puntos de interes asociados a un tour virtual*/  
+    
+    /*Constructor de la clase*/
     public TourVirtual(String identificador, String nombre, String disponibilidad, ArrayList<PuntoDeInteres> TourspuntoDeInteresArray) {
         this.identificador = identificador;
         this.nombre = nombre;
@@ -17,6 +19,7 @@ public class TourVirtual {
         this.TourspuntoDeInteresArray = TourspuntoDeInteresArray;
     } 
 
+    /*---------------------------------------------------- Metodos set y get ------------------------------------------------------*/
     public String getIdentificador() {
         return identificador;
     }

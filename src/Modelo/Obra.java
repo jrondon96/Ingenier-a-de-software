@@ -9,16 +9,21 @@ package Modelo;
  *
  * @author Jesus Antonio
  */
+
+/*Clase obra contiene todos los atributos metodos set y get de las obra*/
+
 public class Obra { 
     
-    private String idObra; 
+    private String idObra;                       
     private String tituloObra;  
     private String autorObra; 
     private String añoCreacionObra; 
     private String ubicacionObra; 
     private String descripcionObra;
     private String imagenObra;  
-
+    
+    /*Constructor de la clase Obra*/
+    
     public Obra(String idObra, String autorObra, String tituloObra, String añoCreacionObra, String ubicacionObra, String descripcionObra) {
         this.idObra = idObra;
         this.autorObra = autorObra;
@@ -29,6 +34,7 @@ public class Obra {
        
     }
     
+   /*................................................ Metodos set y get .............................................................*/ 
     public String getImagenObra() {
         return imagenObra;
     }

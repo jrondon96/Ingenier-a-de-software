@@ -3,14 +3,15 @@ package Controlador;
 import Modelo.PuntoDeInteres;
 import java.util.ArrayList;
 
+/*Clase CtrlPuntoDeInteres se encarga de controlar lo referente a los puntos de interes*/
 
-public class CtrlPuntoDeInteres {
+public class CtrlPuntoDeInteres{
      
-    private static final CtrlPuntoDeInteres unicaInstancia = new CtrlPuntoDeInteres();
+    private static final CtrlPuntoDeInteres unicaInstancia = new CtrlPuntoDeInteres(); /*Singlenton*/
     
-    private ArrayList <PuntoDeInteres> puntoDeInteresArray= new ArrayList <PuntoDeInteres> (); 
+    private ArrayList <PuntoDeInteres> puntoDeInteresArray= new ArrayList <PuntoDeInteres> (); /*Array donde se almacenan los puntos de interes existente*/
 
-    public ArrayList<PuntoDeInteres> getPuntoDeInteresArray() {
+    public ArrayList<PuntoDeInteres> getPuntoDeInteresArray(){     
         return puntoDeInteresArray;
     } 
     
