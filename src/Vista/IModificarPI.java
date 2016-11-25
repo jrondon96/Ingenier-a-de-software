@@ -428,11 +428,14 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
                   break;
                }
             }
+            DefaultTableModel modelo  = (DefaultTableModel) TablaPuntosDeInteres.getModel(); 
+            while(it.hasNext()){
+                aux=it.next();
+                modelo.addRow(new Object[]{aux.getIdentificador(),aux.getNombre(),aux.getDisponibilidad()});       
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Error, no deben haber campos vacíos.", "Error", JOptionPane.WARNING_MESSAGE);
         }
-        
-        
     
         idPI.setText(null);
         NombrePI.setText(null);

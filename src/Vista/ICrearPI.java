@@ -70,6 +70,8 @@ private PuntoDeInteres PI;
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        nombrepi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         idpi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel4.setText("Identificador: ");
@@ -108,6 +110,7 @@ private PuntoDeInteres PI;
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         disponibilidadpi.add(jRadioButton1);
         jRadioButton1.setText("Disponible");
+        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -117,6 +120,7 @@ private PuntoDeInteres PI;
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         disponibilidadpi.add(jRadioButton2);
         jRadioButton2.setText("No Disponible");
+        jRadioButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
@@ -174,6 +178,7 @@ private PuntoDeInteres PI;
         eliminarObra.setBackground(new java.awt.Color(246, 246, 246));
         eliminarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         eliminarObra.setText("Eliminar Obra");
+        eliminarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         eliminarObra.setFocusPainted(false);
         eliminarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +188,7 @@ private PuntoDeInteres PI;
 
         crearPuntoInteres.setBackground(new java.awt.Color(246, 246, 246));
         crearPuntoInteres.setText("Crear");
+        crearPuntoInteres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         crearPuntoInteres.setFocusPainted(false);
         crearPuntoInteres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,6 +198,7 @@ private PuntoDeInteres PI;
 
         jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setText("Finalizar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
