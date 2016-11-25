@@ -2,6 +2,8 @@
 package Vista;
 
 import Controlador.CtrlControlador;
+import Controlador.CtrlObras;
+import Controlador.CtrlPuntoDeInteres;
 
 
 public class IAdministracionPI extends javax.swing.JFrame {
@@ -12,6 +14,11 @@ public class IAdministracionPI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Administrar Puntos de Interes"); 
+        
+        if(CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size() <= 0){
+           botonEliminarPuntoInteres.setEnabled(false);
+           botonModificarPuntoInteres.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -21,9 +28,9 @@ public class IAdministracionPI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonModificarPuntoInteres = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        botonEliminarPuntoInteres = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,14 +50,14 @@ public class IAdministracionPI extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(246, 246, 246));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
-        jButton2.setText("Modificar punto de interés");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonModificarPuntoInteres.setBackground(new java.awt.Color(246, 246, 246));
+        botonModificarPuntoInteres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
+        botonModificarPuntoInteres.setText("Modificar punto de interés");
+        botonModificarPuntoInteres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonModificarPuntoInteres.setFocusPainted(false);
+        botonModificarPuntoInteres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonModificarPuntoInteresActionPerformed(evt);
             }
         });
 
@@ -64,14 +71,14 @@ public class IAdministracionPI extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(246, 246, 246));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
-        jButton4.setText("Eliminar punto de interés");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setFocusPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonEliminarPuntoInteres.setBackground(new java.awt.Color(246, 246, 246));
+        botonEliminarPuntoInteres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
+        botonEliminarPuntoInteres.setText("Eliminar punto de interés");
+        botonEliminarPuntoInteres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEliminarPuntoInteres.setFocusPainted(false);
+        botonEliminarPuntoInteres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonEliminarPuntoInteresActionPerformed(evt);
             }
         });
 
@@ -87,9 +94,9 @@ public class IAdministracionPI extends javax.swing.JFrame {
                         .addGap(70, 70, 70))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                            .addComponent(botonModificarPuntoInteres, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(botonEliminarPuntoInteres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(114, 114, 114))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -103,9 +110,9 @@ public class IAdministracionPI extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addComponent(jButton1)
                 .addGap(29, 29, 29)
-                .addComponent(jButton2)
+                .addComponent(botonModificarPuntoInteres)
                 .addGap(30, 30, 30)
-                .addComponent(jButton4)
+                .addComponent(botonEliminarPuntoInteres)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addContainerGap())
@@ -129,9 +136,9 @@ public class IAdministracionPI extends javax.swing.JFrame {
         controlador.getInstancia().opcionSeleccionada("CrearPI",this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonModificarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarPuntoInteresActionPerformed
         controlador.getInstancia().opcionSeleccionada("ModificarPI",this);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonModificarPuntoInteresActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        IAdministracion administracion = new IAdministracion();
@@ -139,16 +146,16 @@ public class IAdministracionPI extends javax.swing.JFrame {
        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void botonEliminarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarPuntoInteresActionPerformed
         controlador.getInstancia().opcionSeleccionada("EliminarPI", this);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_botonEliminarPuntoInteresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonEliminarPuntoInteres;
+    private javax.swing.JButton botonModificarPuntoInteres;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

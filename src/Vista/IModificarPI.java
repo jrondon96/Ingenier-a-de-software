@@ -50,7 +50,12 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
         while(ite.hasNext()){
             auxO = ite.next();
             ComboBoxObras.addItem(auxO.getIdObra()+" "+auxO.getTituloObra());   
-        }      
+        }   
+        
+        if(CtrlObras.getInstancia().getObrasArray().size() <=0){
+            agregarObra.setEnabled(false);
+            eliminarObra.setEnabled(false);
+        }
     } 
 
     /**
@@ -428,11 +433,9 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
                   break;
                }
             }
-            DefaultTableModel modelo  = (DefaultTableModel) TablaPuntosDeInteres.getModel(); 
-            while(it.hasNext()){
-                aux=it.next();
-                modelo.addRow(new Object[]{aux.getIdentificador(),aux.getNombre(),aux.getDisponibilidad()});       
-            }
+            int row = TablaPuntosDeInteres.getSelectedRow();
+            ((DefaultTableModel)TablaPuntosDeInteres.getModel()).removeRow(row);
+            ((DefaultTableModel)TablaPuntosDeInteres.getModel()).insertRow(row, new Object[]{aux.getIdentificador(),aux.getNombre(),aux.getDisponibilidad()});
         }else{
             JOptionPane.showMessageDialog(null, "Error, no deben haber campos vacíos.", "Error", JOptionPane.WARNING_MESSAGE);
         }

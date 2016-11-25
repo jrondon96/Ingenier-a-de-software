@@ -35,7 +35,13 @@ private PuntoDeInteres PI;
         while(it.hasNext()){
             aux=it.next();
             ComboBoxObra.addItem(aux.getIdObra()+" "+aux.getTituloObra());   
-        }               
+        }  
+        
+        if(CtrlObras.getInstancia().getObrasArray().size() <=0){
+            agregarObra.setEnabled(false);
+            eliminarObra.setEnabled(false);
+        }
+        
     }
   
     @SuppressWarnings("unchecked")
@@ -139,6 +145,7 @@ private PuntoDeInteres PI;
         agregarObra.setBackground(new java.awt.Color(246, 246, 246));
         agregarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         agregarObra.setText("Agregar Obra");
+        agregarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         agregarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarObraActionPerformed(evt);
@@ -217,10 +224,7 @@ private PuntoDeInteres PI;
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ComboBoxObra, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(151, 151, 151)))
+                                .addComponent(ComboBoxObra, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +240,10 @@ private PuntoDeInteres PI;
                             .addComponent(jRadioButton1)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(idpi, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                .addComponent(nombrepi)))
+                                .addComponent(nombrepi))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel7)))
                         .addGap(11, 11, 11)))
                 .addGap(26, 26, 26))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -295,9 +302,9 @@ private PuntoDeInteres PI;
                     .addComponent(jLabel6)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel7)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ComboBoxObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addComponent(agregarObra)
@@ -333,59 +340,89 @@ private PuntoDeInteres PI;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void agregarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarObraActionPerformed
+  
+        String O =(String) ComboBoxObra.getSelectedItem(); 
+        StringTokenizer id = new StringTokenizer(O," ");
+        String token =  id.nextToken();
             
-            String O =(String) ComboBoxObra.getSelectedItem(); 
-            StringTokenizer id = new StringTokenizer(O," ");
-            String token =  id.nextToken();
-            
-            for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){
+        for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){
 
-                String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
+            String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
 
-                if( token == null ? IdObra == null : token.equals(IdObra) ){
-                    ObrasAux.add(CtrlObras.getInstancia().getObrasArray().get(i));
+            if( token == null ? IdObra == null : token.equals(IdObra) ){
+                ObrasAux.add(CtrlObras.getInstancia().getObrasArray().get(i));
                     
-                     DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+                DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
                     
-                     modelo2.insertRow(0, new Object[]{CtrlObras.getInstancia().getObrasArray().get(i).getIdObra(),
-                     CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
-                }     
-            }                                      
+                modelo2.insertRow(0, new Object[]{CtrlObras.getInstancia().getObrasArray().get(i).getIdObra(),
+                CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
+            }     
+        }                                      
     }//GEN-LAST:event_agregarObraActionPerformed
 
     private void crearPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPuntoInteresActionPerformed
         
         String disp = "No Disponible";
-        
+        boolean mark_zuckerberg = false;
+
         if ((idpi.getText().length()!=0) && (nombrepi.getText().length()!=0)) {
             
-            if(disponibilidadpi.getSelection().equals(jRadioButton1.getModel())) {
-                disp = "Disponible";
-            }    
-            
-            PuntoDeInteres pi = new PuntoDeInteres(idpi.getText(),nombrepi.getText(),disp, ObrasAux);
-            CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().add(pi);
+            for(int i = 0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size(); i++){
+        
+            String IdEntrada = idpi.getText();
+            String IdPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
 
-            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-            modelo.insertRow(0, new Object[]{pi.getIdentificador(),pi.getNombre(),pi.getDisponibilidad()});
-            
-            idpi.setText(null);
-            nombrepi.setText(null);
-            disponibilidadpi.clearSelection(); 
-            ObrasAux = new ArrayList <Obra> (); 
-            
-            DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
-            int filas= jTable2.getRowCount();
-            for (int i = 0; filas>i; i++) {
-                modelo2.removeRow(0);
+                if(IdPI == null ? IdEntrada == null : IdPI.equals(IdEntrada)){                   
+                    mark_zuckerberg = true;
+                    break;
+                }   
             }
             
-            try{
-                String Obra =(String) ComboBoxObra.getSelectedItem();
-                       
-            }catch(NullPointerException e){
-                JOptionPane.showMessageDialog(null, "Debe seleccionar una obra.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
+            if(mark_zuckerberg == true){
+                
+                idpi.setText(null);
+                nombrepi.setText(null);
+                disponibilidadpi.clearSelection(); 
+                DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+                int filas= jTable2.getRowCount();
+                
+                for (int i = 0; filas>i; i++) {
+                    modelo2.removeRow(0);
+                }
+                
+                JOptionPane.showMessageDialog(null, "Error, el punto de interés ya existe.", "Error", JOptionPane.WARNING_MESSAGE);
+            }else{
+                
+                if(disponibilidadpi.getSelection().equals(jRadioButton1.getModel())) {
+                    disp = "Disponible";
+                }    
+
+                PuntoDeInteres pi = new PuntoDeInteres(idpi.getText(),nombrepi.getText(),disp, ObrasAux);
+                CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().add(pi);
+
+                DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+                modelo.insertRow(0, new Object[]{pi.getIdentificador(),pi.getNombre(),pi.getDisponibilidad()});
+
+                idpi.setText(null);
+                nombrepi.setText(null);
+                disponibilidadpi.clearSelection(); 
+                ObrasAux = new ArrayList <Obra> (); 
+
+                DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+                int filas= jTable2.getRowCount();
+                for (int i = 0; filas>i; i++) {
+                    modelo2.removeRow(0);
+                }
+
+                try{
+                    String Obra =(String) ComboBoxObra.getSelectedItem();
+
+                }catch(NullPointerException e){
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar una obra.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
+                }
             }
+            
+            
 
         }else{
             JOptionPane.showMessageDialog(null,"Error, faltan campos por rellenar", "Error", JOptionPane.ERROR_MESSAGE); 

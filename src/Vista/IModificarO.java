@@ -25,7 +25,6 @@ private Obra aux;
         
          while(it.hasNext()){
             aux=it.next();
-             
             modelo.addRow(new Object[]{aux.getIdObra(),aux.getTituloObra(),aux.getAutorObra()});
         }
         
@@ -75,7 +74,7 @@ private Obra aux;
 
             },
             new String [] {
-                "ID_OBRA", "Nombre", "Autor"
+                "ID_OBRA", "Titulo", "Autor"
             }
         ) {
             boolean[] canEdit = new boolean [] {

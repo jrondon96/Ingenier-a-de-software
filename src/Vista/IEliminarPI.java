@@ -166,7 +166,7 @@ public class IEliminarPI extends javax.swing.JFrame {
                 }
             }
         }catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un punto de interés.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No existen puntos de interés a eliminar.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
         }
         
         
