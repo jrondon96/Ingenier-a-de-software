@@ -2,6 +2,7 @@
 package Vista;
 
 import Controlador.CtrlControlador;
+import Controlador.CtrlObras;
 
 
 public class IAdministracionO extends javax.swing.JFrame {
@@ -11,7 +12,12 @@ public class IAdministracionO extends javax.swing.JFrame {
         initComponents(); 
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Administrar Obras de arte"); 
+        setTitle("Administrar Obras de arte");
+
+        if(CtrlObras.getInstancia().getObrasArray().size() <= 0){
+           botonEliminarObra.setEnabled(false);
+           botonModificarObra.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -21,9 +27,9 @@ public class IAdministracionO extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonModificarObra = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        botonEliminarObra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,6 +41,7 @@ public class IAdministracionO extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(246, 246, 246));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton1.setText("Agregar Obra de Arte");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -42,18 +49,20 @@ public class IAdministracionO extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(246, 246, 246));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
-        jButton2.setText("Modificar Obra de arte ");
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonModificarObra.setBackground(new java.awt.Color(246, 246, 246));
+        botonModificarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
+        botonModificarObra.setText("Modificar Obra de arte ");
+        botonModificarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonModificarObra.setFocusPainted(false);
+        botonModificarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonModificarObraActionPerformed(evt);
             }
         });
 
         jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setText("Finalizar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,13 +70,14 @@ public class IAdministracionO extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(246, 246, 246));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
-        jButton4.setText("Eliminar Obra de arte");
-        jButton4.setFocusPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonEliminarObra.setBackground(new java.awt.Color(246, 246, 246));
+        botonEliminarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
+        botonEliminarObra.setText("Eliminar Obra de arte");
+        botonEliminarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEliminarObra.setFocusPainted(false);
+        botonEliminarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonEliminarObraActionPerformed(evt);
             }
         });
 
@@ -80,8 +90,8 @@ public class IAdministracionO extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonEliminarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonModificarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(114, 114, 114))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -99,9 +109,9 @@ public class IAdministracionO extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addComponent(jButton1)
                 .addGap(20, 20, 20)
-                .addComponent(jButton2)
+                .addComponent(botonModificarObra)
                 .addGap(26, 26, 26)
-                .addComponent(jButton4)
+                .addComponent(botonEliminarObra)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addContainerGap())
@@ -125,9 +135,9 @@ public class IAdministracionO extends javax.swing.JFrame {
         controlador.getInstancia().opcionSeleccionada("agregarO",this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonModificarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarObraActionPerformed
         controlador.getInstancia().opcionSeleccionada("ModificarO",this);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonModificarObraActionPerformed
     
                  
     
@@ -137,16 +147,16 @@ public class IAdministracionO extends javax.swing.JFrame {
        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void botonEliminarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarObraActionPerformed
        controlador.getInstancia().opcionSeleccionada("EliminarO",this);  
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_botonEliminarObraActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonEliminarObra;
+    private javax.swing.JButton botonModificarObra;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

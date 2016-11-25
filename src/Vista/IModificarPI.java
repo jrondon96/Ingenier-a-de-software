@@ -13,6 +13,7 @@ import Modelo.PuntoDeInteres;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -88,6 +89,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        idPI.setEditable(false);
         idPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idPIActionPerformed(evt);
@@ -105,7 +107,17 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
             new String [] {
                 "ID_PuntoInteres", "Nombre", "Disponibilidad"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaPuntosDeInteres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TablaPuntosDeInteres.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TablaPuntosDeInteres.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaPuntosDeInteresMouseClicked(evt);
@@ -145,6 +157,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
         agregarObra.setBackground(new java.awt.Color(246, 246, 246));
         agregarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         agregarObra.setText("Agregar Obra");
+        agregarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         agregarObra.setFocusPainted(false);
         agregarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,12 +172,22 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
             new String [] {
                 "ID_Obra", "Titulo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaObras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane2.setViewportView(TablaObras);
 
         eliminarObra.setBackground(new java.awt.Color(246, 246, 246));
         eliminarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         eliminarObra.setText("Eliminar Obra");
+        eliminarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         eliminarObra.setFocusPainted(false);
         eliminarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +198,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
         modificarPuntoInteres.setBackground(new java.awt.Color(246, 246, 246));
         modificarPuntoInteres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
         modificarPuntoInteres.setText("Modificar");
+        modificarPuntoInteres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         modificarPuntoInteres.setFocusPainted(false);
         modificarPuntoInteres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,6 +208,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
 
         finalizarModificarPI.setBackground(new java.awt.Color(246, 246, 246));
         finalizarModificarPI.setText("Finalizar");
+        finalizarModificarPI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         finalizarModificarPI.setFocusPainted(false);
         finalizarModificarPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,43 +223,23 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(56, 56, 56))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(finalizarModificarPI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(44, 44, 44)
-                            .addComponent(ComboBoxObras, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(finalizarModificarPI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(NDButton)
+                                .addComponent(ComboBoxObras, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(60, 60, 60))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(34, 34, 34)
-                                .addComponent(idPI, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(DButton)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(NDButton))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addComponent(NombrePI, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(eliminarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +248,21 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
                                 .addGap(110, 110, 110))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(agregarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(109, 109, 109)))))
+                                .addGap(109, 109, 109))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addGap(51, 51, 51)
+                            .addComponent(DButton))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(idPI)
+                                .addComponent(NombrePI)))))
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -315,10 +334,13 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
     private void TablaPuntosDeInteresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPuntosDeInteresMouseClicked
            
         DefaultTableModel modelo2 = (DefaultTableModel) TablaObras.getModel();
+        
         int filas= TablaObras.getRowCount();
+        
         for (int i = 0; filas>i; i++) {
             modelo2.removeRow(0);
         }
+        
         String Id = TablaPuntosDeInteres.getValueAt(TablaPuntosDeInteres.getSelectedRow(), 0).toString();
         String Nombre = TablaPuntosDeInteres.getValueAt(TablaPuntosDeInteres.getSelectedRow(), 1).toString();
         String Disp = TablaPuntosDeInteres.getValueAt(TablaPuntosDeInteres.getSelectedRow(), 2).toString();
@@ -387,25 +409,30 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
 
     private void modificarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPuntoInteresActionPerformed
         
-        aux.setIdentificador( idPI.getText());
-        aux.setNombre(NombrePI.getText());  
-        if(disponibilidadpi.getSelection().equals(DButton.getModel())) {
-            aux.setDisponibilidad("Disponible");
-        }
-        if(disponibilidadpi.getSelection().equals(NDButton.getModel())) {
-            aux.setDisponibilidad("No Disponible");
+        if((NombrePI.getText().length()!=0)){
+            aux.setNombre(NombrePI.getText());  
+            if(disponibilidadpi.getSelection().equals(DButton.getModel())) {
+                aux.setDisponibilidad("Disponible");
+            }
+            if(disponibilidadpi.getSelection().equals(NDButton.getModel())) {
+                aux.setDisponibilidad("No Disponible");
+            }
+
+            for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
+               String id = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
+               if(copiaPI.getIdentificador() == id){
+                  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setIdentificador(aux.getIdentificador());
+                  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setNombre(aux.getNombre());
+                  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setDisponibilidad(aux.getDisponibilidad());
+                  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setObrasPuntoDeInteresArray(aux.getObrasPuntoDeInteresArray());
+                  break;
+               }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Error, no deben haber campos vacíos.", "Error", JOptionPane.WARNING_MESSAGE);
         }
         
-        for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
-           String id = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
-           if(copiaPI.getIdentificador() == id){
-              CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setIdentificador(aux.getIdentificador());
-              CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setNombre(aux.getNombre());
-              CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setDisponibilidad(aux.getDisponibilidad());
-              CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setObrasPuntoDeInteresArray(aux.getObrasPuntoDeInteresArray());
-              break;
-           }
-        }
+        
     
         idPI.setText(null);
         NombrePI.setText(null);

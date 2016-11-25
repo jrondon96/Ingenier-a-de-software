@@ -63,6 +63,7 @@ public class IEliminarPI extends javax.swing.JFrame {
 
         jLabel2.setText("Seleccionar Punto de Interes a Eliminar:");
 
+        ComboBoxPI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ComboBoxPI.setFocusable(false);
         ComboBoxPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +74,7 @@ public class IEliminarPI extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(246, 246, 246));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
         jButton2.setText("Eliminar");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +84,7 @@ public class IEliminarPI extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setText("Finalizar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +166,7 @@ public class IEliminarPI extends javax.swing.JFrame {
                 }
             }
         }catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un putno de interes.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un punto de interés.", "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
         }
         
         

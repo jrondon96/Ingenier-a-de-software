@@ -70,6 +70,8 @@ private PuntoDeInteres PI;
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        idpi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         jLabel4.setText("Identificador: ");
 
         jLabel3.setText("Ingrese propiedades del tour virtual a crear: ");
@@ -90,6 +92,7 @@ private PuntoDeInteres PI;
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
         jTable1.getAccessibleContext().setAccessibleDescription("");
 
@@ -161,6 +164,7 @@ private PuntoDeInteres PI;
                 return canEdit [columnIndex];
             }
         });
+        jTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane2.setViewportView(jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
             jTable2.getColumnModel().getColumn(0).setResizable(false);

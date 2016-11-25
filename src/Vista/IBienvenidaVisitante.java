@@ -51,9 +51,11 @@ public class IBienvenidaVisitante extends javax.swing.JFrame {
 
         botonVisitar.setBackground(new java.awt.Color(246, 246, 246));
         botonVisitar.setText("Visitar");
+        botonVisitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_md.png"))); // NOI18N
         botonSalir.setText("Salir");
+        botonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

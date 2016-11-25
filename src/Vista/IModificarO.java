@@ -5,6 +5,7 @@ import Controlador.CtrlControlador;
 import Controlador.CtrlObras;
 import Modelo.Obra;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -27,7 +28,6 @@ private Obra aux;
              
             modelo.addRow(new Object[]{aux.getIdObra(),aux.getTituloObra(),aux.getAutorObra()});
         }
-       
         
     }
 
@@ -66,6 +66,8 @@ private Obra aux;
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        idO.setEditable(false);
+
         jLabel3.setText("Ingrese propiedades de la obra de arte: ");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -75,7 +77,17 @@ private Obra aux;
             new String [] {
                 "ID_OBRA", "Nombre", "Autor"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -93,6 +105,7 @@ private Obra aux;
         jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
         jButton4.setText("Modificar");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setFocusPainted(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +115,7 @@ private Obra aux;
 
         jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setText("Finalizar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,45 +142,48 @@ private Obra aux;
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(77, 77, 77)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel12))
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(añoO)
-                                    .addComponent(ubicacionO)
-                                    .addComponent(tituloO)
-                                    .addComponent(autorO)
+                                .addGap(52, 52, 52)
+                                .addComponent(jButton4)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(idO, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jScrollPane3)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(129, 129, 129)
-                                .addComponent(jButton4)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(añoO, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ubicacionO, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tituloO, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(autorO, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(idO, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(46, 46, 46))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(75, 75, 75))
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(89, 89, 89)))
-                .addGap(30, 30, 30))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(46, 46, 46))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel1)))
+                .addGap(105, 169, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,9 +192,9 @@ private Obra aux;
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -250,28 +267,33 @@ private Obra aux;
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
         String Id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
         for (int i=0;i<CtrlObras.getInstancia().getObrasArray().size();i++){      
                 
-              aux =  CtrlObras.getInstancia().getObrasArray().get(i);
-              String IdObra = aux.getIdObra();
+            aux =  CtrlObras.getInstancia().getObrasArray().get(i);
+            String IdObra = aux.getIdObra();
 
                 if( Id == null ? IdObra == null : Id.equals(IdObra) ){
-                    CtrlObras.getInstancia().getObrasArray().get(i).setIdObra(idO.getText());
-                    CtrlObras.getInstancia().getObrasArray().get(i).setTituloObra(tituloO.getText());
-                    CtrlObras.getInstancia().getObrasArray().get(i).setAutorObra(autorO.getText());
-                    CtrlObras.getInstancia().getObrasArray().get(i).setAñoCreacionObra(añoO.getText());
-                    CtrlObras.getInstancia().getObrasArray().get(i).setUbicacionObra(ubicacionO.getText());
-                    CtrlObras.getInstancia().getObrasArray().get(i).setDescripcionObra(descripcionO.getText());
-                    int row = jTable1.getSelectedRow();
-                    ((DefaultTableModel)jTable1.getModel()).removeRow(row);
-                    ((DefaultTableModel)jTable1.getModel()).insertRow(row, new Object[]{aux.getIdObra(),aux.getTituloObra(),aux.getAutorObra()});
-                    idO.setText(null);
-                    tituloO.setText(null);
-                    autorO.setText(null);
-                    añoO.setText(null);
-                    ubicacionO.setText(null);
-                    descripcionO.setText(null);
+                    if ((idO.getText().length()!=0) && (autorO.getText().length()!=0) && (tituloO.getText().length()!=0) &&(añoO.getText().length()!=0) && (ubicacionO.getText().length()!=0)&&(descripcionO.getText().length()!=0)){
+                        CtrlObras.getInstancia().getObrasArray().get(i).setTituloObra(tituloO.getText());
+                        CtrlObras.getInstancia().getObrasArray().get(i).setAutorObra(autorO.getText());
+                        CtrlObras.getInstancia().getObrasArray().get(i).setAñoCreacionObra(añoO.getText());
+                        CtrlObras.getInstancia().getObrasArray().get(i).setUbicacionObra(ubicacionO.getText());
+                        CtrlObras.getInstancia().getObrasArray().get(i).setDescripcionObra(descripcionO.getText());
+                        int row = jTable1.getSelectedRow();
+                        ((DefaultTableModel)jTable1.getModel()).removeRow(row);
+                        ((DefaultTableModel)jTable1.getModel()).insertRow(row, new Object[]{aux.getIdObra(),aux.getTituloObra(),aux.getAutorObra()});
+                        idO.setText(null);
+                        tituloO.setText(null);
+                        autorO.setText(null);
+                        añoO.setText(null);
+                        ubicacionO.setText(null);
+                        descripcionO.setText(null);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Error, se deben rellenar todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    
                 } 
         
         }

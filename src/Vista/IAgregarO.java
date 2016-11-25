@@ -30,8 +30,8 @@ CtrlObras controladorObra;
        
         for (int i=0;i<controladorObra.getInstancia().getObrasArray().size();i++){
             modelo.addRow(new Object[]{controladorObra.getInstancia().getObrasArray().get(i).getIdObra(),
-                                       controladorObra.getInstancia().getObrasArray().get(i).getTituloObra(), 
-                                       controladorObra.getInstancia().getObrasArray().get(i).getAutorObra()});
+                controladorObra.getInstancia().getObrasArray().get(i).getTituloObra(), 
+                controladorObra.getInstancia().getObrasArray().get(i).getAutorObra()});
         }
     }
 
@@ -81,8 +81,17 @@ CtrlObras controladorObra;
             new String [] {
                 "ID_OBRA", "Nombre", "Autor"
             }
-        ));
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setText("Obras De Arte Existentes:");
@@ -95,6 +104,7 @@ CtrlObras controladorObra;
         jButton4.setBackground(new java.awt.Color(246, 246, 246));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add_md.png"))); // NOI18N
         jButton4.setText("Agregar");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setFocusPainted(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +114,7 @@ CtrlObras controladorObra;
 
         jButton3.setBackground(new java.awt.Color(246, 246, 246));
         jButton3.setText("Finalizar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,27 +251,50 @@ CtrlObras controladorObra;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        
+        boolean mark_zuckerberg = false;
+        
         if ((idO.getText().length()!=0) && (autorO.getText().length()!=0) && (tituloO.getText().length()!=0) &&(añoO.getText().length()!=0) && (ubicacionO.getText().length()!=0)&&(descripcionO.getText().length()!=0)){
 
-            Obra obra = new Obra(idO.getText(),autorO.getText(),tituloO.getText(),añoO.getText(),ubicacionO.getText(),descripcionO.getText());
-            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-            controladorObra.getInstancia().getObrasArray().add(obra);
+            for(int i = 0; i < CtrlObras.getInstancia().getObrasArray().size(); i++){
+        
+            String IdEntrada = idO.getText();
+            String IdObra = CtrlObras.getInstancia().getObrasArray().get(i).getIdObra();
 
-            modelo.addRow(new Object[]{obra.getIdObra(),obra.getTituloObra(),obra.getAutorObra()});
-            idO.setText(null);
-            autorO.setText(null);
-            tituloO.setText(null);
-            añoO.setText(null);
+                if(IdObra == null ? IdEntrada == null : IdObra.equals(IdEntrada)){                   
+                    mark_zuckerberg = true;
+                    break;
+                }   
+            }
+            
+            if(mark_zuckerberg == true){
+                idO.setText(null);
+                autorO.setText(null);
+                tituloO.setText(null);
+                añoO.setText(null);
+                ubicacionO.setText(null);
+                descripcionO.setText(null);
+                JOptionPane.showMessageDialog(null, "Error, la obra ya existe.", "Error", JOptionPane.WARNING_MESSAGE);
+            }else{
+                Obra obra = new Obra(idO.getText(),autorO.getText(),tituloO.getText(),añoO.getText(),ubicacionO.getText(),descripcionO.getText());
+                DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+                controladorObra.getInstancia().getObrasArray().add(obra);
 
-            ubicacionO.setText(null);
-            descripcionO.setText(null);
-            JOptionPane.showMessageDialog(null, "Obra agregada correctamente");
+                modelo.addRow(new Object[]{obra.getIdObra(),obra.getTituloObra(),obra.getAutorObra()});
+                idO.setText(null);
+                autorO.setText(null);
+                tituloO.setText(null);
+                añoO.setText(null);
 
+                ubicacionO.setText(null);
+                descripcionO.setText(null);
+                JOptionPane.showMessageDialog(null, "Obra agregada correctamente");
+            }
+            
         }else {
-            JOptionPane.showMessageDialog(null, "Error, Campos sin rellenar", "Error", JOptionPane.ERROR_MESSAGE);
-
+            JOptionPane.showMessageDialog(null, "Error, se deben rellenar todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     
