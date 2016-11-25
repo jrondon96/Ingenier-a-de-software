@@ -419,7 +419,7 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
             String Id = TablaPIS.getValueAt(TablaPIS.getSelectedRow(), 0).toString();
             for(int i = 0; i < puntoDeInteres.size(); i++){
                 if( Id == null ? puntoDeInteres.get(i).getIdentificador() == null : Id.equals(puntoDeInteres.get(i).getIdentificador())){    
-                    tour.getTourspuntoDeInteresArray().add(puntoDeInteres.get(i));
+                    tour.getTourspuntoDeInteresArray().remove(puntoDeInteres.get(i));
                     ((DefaultTableModel)TablaPIS.getModel()).removeRow(TablaPIS.getSelectedRow());
                     break;
                 }
