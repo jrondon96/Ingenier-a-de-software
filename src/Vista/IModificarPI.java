@@ -366,6 +366,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
                 modelo2.insertRow(0, new Object[]{CtrlObras.getInstancia().getObrasArray().get(i).getIdObra(),
                 CtrlObras.getInstancia().getObrasArray().get(i).getTituloObra()});
                 aux.getObrasPuntoDeInteresArray().add(CtrlObras.getInstancia().getObrasArray().get(i));
+                break;
             }
         }
     }//GEN-LAST:event_agregarObraActionPerformed
@@ -397,7 +398,6 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
            String id = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
            System.out.println("Copia PI"+ copiaPI.getIdentificador());
            if(copiaPI.getIdentificador() == id){
-              System.out.println("Something");
               CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setIdentificador(aux.getIdentificador());
               CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setNombre(aux.getNombre());
               CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setDisponibilidad(aux.getDisponibilidad());
@@ -418,16 +418,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
         
         for (int i = 0; filas>i; i++) {
             modelo2.removeRow(0);
-        }
-        for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
-           
-           String pi = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
-           for( int j= 0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().size(); j++){
-             String o = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra();
-               System.out.println("PI "+pi+"- O "+o);
-           }
-        }
-        
+        }     
     }//GEN-LAST:event_modificarPuntoInteresActionPerformed
 
     private void ComboBoxObrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxObrasActionPerformed
