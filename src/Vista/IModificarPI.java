@@ -332,11 +332,11 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
         
         for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
 
-            aux =  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
-            copiaPI = aux;
-            String IdPI = copiaPI.getIdentificador();
+            String IdPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
 
             if( Id == null ? IdPI == null : Id.equals(IdPI) ){
+                aux =  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
+                copiaPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
                 DefaultTableModel modeloO = (DefaultTableModel)TablaObras.getModel();
                 for(int j=0; j<copiaPI.getObrasPuntoDeInteresArray().size(); j++){   
                     modeloO.addRow(new Object[]{copiaPI.getObrasPuntoDeInteresArray().get(j).getIdObra(), copiaPI.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
@@ -395,6 +395,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
         
         for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
            String id = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
+           System.out.println("Copia PI"+ copiaPI.getIdentificador());
            if(copiaPI.getIdentificador() == id){
               System.out.println("Something");
               CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setIdentificador(aux.getIdentificador());
