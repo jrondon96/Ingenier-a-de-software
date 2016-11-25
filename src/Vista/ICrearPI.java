@@ -8,6 +8,7 @@ import Modelo.PuntoDeInteres;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -444,13 +445,18 @@ private PuntoDeInteres PI;
 
     private void eliminarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarObraActionPerformed
 
-        String Id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
-        for(int i = 0; i<ObrasAux.size(); i++){
-            if( Id == null ? ObrasAux.get(i).getIdObra() == null : Id.equals(ObrasAux.get(i).getIdObra())){    
-                ObrasAux.remove(i);
-                ((DefaultTableModel)jTable2.getModel()).removeRow(jTable2.getSelectedRow());
+        try{
+            String Id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
+            for(int i = 0; i<ObrasAux.size(); i++){
+                if( Id == null ? ObrasAux.get(i).getIdObra() == null : Id.equals(ObrasAux.get(i).getIdObra())){    
+                    ObrasAux.remove(i);
+                    ((DefaultTableModel)jTable2.getModel()).removeRow(jTable2.getSelectedRow());
+                }
             }
+        }catch(ArrayIndexOutOfBoundsException  e){
+            JOptionPane.showMessageDialog(null, "Error, no hay obras a eliminar.", "Error", JOptionPane.WARNING_MESSAGE);
         }
+        
     }//GEN-LAST:event_eliminarObraActionPerformed
   
 

@@ -401,13 +401,17 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
 
     private void eliminarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarObraActionPerformed
         
-        String Id = TablaObras.getValueAt(TablaObras.getSelectedRow(), 0).toString();
-        for(int i = 0; i < ObrasPI.size(); i++){
-            if(Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){                    
-                aux.getObrasPuntoDeInteresArray().remove(ObrasPI.get(i));
-                ((DefaultTableModel)TablaObras.getModel()).removeRow(TablaObras.getSelectedRow());
-                break;
+        try{
+            String Id = TablaObras.getValueAt(TablaObras.getSelectedRow(), 0).toString();
+            for(int i = 0; i < ObrasPI.size(); i++){
+                if(Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){                    
+                    aux.getObrasPuntoDeInteresArray().remove(ObrasPI.get(i));
+                    ((DefaultTableModel)TablaObras.getModel()).removeRow(TablaObras.getSelectedRow());
+                    break;
+                }
             }
+        }catch(ArrayIndexOutOfBoundsException  e){
+            JOptionPane.showMessageDialog(null, "Error, no hay obras a eliminar.", "Error", JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_eliminarObraActionPerformed

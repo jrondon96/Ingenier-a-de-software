@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.CtrlControlador;
+import Controlador.CtrlTourVirtual;
 
 
 public class IAdministracionTV extends javax.swing.JFrame { 
@@ -11,7 +12,11 @@ public class IAdministracionTV extends javax.swing.JFrame {
         initComponents(); 
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Administrar Tours Virtuales"); 
+        setTitle("Administrar Tours Virtuales");
+        if(CtrlTourVirtual.getInstancia().getToursVirtualesArray().size() <= 0){
+           botonEliminarTour.setEnabled(false);
+           botonModificarTour.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -21,9 +26,9 @@ public class IAdministracionTV extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonModificarTour = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        botonEliminarTour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,14 +48,14 @@ public class IAdministracionTV extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(246, 246, 246));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
-        jButton2.setText("Modificar Tour Virtual");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonModificarTour.setBackground(new java.awt.Color(246, 246, 246));
+        botonModificarTour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_md.png"))); // NOI18N
+        botonModificarTour.setText("Modificar Tour Virtual");
+        botonModificarTour.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonModificarTour.setFocusPainted(false);
+        botonModificarTour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonModificarTourActionPerformed(evt);
             }
         });
 
@@ -64,14 +69,14 @@ public class IAdministracionTV extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(246, 246, 246));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
-        jButton4.setText("Eliminar Tour Virtual");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setFocusPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonEliminarTour.setBackground(new java.awt.Color(246, 246, 246));
+        botonEliminarTour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_md.png"))); // NOI18N
+        botonEliminarTour.setText("Eliminar Tour Virtual");
+        botonEliminarTour.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEliminarTour.setFocusPainted(false);
+        botonEliminarTour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonEliminarTourActionPerformed(evt);
             }
         });
 
@@ -87,8 +92,8 @@ public class IAdministracionTV extends javax.swing.JFrame {
                         .addGap(70, 70, 70))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonEliminarTour, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonModificarTour, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(114, 114, 114))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -103,9 +108,9 @@ public class IAdministracionTV extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addComponent(jButton1)
                 .addGap(29, 29, 29)
-                .addComponent(jButton2)
+                .addComponent(botonModificarTour)
                 .addGap(30, 30, 30)
-                .addComponent(jButton4)
+                .addComponent(botonEliminarTour)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -129,9 +134,9 @@ public class IAdministracionTV extends javax.swing.JFrame {
         controlador.getInstancia().opcionSeleccionada("CrearTV",this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonModificarTourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarTourActionPerformed
         controlador.getInstancia().opcionSeleccionada("ModificarTV",this);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonModificarTourActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        IAdministracion administracion = new IAdministracion();
@@ -139,17 +144,17 @@ public class IAdministracionTV extends javax.swing.JFrame {
        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void botonEliminarTourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarTourActionPerformed
         controlador.getInstancia().opcionSeleccionada("EliminarTV",this);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_botonEliminarTourActionPerformed
 
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonEliminarTour;
+    private javax.swing.JButton botonModificarTour;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
