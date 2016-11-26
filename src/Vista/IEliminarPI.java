@@ -165,6 +165,7 @@ public class IEliminarPI extends javax.swing.JFrame {
                 String IdPI= aux.getIdentificador();
                 if( token == null ? IdPI == null : token.equals(IdPI) ){
                     CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().remove(aux); /* Se elimina el punto de interes del arreglo de puntos de interes.*/
+                    
                 }
             }
         }catch(NullPointerException e){
