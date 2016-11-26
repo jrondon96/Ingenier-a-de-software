@@ -346,7 +346,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
            
         DefaultTableModel modelo2 = (DefaultTableModel) TablaObras.getModel();
         
-        int filas= TablaObras.getRowCount();
+        int filas = TablaObras.getRowCount();
         
         for (int i = 0; filas>i; i++) {
             modelo2.removeRow(0);
@@ -367,14 +367,29 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
              disponibilidadpi.setSelected(NDButton.getModel(), true);
         }
         
-        for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
+        for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size(); i++){
 
             String IdPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
 
             if( Id == null ? IdPI == null : Id.equals(IdPI) ){
+                copiaPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
+                String idAux = "";
+                String nombreAux = "";
+                String DispAux = "";
+                ArrayList <Obra> ObrasAux= new ArrayList <> ();
+                     
+                aux = new PuntoDeInteres(idAux, nombreAux, DispAux, ObrasAux);
                 
-                aux =  CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);
-                copiaPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i);          
+                for(int j = 0; j < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().size(); j++){
+                    auxO = copiaPI.getObrasPuntoDeInteresArray().get(j);
+                    aux.getObrasPuntoDeInteresArray().add(auxO);
+                }
+              
+                aux.setIdentificador(copiaPI.getIdentificador()); 
+                aux.setDisponibilidad(copiaPI.getDisponibilidad());
+                aux.setNombre(copiaPI.getNombre());
+                
+                          
                 DefaultTableModel modeloO = (DefaultTableModel)TablaObras.getModel();
                 
                 for(int j = 0; j < copiaPI.getObrasPuntoDeInteresArray().size(); j++){
@@ -446,11 +461,13 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
 
             for (int i=0; i < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().size();i++){
                String id = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getIdentificador();
-               if(copiaPI.getIdentificador() == id){
+               if(copiaPI.getIdentificador() == null ? id == null : copiaPI.getIdentificador().equals(id)){
+                   
                   CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setIdentificador(aux.getIdentificador());
                   CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setNombre(aux.getNombre());
                   CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setDisponibilidad(aux.getDisponibilidad());
                   CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).setObrasPuntoDeInteresArray(aux.getObrasPuntoDeInteresArray());
+                  
                   break;
                }
             }
