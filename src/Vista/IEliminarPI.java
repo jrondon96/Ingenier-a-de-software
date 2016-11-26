@@ -7,6 +7,7 @@ package Vista;
 
 import Modelo.PuntoDeInteres;
 import Controlador.CtrlPuntoDeInteres;
+import Controlador.CtrlTourVirtual;
 import java.util.StringTokenizer;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
