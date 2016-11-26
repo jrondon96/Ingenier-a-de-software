@@ -361,9 +361,9 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
         idPI.setText(Id);
         NombrePI.setText(Nombre);
         
-        if(Disp == "Disponible"){
+        if("Disponible".equals(Disp)){
              disponibilidadpi.setSelected(DButton.getModel(), true);
-        }else if(Disp == "No Disponible"){
+        }else if("No Disponible".equals(Disp)){
              disponibilidadpi.setSelected(NDButton.getModel(), true);
         }
         
@@ -380,7 +380,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
                      
                 aux = new PuntoDeInteres(idAux, nombreAux, DispAux, ObrasAux);
                 
-                for(int j = 0; j < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(j).getObrasPuntoDeInteresArray().size(); j++){
+                for(int j = 0; j < CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().size(); j++){
                     auxO = copiaPI.getObrasPuntoDeInteresArray().get(j);
                     aux.getObrasPuntoDeInteresArray().add(auxO);
                 }
