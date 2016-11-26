@@ -3,16 +3,14 @@ package Vista;
 import Modelo.PuntoDeInteres;
 import Modelo.TourVirtual;
 
-
-
 public class IRecorrido extends javax.swing.JFrame {
  
 private TourVirtual auxTourVirtual; 
 private PuntoDeInteres auxPuntoDeInteres; 
-private int i=0, j=0;  
+private int i=0, j=0; 
+
 
     public IRecorrido(TourVirtual TourVirtual) {
-        
         initComponents(); 
         setLocationRelativeTo(null);
         setResizable(false);
@@ -38,6 +36,7 @@ private int i=0, j=0;
        if (auxTourVirtual.getTourspuntoDeInteresArray().size() == i){ 
            botonAvanzar.setEnabled(false);
        }
+     
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -218,8 +217,6 @@ private int i=0, j=0;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
     private void botonAbandonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbandonarActionPerformed
         IBienvenidaVisitante bienvenida = new IBienvenidaVisitante();
         bienvenida.setVisible(true); 
@@ -228,10 +225,7 @@ private int i=0, j=0;
     
     
     private void botonAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAvanzarActionPerformed
-        
-        
-      
-           if (auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().size()>j){ 
+        if (auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().size()>j){ 
             campoTitulo.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getTituloObra());
             campoAño.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAñoCreacionObra());
             campoAutor.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAutorObra());
@@ -250,7 +244,6 @@ private int i=0, j=0;
                }
            }  
     }//GEN-LAST:event_botonAvanzarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ImagenO;
