@@ -3,14 +3,16 @@ package Vista;
 import Modelo.PuntoDeInteres;
 import Modelo.TourVirtual;
 
+
+
 public class IRecorrido extends javax.swing.JFrame {
  
 private TourVirtual auxTourVirtual; 
 private PuntoDeInteres auxPuntoDeInteres; 
 private int i=0, j=0; 
 
-
     public IRecorrido(TourVirtual TourVirtual) {
+   
         initComponents(); 
         setLocationRelativeTo(null);
         setResizable(false);
@@ -36,7 +38,6 @@ private int i=0, j=0;
        if (auxTourVirtual.getTourspuntoDeInteresArray().size() == i){ 
            botonAvanzar.setEnabled(false);
        }
-     
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
