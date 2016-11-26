@@ -395,8 +395,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
                 for(int j = 0; j < copiaPI.getObrasPuntoDeInteresArray().size(); j++){
      
                     /* Se cargan los cambios de obras de interes a la tabla y al arreglo de obras del punto de interes. */
-                    modeloO.addRow(new Object[]{copiaPI.getObrasPuntoDeInteresArray().get(j).getIdObra(), copiaPI.getObrasPuntoDeInteresArray().get(j).getTituloObra()});
-                    ObrasPI = CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray();
+                    modeloO.addRow(new Object[]{copiaPI.getObrasPuntoDeInteresArray().get(j).getIdObra(), copiaPI.getObrasPuntoDeInteresArray().get(j).getTituloObra()});            
                 }
                 break;
             }     
@@ -433,7 +432,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
         
         try{
             /* Se eliminan obras asociadas al punto de interes seleccionado. */
-            
+            ObrasPI = aux.getObrasPuntoDeInteresArray();
             String Id = TablaObras.getValueAt(TablaObras.getSelectedRow(), 0).toString();
             for(int i = 0; i < ObrasPI.size(); i++){
                 if(Id == null ? ObrasPI.get(i).getIdObra() == null : Id.equals(ObrasPI.get(i).getIdObra())){                    
