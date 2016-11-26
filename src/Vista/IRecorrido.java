@@ -35,7 +35,17 @@ private int i=0, j=0;
             campo_descripcion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getDescripcionObra());
             campoImagen.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra());
             nombretourpunto.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra()); 
-            j++;
+            j++;  
+            
+            if (auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().size() <= j){
+               j=0; 
+               i++; 
+               
+               if (auxTourVirtual.getTourspuntoDeInteresArray().size()==i){
+                   botonAvanzar.setEnabled(false);
+               }
+           }  
+            
         }catch(IndexOutOfBoundsException e){
             this.setVisible(false);
             JOptionPane.showMessageDialog(null, "No existen obras asociadas al tour virtual.", "Atención.", JOptionPane.WARNING_MESSAGE);    

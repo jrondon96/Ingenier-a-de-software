@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.CtrlObras;
+import Controlador.CtrlPuntoDeInteres;
 import Modelo.Obra;
 import java.util.Iterator;
 import java.util.StringTokenizer;
@@ -173,6 +174,8 @@ private Obra aux;
                 if( token == null ? IdObra == null : token.equals(IdObra) ){
                     CtrlObras.getInstancia().getObrasArray().remove(aux); /* Se elimina la obra del arreglo de obras.*/
 
+                    CtrlObras.getInstancia().getObrasArray().remove(aux); /* Se elimina la obra del arreglo de obras.*/
+                    CtrlPuntoDeInteres.getInstancia().getPuntoDeInteresArray().get(0).getObrasPuntoDeInteresArray().remove(0);
                 }     
             }
                 
