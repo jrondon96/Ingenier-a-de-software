@@ -435,7 +435,7 @@ private ArrayList <Obra> ObrasPI= new ArrayList <Obra> ();
 
     private void modificarPuntoInteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPuntoInteresActionPerformed
         
-        if((NombrePI.getText().length()!=0)){
+        if((NombrePI.getText().length()!=0) && (DButton.isSelected() || NDButton.isSelected())){
             aux.setNombre(NombrePI.getText());  
             if(disponibilidadpi.getSelection().equals(DButton.getModel())) {
                 aux.setDisponibilidad("Disponible");

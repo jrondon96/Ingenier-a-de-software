@@ -326,7 +326,7 @@ public ICrearTV() {
         String disp = "No Disponible";
         boolean mark_zuckerberg = false;
         
-        if ((idtv.getText().length()!=0) && (nombretv.getText().length()!=0)) { /* Los campos no pueden estar vacíos.*/
+        if ((idtv.getText().length()!=0) && (nombretv.getText().length()!=0 && (DButton.isSelected() || NDButton.isSelected()))) { /* Los campos no pueden estar vacíos.*/
             
             /* Se verifica que no exista un tour virtual con identificador igual.*/
             

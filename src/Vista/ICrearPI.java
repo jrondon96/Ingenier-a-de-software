@@ -371,7 +371,7 @@ private PuntoDeInteres PI;
         String disp = "No Disponible";
         boolean mark_zuckerberg = false; /* Control de existencia de un punto de interes. */
 
-        if ((idpi.getText().length()!=0) && (nombrepi.getText().length()!=0)) {
+        if ((idpi.getText().length()!=0) && (nombrepi.getText().length()!=0) && (DButton.isSelected() || NDButton.isSelected())) {
             
             /* Se verifica si existe un punto de interes con el mismo identificador. */
             

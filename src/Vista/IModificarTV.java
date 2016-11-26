@@ -431,7 +431,7 @@ private ArrayList <PuntoDeInteres> puntoDeInteres = new ArrayList <PuntoDeIntere
 
     private void modificarTourVirtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarTourVirtualActionPerformed
         
-        if((nombreTour.getText().length()!=0)){
+        if((nombreTour.getText().length()!=0) && (DButton.isSelected() || NDButton.isSelected())){
             tour.setIdentificador(idTour.getText());
             tour.setNombre(nombreTour.getText());
             if(disponibilidadtour.getSelection().equals(DButton.getModel())) {
