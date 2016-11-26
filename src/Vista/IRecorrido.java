@@ -34,7 +34,10 @@ private int i=0, j=0;
        campo_descripcion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getDescripcionObra());
        campoImagen.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra());
        nombretourpunto.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra()); 
-
+       j++;  
+       if (auxTourVirtual.getTourspuntoDeInteresArray().size() == i){ 
+           botonAvanzar.setEnabled(false);
+       }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -225,14 +228,10 @@ private int i=0, j=0;
     
     
     private void botonAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAvanzarActionPerformed
-       if (auxTourVirtual.getTourspuntoDeInteresArray().size() == i){ 
-           botonAvanzar.setEnabled(false);
-           System.out.println("Entro");
-       }  
-       else {
-           if (auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().size()>=j){
-               j++; 
-             
+        
+        
+      
+           if (auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().size()>j){ 
             campoTitulo.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getTituloObra());
             campoAño.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAñoCreacionObra());
             campoAutor.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAutorObra());
@@ -240,14 +239,16 @@ private int i=0, j=0;
             campo_descripcion.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getDescripcionObra());
             campoImagen.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra());
             nombretourpunto.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getIdObra()); 
+           j++;
+           }  
+           if (auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().size() <= j){
+               j=0; 
+               i++; 
                
-           }
-           else {
-               i++;  
-               j=-1;
-           }
-       }
-        
+               if (auxTourVirtual.getTourspuntoDeInteresArray().size()==i){
+                   botonAvanzar.setEnabled(false);
+               }
+           }  
     }//GEN-LAST:event_botonAvanzarActionPerformed
 
 
