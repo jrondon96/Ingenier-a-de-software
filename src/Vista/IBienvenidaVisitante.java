@@ -69,6 +69,7 @@ public class IBienvenidaVisitante extends javax.swing.JFrame {
         botonVisitar.setBackground(new java.awt.Color(246, 246, 246));
         botonVisitar.setText("Visitar");
         botonVisitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonVisitar.setFocusPainted(false);
         botonVisitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVisitarActionPerformed(evt);
@@ -79,6 +80,7 @@ public class IBienvenidaVisitante extends javax.swing.JFrame {
         botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_md.png"))); // NOI18N
         botonSalir.setText("Salir");
         botonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonSalir.setFocusPainted(false);
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
@@ -129,7 +131,7 @@ public class IBienvenidaVisitante extends javax.swing.JFrame {
                 .addComponent(ComboBoxtour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botonVisitar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(botonSalir)
                 .addGap(19, 19, 19))
         );

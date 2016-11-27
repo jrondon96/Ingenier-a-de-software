@@ -9,7 +9,6 @@ import Controlador.CtrlControlador;
 import Controlador.CtrlObras;
 import Controlador.CtrlPuntoDeInteres;
 import Controlador.CtrlTourVirtual;
-import Modelo.Obra;
 import Modelo.PuntoDeInteres;
 import Modelo.TourVirtual;
 import java.util.ArrayList;
