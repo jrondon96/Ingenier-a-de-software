@@ -1,10 +1,7 @@
 
 package Controlador; 
-import Modelo.Obra;
-import Modelo.PuntoDeInteres;
 import Vista.IAdministracion;
 import Vista.IBienvenida;
-import java.util.ArrayList; 
 import javax.swing.JFrame;
 import Vista.*;
 

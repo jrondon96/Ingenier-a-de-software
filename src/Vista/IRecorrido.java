@@ -18,8 +18,6 @@ private int i=0, j=0;
 private ImageIcon iconLogo; 
 
  
-
-
     public IRecorrido(TourVirtual TourVirtual) {
 
         try{
@@ -35,7 +33,7 @@ private ImageIcon iconLogo;
             campo_descripcion.setText(null); 
             campoImagen.setText(null); 
             nombretourpunto.setText(null); 
-
+           
             campoTitulo.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getTituloObra());
             campoAño.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAñoCreacionObra());
             campoAutor.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAutorObra());
@@ -54,14 +52,11 @@ private ImageIcon iconLogo;
                if (auxTourVirtual.getTourspuntoDeInteresArray().size()==i){
                    botonAvanzar.setEnabled(false);
                }
-           }  
-            
-        }catch(IndexOutOfBoundsException e){  
-            this.setVisible(false);
-            JOptionPane.showMessageDialog(null, "No existen obras asociadas al tour virtual.", "Atención.", JOptionPane.WARNING_MESSAGE);    
+           }    
+        }catch(Exception e){  
+            JOptionPane.showMessageDialog(null, "No existen obras asociadas al tour virtual.", "Atención.", JOptionPane.WARNING_MESSAGE); 
+            botonAvanzar.setEnabled(false); 
         }
-          
-       
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -111,6 +106,7 @@ private ImageIcon iconLogo;
         botonAvanzar.setBackground(new java.awt.Color(246, 246, 246));
         botonAvanzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/siguiente_md.png"))); // NOI18N
         botonAvanzar.setText("Avanzar");
+        botonAvanzar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAvanzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAvanzarActionPerformed(evt);
@@ -120,6 +116,7 @@ private ImageIcon iconLogo;
         botonAbandonar.setBackground(new java.awt.Color(246, 246, 246));
         botonAbandonar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_md.png"))); // NOI18N
         botonAbandonar.setText("Abandonar");
+        botonAbandonar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAbandonar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAbandonarActionPerformed(evt);
@@ -149,46 +146,42 @@ private ImageIcon iconLogo;
                 .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ImagenO)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(textoDescripcion)
                                 .addGap(18, 18, 18)
-                                .addComponent(campo_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(campoImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE))
+                                .addComponent(campo_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campoImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(textoAutor1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(campoAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(textoTitulo2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(75, 75, 75)
-                                        .addComponent(botonAvanzar)
+                                        .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(botonAbandonar))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(textoCategoria)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(campoUbicacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(textoAnnoCreacion)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(campoAño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addGap(28, 28, 28)
+                                        .addComponent(campoAño, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(textoAutor1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(campoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(55, 55, 55)
+                                        .addComponent(textoCategoria)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(campoUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(nombretourpunto, javax.swing.GroupLayout.PREFERRED_SIZE, 881, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textoEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(nombretourpunto, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textoEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(666, 666, 666)
+                                .addComponent(botonAvanzar)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonAbandonar)))
                         .addGap(64, 64, 64))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -208,8 +201,8 @@ private ImageIcon iconLogo;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoAutor1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoAutor)
-                    .addComponent(textoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoUbicacion))
+                    .addComponent(campoUbicacion)
+                    .addComponent(textoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,7 +222,7 @@ private ImageIcon iconLogo;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 957, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,9 +239,13 @@ private ImageIcon iconLogo;
     }//GEN-LAST:event_botonAbandonarActionPerformed
     
     
-    private void botonAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAvanzarActionPerformed
+    private void avanzar(){
+        if(auxTourVirtual.getTourspuntoDeInteresArray().size()>i){
         
+        if(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getDisponibilidad().equals("Disponible")){
+            
         if (auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().size() > j && auxTourVirtual.getTourspuntoDeInteresArray().get(i).getDisponibilidad()!="E"){ 
+            
             campoTitulo.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getTituloObra());
             campoAño.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAñoCreacionObra());
             campoAutor.setText(auxTourVirtual.getTourspuntoDeInteresArray().get(i).getObrasPuntoDeInteresArray().get(j).getAutorObra());
@@ -266,8 +263,25 @@ private ImageIcon iconLogo;
                
                if (auxTourVirtual.getTourspuntoDeInteresArray().size()==i){
                    botonAvanzar.setEnabled(false);
+               } 
+               if(auxTourVirtual.getTourspuntoDeInteresArray().size()==i+1 && !auxTourVirtual.getTourspuntoDeInteresArray().get(i).getDisponibilidad().equals("Disponible")){
+                   botonAvanzar.setEnabled(false);
                }
-           }  
+           } 
+        } 
+        else { 
+            i++;
+            if (auxTourVirtual.getTourspuntoDeInteresArray().size()==i){
+                   botonAvanzar.setEnabled(false);
+               } 
+            avanzar();
+        } 
+    }
+    }
+    
+    private void botonAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAvanzarActionPerformed
+        avanzar();
+        
     }//GEN-LAST:event_botonAvanzarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

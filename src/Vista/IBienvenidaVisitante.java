@@ -24,12 +24,20 @@ public class IBienvenidaVisitante extends javax.swing.JFrame {
         botonVisitar.setEnabled(false);
         
         while(it.hasNext()){
-            auxtour=it.next();
-            if (auxtour.getDisponibilidad().equals("Disponible")){
-                ComboBoxtour.addItem(auxtour.getNombre()); 
-                ComboBoxtour.setEnabled(true); 
-                botonVisitar.setEnabled(true);
-            }     
+            auxtour=it.next(); 
+            
+            
+                if (auxtour.getDisponibilidad().equals("Disponible")){ 
+                    if(auxtour.getTourspuntoDeInteresArray().size()>0){
+                    if (auxtour.getTourspuntoDeInteresArray().get(0).getDisponibilidad()=="Disponible" && auxtour.getTourspuntoDeInteresArray().get(auxtour.getTourspuntoDeInteresArray().size()-1).getDisponibilidad()=="Disponible") { 
+                    ComboBoxtour.addItem(auxtour.getNombre());
+                    ComboBoxtour.setEnabled(true);
+                    botonVisitar.setEnabled(true);  
+                    }
+                    }
+                    
+                }
+            
         }  
     }
 
